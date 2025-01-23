@@ -230,7 +230,7 @@ print()
 
 أخيرًا ، سنلقي نظرة على بعض الدوال الأساسية المضمنة.
 يمكنك أيضًا تنزيل ورقة الغش هذه
-<a href="https://github.com/muzikovam/cheatsheets/blob/master/basic_functions/basic_functions-en.pdf">cheatsheet</a>.
+<a href="https://github.com/muzikovam/cheatsheets/blob/master/basic-functions/basic-functions-en.pdf">cheatsheet</a>.
 
 
 ### المدخلات والمخرجات (Input and output)
