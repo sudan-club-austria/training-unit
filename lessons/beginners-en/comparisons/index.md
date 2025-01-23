@@ -149,9 +149,8 @@ print("Thank you for using the geometric calculator.")
 إذن بعد `if` ، يوجد *شرط* وهو
 التعبير الذي سنستخدمه لاتخاذ القرار.
 بعد الشرط يجب أن تكتب نقطتين (:).
-يتم متابعة النقاط بواسطه الأوامر التي سيتم تنفيذها إذا كان الشرط `صواب True`.
-
-يجب عليك إزاحة الأسطر التالية بمقدار 4 مسافات بعد كل نقطتين تستخدمهما في بايثون(indent). 
+و من ثم تكتب بعد النقطتين الأوامر التي سيتم تنفيذها إذا كان الشرط `صواب True`.
+تذكر، بعد كل نقطتين في بايثون، عليك إزاحة الأسطر التالية بمقدار 4 مسافات.
 
 ثم على نفس مستوى `if` ، اكتب `else` متبوعًا بـ `colon :`. الأسطر التالية
 تحتوي على الأوامر التي يتم تنفيذها إذا كان الشرط `خاطئ False` ، ويجب أن تحتوي على مسافة (indent) أيضًا. <br>
@@ -171,12 +170,12 @@ print("Thank you for using the geometric calculator.")
 ## عبارات شرطية أخرى (Other conditional statements)
 
 في بعض الأحيان لا تكون عبارة `else` ضرورية.
-بحيث لا يفعل السطر البرمجي التالي أي شيء إضافي إذا لم يكن الرقم مساويًا للصفر.
+بحيث لا يفعل السطر البرمجي التالي أي شيء إضافي إذا لم يكن الرقم اكبر من الصفر.
 
 ```python
 number = int(input('Enter a number, to which I will add 3: '))
-if number == 0:
-    print('This is easy!')
+if number < 0:
+    print('Negative number detected!')
 print(number, '+ 3 =', number + 3)
 ```
 
@@ -191,11 +190,11 @@ print(number, '+ 3 =', number + 3)
 age = int(input('How old are you? '))
 if age >= 150:
     print('And from which planet are you?')
-elif age >= 18:
+elif age >= 10:
     # This branch will not be executed for "200", for example.
-    print('We can offer: wine, cider, or vodka.')
+    print('We can offer: Cofee, Tea, or sharboot.')
 elif age >= 1:
-    print('We can offer: milk, tea, or water')
+    print('We can offer: Milk, Ovaltine, or water')
 elif age >= 0:
     print('Unfortunately, we are out of baby formula.')
 else :
