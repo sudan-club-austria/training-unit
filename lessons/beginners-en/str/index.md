@@ -1,40 +1,42 @@
-# Strings
+# النصوص (Strings)
 
-Now we will learn about strings.
-You already know how to write them in Python code.
+الآن سنتعلم عن النصوص.
+أنت تعرف بالفعل كيفية كتابتها في كود Python.
 
 ```python
 'This is string'
 "And this is also string"
 ```
 
-Sometimes you will need a string that is multiple lines long.
-But you can write strings only on one line in Python
-(you can actually write on more lines but the text would
-appear on just one).
+الآن سنتعلم عن النصوص.
+أنت تعرف بالفعل كيفية كتابتها في كود Python.
 
-In your text, you can use a special character that means
-new line `\n`:
+في بعض الأحيان ستحتاج إلى نص طويل من الأسطر.
+ولكن يمكنك كتابة نصوص على سطر واحد فقط في Python
+(يمكنك بالفعل الكتابة على المزيد من الأسطر ولكن النص سيظهر على سطر واحد فقط).
+
+في النص الخاص بك ، يمكنك استخدام حرف خاص يعني
+سطر جديد `\n`:
 
 ```python
 print('Hello word\nHow are you?')
 ```
-A backslash allows us to write characters which we can't easily
-write on the keyboard.
+تسمح لنا الشرطة المائلة العكسية (backslash) بكتابة الأحرف التي لا يمكننا كتابتها بسهولة
+على لوحة المفاتيح.
 
-The backslash also allows us to use both types of quotes in one piece of text. 
+تسمح لنا الشرطة المائلة العكسية(backslash) أيضًا باستخدام كلا نوعي الاقتباسات ( " و ' ) في جزء واحد من النص.
 
 ```python
 print('"Don\'t do it", said dad.')
 print("\"Don't do it\", said dad.")
 ```
 
-Backward slashes can also insert exotic characters 
-that you do not have on the keyboard.
-Fancy characters can be written as `\N` and a character 
-name in compound ("curly") braces.
-Try for example the following characters
-(some might not work for your system):
+يمكن للشرطة المائلة العكسية أيضًا إدراج أحرف غريبة
+ليس لديك على لوحة المفاتيح.
+يمكن كتابة الأحرف المميزة كـ `\N` واسم حرف
+في الأقواس المركبة ("{}").
+جرب على سبيل المثال الأحرف التالية
+(قد لا يعمل البعض على نظامك):
 
 ```python
 print('--\N{LATIN SMALL LETTER L WITH STROKE}--')
@@ -45,27 +47,23 @@ print('--\N{SNOWMAN}--')
 print('--\N{KATAKANA LETTER TU}--')
 ```
 
-If you want to write a backslash character in your text
-you have to write it twice (for example, in a path to a
-file in Windows).
-So the sequence `\\` means one backslash.
+إذا كنت تريد كتابة حرف الشرطة العكسية (backlash) في النص الخاص بك، فيجب عليك كتابته مرتين (على سبيل المثال، في مسار إلى ملف في Windows).
+لذا فإن التسلسل `\\` يعني شرطة عكسية واحدة.
 
 ```python
-print('C:\\PyLadies\\New Folder')
+print('C:\\Khartoum\\New Folder')
 ```
 
-But back to multi-line strings. There is also another way how to write them
-in Python. You just have to wrap them in *three* single
-or *three* double quotes:
+ولكن دعنا نعود إلى النصوص متعددة الأسطر. هناك أيضًا طريقة أخرى لكتابتها في بايثون. كل ما عليك فعله هو وضعها بين *ثلاث* علامات اقتباس مفردة أو *ثلاث* علامات اقتباس مزدوجة:
 
 ```python
 basen = '''Hello World!
 How are you?'''
 ```
 
-Programmers also use three quotes to document their functions.
-It is called a `docstring` (documentation string).
-You do not need to worry about how to define a function, the next lecture will be aimed directly at this topic.
+يستخدم المبرمجون أيضًا ثلاث علامات اقتباس لتوثيق دوالهم.
+ويطلق على ذلك اسم `docstring` (نص توثيق).
+لا داعي للقلق بشأن كيفية تعريف دالة، فالمحاضرة القادمة ستركز بشكل مباشر على هذا الموضوع.
 
 ```python
 def multiply(a, b):
@@ -77,124 +75,132 @@ def multiply(a, b):
     return a * b
 ```
 
-However you can use the inbuilt `help()` function on any function to see its `"docstring"`.
-In order to leave the newly opened help window, press `q` as `quit`. 
+ومع ذلك، يمكنك استخدام الدالة المضمنة (inbuilt) `()help` في أي دالة لرؤية ``docstring`` الخاصة بها.
+لمغادرة نافذة التعليمات المفتوحة حديثًا، اضغط على `q` كـ `quit`.
 
-Now we will have a look at how to work with strings.
+سنلقي الآن نظرة على كيفية العمل مع النصوص.
 
+## تجزئة النصوص (Subscripting)
 
-## Subscripting
-
-You already know how to concatenate strings by addition and multiplication.
+أنت تعرف بالفعل كيفية ربط النصوص عن طريق الجمع والضرب.
 
 ```python
 concatenated_string = 'a' + 'b'
 long_string = 'o' * 100
 ```
 
-Now we will learn how we can get part of a string.
-We will start with single characters.
-This is done by *subscripting*. The Syntax looks similar
-to calling a function but with *square brackets*!
+ومع ذلك، يمكنك استخدام الدالة المضمنة (inbuilt) `()help` في أي دالة لرؤية ``docstring`` الخاصة بها.
+لمغادرة نافذة التعليمات المفتوحة حديثًا، اضغط على `q` كـ `quit`.
+
+سنلقي الآن نظرة على كيفية العمل مع النصوص.
+
+## تجزئة النصوص (Subscripting)
+
+أنت تعرف بالفعل كيفية ربط النصوص عن طريق الجمع والضرب.
+
+الآن سنتعلم كيفية الحصول على جزء من نص.
+سنبدأ بالأحرف المفردة.
+يتم ذلك عن طريق *تجزئة النص (Subscripting)*. تبدو البنية النحوية (syntax) مشابهة
+لاستدعاء دالة ولكن باستخدام *أقواس مربعة*!
 
 ```python
-fifth_character = 'PyLadies'[5]
+fifth_character = 'Khartoum'[5]
 
 print(fifth_character)
 ```
 
-Does it work? Did you really get the fifth character?
+هل يعمل؟ هل حصلت حقًا على الحرف الخامس؟
 
 {% filter solution %}
-You didn't – you got the *sixth* character.
+لم تفعل - لقد حصلت على الحرف *السادس*.
 {% endfilter %}
 
-As you may have already noticed, programmers in Python start counting from zero.
-First comes 0, then 1, and so on.
+كما ربما لاحظت بالفعل ، يبدأ المبرمجون في Python بالعد من الصفر.
+يأتي الأول 0 ، ثم 1 ، وهكذا.
 
-It's the same with strings - the first character is on position zero.
+الأمر نفسه ينطبق على النصوص - الحرف الأول في الموضع صفر.
 
-Why is it like that?
-You would have to know about pointers and arrays
-to fully understand, so now let's just assume
-that programmers are weird. Or that they just like
-weird numbers.
+لماذا هو هكذا؟
+يجب أن تعرف عن المؤشرات (pointers) والمصفوفات (arrays)
+لفهمها تمامًا ، لذلك دعونا نفترض الآن
+أن المبرمجين غريبو الأطوار. أو أنهم يحبون فقط
+الأرقام الغريبة.
 
 
 ```plain
    [0] [1] [2] [3] [4] [5] [6] [7]
 
   ╭───┬───┬───┬───┬───┬───┬───┬───╮
-  │ P │ y │ L │ a │ d │ i │ e │ s │
+  │ K │ h │ a │ r │ t │ o │ u │ m │
   ╰───┴───┴───┴───┴───┴───┴───┴───╯
 ```
 
 
-What happens if you pick characters with negative numbers?
+ماذا يحدث إذا اخترت أحرفًا بأرقام سالبة؟
 
 
 {% filter solution %}
 ```python
-print('PyLadies'[-1])  # → s
-print('PyLadies'[-2])  # → e
-print('PyLadies'[-3])  # → i
-print('PyLadies'[-4])  # → d
+print('Khartoum'[-1])  # → m
+print('Khartoum'[-2])  # → u
+print('Khartoum'[-3])  # → o
+print('Khartoum'[-4])  # → t
 ```
 
-Negative numbers pick characters from the end.
+الأرقام السلبية تختار الأحرف من النهاية.
 
 ```plain
    [0] [1] [2] [3] [4] [5] [6] [7]
    [-8][-7][-6][-5][-4][-3][-2][-1]
   ╭───┬───┬───┬───┬───┬───┬───┬───╮
-  │ P │ y │ L │ a │ d │ i │ e │ s │
+  │ K │ h │ a │ r │ t │ o │ u │ m │
   ╰───┴───┴───┴───┴───┴───┴───┴───╯
 ```
 {% endfilter %}
 
-Strings can do more tricks.
-You can find out how long the string is,
-or if it contains a certain substring.
+يمكن للنصوص القيام بالمزيد من الحيل.
+يمكنك معرفة طول النص ،
+أو إذا كان يحتوي على نص فرعية معينة.
 
 <table class="table">
     <tr>
-        <th>Code</th>
-        <th>Description</th>
-        <th>Example</th>
+        <th>الرمز</th>
+        <th>الوصف</th>
+        <th>مثال</th>
     </tr>
     <tr>
         <td><code>len(r)</code></td>
-        <td>Length of string</td>
-        <td><code>len('PyLadies')</code></td>
+        <td>طول النص</td>
+        <td><code>len('Khartoum')</code></td>
     </tr>
     <tr>
         <td><code>x&nbsp;in&nbsp;r</code></td>
-        <td>True if the string <code>x</code> is in the string <code>r</code></td>
-        <td><code>'Ladies' in 'PyLadies'</code></td>
+        <td>True إذا كان النص <code>x</code> موجود في النص <code>r</code></td>
+        <td><code>'toum' in 'Khartoum'</code></td>
     </tr>
     <tr>
         <td><code>x&nbsp;not&nbsp;in&nbsp;r</code></td>
-        <td>The opposite of <code>x in r</code></td>
-        <td><code>'eye' not in 'PyLadies'</code></td>
+        <td>عكس <code>x in r</code></td>
+        <td><code>'eye' not in 'Khartoum'</code></td>
     </tr>
 </table>
 
-Python is case sensitive, so `'ladies' in 'PyLadies'`
-is `False`. If you want to do a case insensitive test,
-you would have to change the case of both strings 
-(both to lower, or both to upper) and then do `x in y`.
+Python حساس لحالة الأحرف ، لذلك `'Toum' in 'Khartoum'`
+تعطي نتيجة `False`. إذا كنت تريد إجراء اختبار غير حساس لحالة الأحرف ،
+عليك تغيير حالة النصين
+(كلاهما إلى lower ، أو كلاهما إلى upper) ثم قم بإجراء `x in y`.
 
-And how to change the case of our string?
-To do that, we will need another Python feature: methods.
+وكيفية تغيير حالة نصنا؟
+لذلك ، سنحتاج إلى ميزة Python أخرى: الطرق(Methods).
 
-## Methods
+## الطرق (Methods)
 
-*Methods* are like functions - we can call something with them.
-Unlike a function, a method is tied to some *object*.
-It is called by writing a `dot` and a method name just after the object.
-And then, of course, parentheses, which may contain arguments.
+*الطرق (Methods)* تشبه الدوال - يمكننا استدعاء شيء ما باستخدامها.
+على عكس الدالة ، فإن الطريقة مرتبطة ببعض ال *objects*.
+يتم استدعاؤها عن طريق كتابة `نقطة` واسم الطريقة بعد ال object مباشرةً.
+وبعد ذلك ، بالطبع ، أقواس ، والتي قد تحتوي على وسيطات.
 
-The String methods `upper()` and `lower()` change the case.
+تغير طريقتا النص `upper()` و `lower()` الحالة.
 
 ```python
 string = 'Hello'
@@ -203,27 +209,26 @@ print(string.lower())
 print(string)
 ```
 
-> [note]
-> Notice that the original string has not changed.
-> Methods return a new string and the old string stays
-> as it was.
+> [ملاحظة]
+> لاحظ أن النص الأصلي لم يتغير.
+> تعيد الطرق نصًا جديدًا ويبقى النص القديم
+> كما كان.
 >
-> That is Python's standard behavior: already existing string can't be changed,
-> we can only create a new one - derived from the old one.
+> هذا هو سلوك Python القياسي: لا يمكن تغيير النص الموجود بالفعل ،
+> يمكننا فقط إنشاء نص جديد - مشتق من النص القديم.
 >
-> But it is not true that all methods do not change the original object they are being called on.
-> This is true just for strings.
+> لكن ليس صحيحًا أن جميع الطرق لا تغير ال object الأصلي الذي يتم استدعاؤه عليه.
+> هذا صحيح فقط بالنسبة للنصوص.
 
 
-### Initials
+### الأحرف الأولى (Initials)
 
-For practicing methods and subscripting, try to write a program,
-which will ask the user for their name, then their surname
-and then it will print their *initials* - the first letter of
-name and surname.
+لممارسة الطرق وتجزئة النص (subscripting) ، حاول كتابة برنامج ،
+الذي سيطلب من المستخدم اسمه ، ثم اسم عائلته
+ثم سيقوم بطباعة *الحروف الأولى* له - الحرف الأول من
+الاسم واسم العائلة.
 
-Initials are always upper case (even if the
-user won't write it that way).
+الحروف الأولى دائمًا بأحرف كبيرة (حتى إذا لم يكتبها المستخدم بهذه الطريقة).
 
 {% filter solution %}
 ```python
@@ -233,10 +238,10 @@ initials = name[0] + surname[0]
 print('Initials:', initials.upper())
 ```
 
-There are more ways how to write such a program.
-You can call `upper()` twice - on name and surname separately.
+هناك طرق أخرى لكتابة مثل هذا البرنامج.
+يمكنك استدعاء `upper()` مرتين - على الاسم واسم العائلة بشكل منفصل.
 
-Or like this:
+أو مثل هذا:
 
 ```python
 name = input('Enter your name: ')
@@ -244,44 +249,48 @@ surname = input('Enter your surname: ')
 print('Initials:', (name[0] + surname[0]).upper())
 ```
 
-I recommend the first option. It is longer but way more clear.
+ننصحك بالخيار الأول، فهو أطول ولكنه أكثر وضوحًا.
 {% endfilter %}
 
-There are many more string methods. You can find the most
-useful ones in our [cheatsheet](https://github.com/muzikovam/cheatsheets/blob/master/strings/strings-en.pdf).
 
-All methods are in the [Python documentation](https://docs.python.org/3/library/stdtypes.html#string-methods).
+هناك العديد من طرق النصوص الأخرى. يمكنك العثور على أكثرها
+فائدة في [ورقة الغش الخاصة بنا](https://github.com/muzikovam/cheatsheets/blob/master/strings/strings-en.pdf).
 
-Notice that `len` isn't a method but a function. It's
-written `len(s)` not `r.len()`.
-You will find out why it is like that in a minute.
+جميع الطرق موجودة في [وثائق Python](https://docs.python.org/3/library/stdtypes.html#string-methods).
+
+لاحظ أن `len` ليست طريقة ولكنها دالة. كتبت `len(s)` وليس `()r.len` ,
+ستكتشف لماذا الأمر كذلك في دقيقة.
 
 
-## Formatting
+## التنسيق (Formatting)
 
-Especially useful is the `format` method, which replaces
-a pair of curly braces in string for whatever it
-gets as an argument.
+من المفيد بشكل خاص طريقة `format` ، والتي تحل محل
+زوج من الأقواس المجعدة `{}` في النص لأي شيء
+يحصل عليه كوسيطة.
+
 
 ```python
 write = '{}×{} equals {}'.format(3, 4, 3 * 4)
 print(write)
 ```
 
-The String `'{}×{} equals {}'` is something like a *template*.
-Imagine it as form, where we have highlighted fields where Python
-fills in values.
+من المفيد بشكل خاص طريقة `format` ، والتي تحل محل
+زوج من الأقواس المجعدة في النص لأي شيء
+يحصل عليه كوسيطة.
 
-If you want to fill values in a different order, or you want
-the template to be clearer, you can write variables into your
-curly braces:
+النص `'{}×{} equals {}'` يشبه نوعًا من *القالب او النموذج (Template)*.
+تخيلها كنموذج ، حيث قمنا بتمييز الحقول التي يملأ Python
+القيم فيها.
+
+إذا كنت تريد ملء القيم بترتيب مختلف ، أو كنت تريد
+أن يكون القالب أكثر وضوحًا ، يمكنك كتابة المتغيرات في
+الأقواس المجعدة الخاصة بك:
 
 ```python
 write = 'Hi {name}! The result is {number}.'.format(number=7, name='Mary')
 print(write)
 ```
-Formatting is used when you need to include a variable value in
-the string.
+يتم استخدام التنسيق عندما تحتاج إلى تضمين قيمة متغير (variable) في النص
 
 ```python
 number = 3 + 4
@@ -290,14 +299,14 @@ write = 'Hi {}! The result is {}.'.format(name, number)
 print(write)
 ```
 
-### F-strings
+### نصوص f (F-strings)
 
-There is another (newer and shorter) way how to use formatting in Python and it involves `f-strings`.
-Instead of using .format() method, you prepend letter `f` before
-the string or the multiline string and Python will replace the variable names present
-in curly brackets inside the template with their values during script execution.
+هناك طريقة أخرى (أحدث وأقصر) لاستخدام التنسيق في Python وهي تتضمن `f-strings`.
+بدلاً من استخدام طريقة .format() ، يمكنك إضافة حرف `f` قبل
+النص أو النص متعدد الأسطر وسوف يستبدل Python أسماء المتغيرات الموجودة
+في الأقواس المجعدة داخل القالب بقيمها أثناء تنفيذ البرنامج النصي.
 
-The syntax looks like this:
+يبدو بناء الجملة كما يلي:
 
 ```python
 number = 3 + 4
@@ -306,60 +315,60 @@ write = f"Hi {name}! The result is {number}."
 print(write)
 ```
 
-## Substrings
+## السلاسل الفرعية (Substrings)
 
-Now we will go back to subscripting.
-Try to find out what the following program does:
+الآن سنعود إلى لتجزئة النصوص.
+حاول معرفة ما يفعله البرنامج التالي:
 
 ```python
-string = 'PyLadies'
+string = 'Khartoum'
 substring = string[5:]
 print(substring)
 ```
 
 > [warning]
-> Keep in mind that we are still counting from 0!
+> تذكر أننا لا نزال نعد من 0!
 
 {% filter solution %}
-`string[5:]` will print the *substring* from the fifth character to the end.
+`string[5:]` سيطبع *النص الفرعي* من الحرف الخامس إلى النهاية.
 {% endfilter %}
 
-We can also use `string[:5]`, which will select all characters
-up to the fifth character, which is not included.
-So `string[:5] + string[5:] == string`.
+يمكننا أيضًا استخدام `string[:5]` ، والذي سيحدد جميع الأحرف
+حتى الحرف الخامس ، والذي لا يتم تضمينه.
+لذلك `string[:5] + string[5:] == string`.
 
 
-What does `string[2:5]` do?
+ماذا يفعل `string[2:5]`؟
 
-And what about `string[-4:]`?
+ماذا عن `string[-4:]`؟
 
 ```python
-string = 'PyLadies'
+string = 'Khartoum'
 print(string[:4])
 print(string[2:5])
 print(string[-4:])
 ```
 
-You have to think about which number, which *index*, you want to use.
+يجب أن تفكر في الرقم ، أي *الرقم التتابعي (index)* ، الذي تريد استخدامه.
 
-It is better to think of these numbers as being on the borderlines 
-between characters, it makes it easier to understand:
+من الأفضل التفكير في هذه الأرقام على أنها على حدود
+بين الأحرف ، مما يسهل فهمها:
 
 {{ anchor('slicing-diagram') }}
 ```plain
   ╭───┬───┬───┬───┬───┬───┬───┬───╮
-  │ P │ y │ L │ a │ d │ i │ e │ s │
+  │ K │ h │ a │ r │ t │ o │ u │ m │
   ├───┼───┼───┼───┼───┼───┼───┼───┤
   │   │   │   │   │   │   │   │   │
   0   1   2   3   4   5   6   7   8
  -8  -7  -6  -5  -4  -3  -2  -1
 
   ╰───────────────╯
-  'PyLadies'[:4] == 'PyLa'
+  'Khartoum'[:4] == 'Khar'
 
           ╰───────────────╯
-        'PyLadies'[2:6] == 'Ladi'
+        'Khartoum'[2:6] == 'arto'
 
                       ╰───────────╯
-                      'PyLadies'[-3:] == 'ies'
+                      'Khartoum'[-3:] == 'oum'
 ```
