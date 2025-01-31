@@ -4,7 +4,7 @@
 أنت تعرف بالفعل كيفية كتابتها في كود Python.
 
 ```python
-'This is  one string'
+'This is string'
 "And this is also string"
 ```
 
