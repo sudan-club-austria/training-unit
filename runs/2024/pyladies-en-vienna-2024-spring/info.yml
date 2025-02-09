@@ -133,7 +133,7 @@ plan:
       - title: تمارين(Practice exercises)
         url: https://docs.google.com/document/d/1uQt886tRZh2KtMSvtsLIlqEORasykap65d_8LxrBTBU/edit
         type: cheatsheet
-  - title: GIT
+  - title: جت (Git)
     slug: git
     date: 2025-02-09
     materials:
