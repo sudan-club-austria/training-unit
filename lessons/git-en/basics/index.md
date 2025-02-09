@@ -195,7 +195,7 @@ nothing to commit, working tree clean
 ```ansi
 ␛[36m$␛[0m git show
 ␛[33mcommit 1a009f4267d5a6ab7ece87cb7514f5b803692e39␛[m
-Author: Adéla Novotná <adela.novotna@example.cz>
+Author: baloola <baloola@example.com>
 Date:   Mon Mar 20 14:51:34 2017 +0100
 
     First commit
@@ -205,13 +205,15 @@ Date:   Mon Mar 20 14:51:34 2017 +0100
 ␛[1mindex 0000000..558d133␛[m
 ␛[1m--- /dev/null␛[m
 ␛[1m+++ b/poem.txt␛[m
-␛[36m@@ -0,0 +1,6 @@␛[m
-␛[32m+␛[m␛[32mHolka modrooká, nesedávej u potoka␛[m
-␛[32m+␛[m␛[32mHolka modrooká, nesedávej tam␛[m
+␛[36m@@ -0,0 +1,9 @@␛[m
+␛[32m+␛[m␛[32mلا تحلموا بعالم سعيد␛[m
 ␛[32m+␛[m
-␛[32m+␛[m␛[32mV potoce je hastrmánek␛[m
-␛[32m+␛[m␛[32mZatahá tě za copánek␛[m
-␛[32m+␛[m␛[32mHolka modrooká, nesedávej tam␛[m
+␛[32m+␛[m␛[32mفخلف كل قيصر يموت␛[m
+␛[32m+␛[m
+␛[32m+␛[m␛[32mقيصر جديد␛[m
+␛[32m+␛[m
+␛[32m+␛[m␛[32mوبعد كل ثائر يفوت␛[m
+␛[32m+␛[m␛[32mاحزان بلا جدوى ودمعة سدى␛[m
 ```
 
 لاحظ الـ <span class="yellow">Git commit ID</span>
@@ -263,19 +265,11 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ␛[1mindex 558d133..24e2384 100644␛[m
 ␛[1m--- a/poem.txt␛[m
 ␛[1m+++ b/poem.txt␛[m
-␛[36m@@ -1,6 +1,9 @@␛[m
-␛[31m-Holka modrooká, nesedávej u potoka␛[m
-␛[31m-Holka modrooká, nesedávej tam␛[m
-␛[32m+␛[m␛[32mHolka modrooká␛[m
-␛[32m+␛[m␛[32mNesedávej u potoka␛[m
-␛[32m+␛[m␛[32mHolka modrooká␛[m
-␛[32m+␛[m␛[32mNesedávej tam␛[m
- ␛[m
- V potoce je hastrmánek␛[m
- Zatahá tě za copánek␛[m
-␛[31m-Holka modrooká, nesedávej tam␛[m
-␛[32m+␛[m␛[32mHolka modrooká␛[m
-␛[32m+␛[m␛[32mNesedávej tam␛[m
+␛[36m@@ -6,4 +6,6 @@␛[m
+احزان بلا جدوى ودمعة سدى␛[m
+␛[32m+␛[m␛[32m+احزان بلا جدوى ودمعة سدى␛[m
+␛[32m+␛[m+
+␛[32m+␛[m␛[32m+احتاج دوزنة␛[m
 ```
 
 يتم عرض التغييرات على أساس كل سطر.
@@ -355,7 +349,7 @@ to demonstrate git diff.)
 ```ansi
 ␛[36m$␛[0m git show
 ␛[33mcommit 81cbabb3bd3cd2f3896dd41b20012c44dbd69031␛[m
-Author: Adéla Novotná <adela.novotna@example.cz>
+Author: baloola <baloola@example.com>
 Date:   Mon Mar 20 14:51:34 2017 +0100
 
     Split long lines
@@ -368,19 +362,26 @@ Date:   Mon Mar 20 14:51:34 2017 +0100
 ␛[1mindex 558d133..24e2384 100644␛[m
 ␛[1m--- a/poem.txt␛[m
 ␛[1m+++ b/poem.txt␛[m
-␛[36m@@ -1,6 +1,9 @@␛[m
-␛[31m-Holka modrooká, nesedávej u potoka␛[m
-␛[31m-Holka modrooká, nesedávej tam␛[m
-␛[32m+␛[m␛[32mHolka modrooká␛[m
-␛[32m+␛[m␛[32mNesedávej u potoka␛[m
-␛[32m+␛[m␛[32mHolka modrooká␛[m
-␛[32m+␛[m␛[32mNesedávej tam␛[m
- ␛[m
- V potoce je hastrmánek␛[m
- Zatahá tě za copánek␛[m
-␛[31m-Holka modrooká, nesedávej tam␛[m
-␛[32m+␛[m␛[32mHolka modrooká␛[m
-␛[32m+␛[m␛[32mNesedávej tam␛[m
+␛[36m@@ -8,4 +8,16 @@␛[m
+احزان بلا جدوى ودمعة سدى␛[m
+
+␛[32m+␛[m␛[32m+احزان بلا جدوى ودمعة سدى␛[m
+␛[32m+␛[m+
+␛[32m+␛[m␛[32m-احتاج دوزنة␛[m
+␛[32m+␛[m+
+␛[32m+␛[m␛[32m+وتراً جديد␛[m
+␛[32m+␛[m+
+␛[32m+␛[m␛[32m+لا يضيف إلى النشيد سوى النشاز␛[m
+␛[32m+␛[m+
+␛[32m+␛[m␛[32m+احتاج دوزنة␛[m
+␛[32m+␛[m+
+␛[32m+␛[m␛[32m+لغة تفتش عن اراض خصبة␛[m
+␛[32m+␛[m+
+␛[32m+␛[m␛[32m+شمساً تغير طعم فاكهة الشتاء␛[m
+␛[32m+␛[m+
+␛[32m+␛[m␛[32m+أحتاجُ مِفرزةً من الشعراءِ و الجوعى␛[m
+␛[32m+␛[m+
+␛[32m+␛[m␛[32m+لنُعلن سُخطنا أو ننتهي منا باغنيةٍ تذاع␛[m
 ```
 
 ## مخطط (Diagram)
@@ -404,7 +405,7 @@ Date:   Mon Mar 20 14:51:34 2017 +0100
 ```ansi
 ␛[36m$␛[0m git log
 ␛[33mcommit 81cbabb3bd3cd2f3896dd41b20012c44dbd69031␛[m
-Author: Adéla Novotná <adela.novotna@example.cz>
+Author: baloola <baloola@example.com>
 Date:   Mon Mar 20 14:51:34 2017 +0100
 
     Split long lines
@@ -414,7 +415,7 @@ Date:   Mon Mar 20 14:51:34 2017 +0100
     to demonstrate git diff.)
 
 ␛[33mcommit 1a009f4267d5a6ab7ece87cb7514f5b803692e39␛[m
-Author: Adéla Novotná <adela.novotna@example.cz>
+Author: baloola <baloola@example.com>
 Date:   Mon Mar 20 14:51:34 2017 +0100
 
     First commit
