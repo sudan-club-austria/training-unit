@@ -1,56 +1,55 @@
-# Git
+# جيت (Git)
 
-There is another program that we will install and that will later let us cooperate
-and develop programs together with other people. It's called [Git](https://git-scm.com/).
-Let's install it and set it up.
+هناك برنامج آخر سنقوم بتثبيته والذي سيمكننا لاحقًا من التعاون
+وتطوير البرامج مع أشخاص آخرين. إنه يسمى [Git](https://git-scm.com/).
+دعنا نقوم بتثبيته وإعداده.
 
-On some operating systems, for convenience, we shall also install [Git Credential Manager](https://github.com/GitCredentialManager/git-credential-manager)
+على بعض أنظمة التشغيل ، من أجل تبسيط المهام ، سنقوم أيضًا بتثبيت [Git Credential Manager](https://github.com/GitCredentialManager/git-credential-manager)
 
-Choose a page depending on your operating system:
+اختر صفحة حسب نظام التشغيل الخاص بك:
 
 * [Linux]({{ subpage_url('linux') }})
 * [Windows]({{ subpage_url('windows') }})
 * [macOS]({{ subpage_url('macos') }})
 
-After you finish installation of `git` return back here to finish the next part **Settings**.
+بعد الانتهاء من تثبيت `git` ، عد إلى هنا لإنهاء الجزء التالي **(الإعدادات)**.
 
-## Settings
+## الإعدادات
 
-Several people can collaborate in one project in Git.
-To track who make a specific change, we need to
-tell Git our name and e-mail.
-At the command prompt, enter the following commands, but change the
-name and address to yours:
+يمكن للعديد من الأشخاص التعاون في مشروع واحد في Git.
+لتتبع من قام بتغيير محدد ، نحتاج إلى
+أخبار Git باسمنا وعنوان بريدنا الإلكتروني.
+على  المحطة (terminal) ، أدخل الأوامر التالية ، ولكن قم بتغيير
+الاسم والعنوان إلى اسمك:
 
 ```console
 $ git config --global user.name "Jane Berry"
 $ git config --global user.email jane.berry@example.com
 ```
 
-You can of course use a nickname or even
-fake email, but then it will be more complicated to
-engage in team projects.
-Anyway, your name and email can be changed at any time
-by typing the configuration commands again.
+يمكنك بالطبع استخدام اسم مستعار أو حتى
+البريد الإلكتروني المزيف ، ولكن بعد ذلك سيكون الأمر أكثر تعقيدًا
+للمشاركة في مشاريع الفريق.
+على أي حال ، يمكن تغيير اسمك وعنوان بريدك الإلكتروني في أي وقت
+عن طريق كتابة الأوامر مرة أخرى.
 
 > [note]
-> If you are afraid of spam, do not worry.
-> Your e-mail address can be viewed only by people who download the project
-> to which you contributed.
-> Spammers mostly focus on less technically capable people than Git users. :)
+> إذا كنت تخشى من البريد العشوائي(spam) ، فلا تقلق.
+> يمكن ان تقتصر معرفة عنوان بريدك الإلكتروني فقط على الأشخاص الذين يقومون بتنزيل المشروع
+> الذي ساهمت فيه.
+> يركز مُرسلو البريد العشوائي (spam) بشكل أساسي على الأشخاص الأقل قدرة تقنيًا من مستخدمي Git. :)
 
-You can also set up color listings - if you don't think
-(like some Git authors) that the command line should be black and white:
+يمكنك أيضًا إعداد قوائم الألوان - إذا كنت لا تعتقد (مثل بعض مؤلفي Git) أن سطر الأوامر يجب أن يكون أسود وأبيض:
 
 ```console
 $ git config --global color.ui true
 ```
 
 > [note]
-> Running `git config` does not print any message that the operation was successful.
-> This is normal; many other commands behave like that, for example `cd`.
+> لا يقوم تشغيل `git config` بطباعة أي رسالة تفيد بأن العملية كانت ناجحة.
+> هذا طبيعي ؛ العديد من الأوامر الأخرى تتصرف على هذا النحو ، على سبيل المثال `cd`.
 >
-> You can check your current git configuration with the command:
+> يمكنك التحقق من إعدادات git الحالية باستخدام الأمر:
 >
 > ```console
 > $ git config --global --list
@@ -58,6 +57,6 @@ $ git config --global color.ui true
 > user.email=jane.berry@example.com
 > ```
 
-And that's all! You have installed and configured `Git`.
+هذا كل شيء! لقد قمت بتثبيت و ضبط اعدادات `Git`.
 
-**Congratulations!**
+**تهانينا!**

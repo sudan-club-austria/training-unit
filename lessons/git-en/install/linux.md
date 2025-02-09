@@ -1,23 +1,23 @@
-## Git installation on Ubuntu/Debian
+## تثبيت Git على Ubuntu/Debian
 
 ```console
 sudo apt-get install git nano pass
 ```
 
-If you are using some other distribution we expect that you already know
-how to install programs. Go ahead and install *git*, *pass* and *nano*.
+إذا كنت تستخدم توزيعًا آخر ، فإننا نتوقع أنك تعرف بالفعل
+كيفية تثبيت البرامج. تابع وقم بتثبيت *git* و *pass* و *nano*.
 
-After you have installed git, choose your Git editor.
-If you do not like Vim (or you do not know what it is)
-enter this command to choose a more user-friendly editor called Nano:
+بعد تثبيت git ، اختر محرر Git الخاص بك.
+إذا كنت لا تحب Vim (أو لا تعرف ما هو)
+أدخل هذا الأمر لاختيار محرر أكثر سهولة في الاستخدام يسمى Nano:
 
 ```console
 git config --global core.editor nano
 ```
 
-After this step, please install the [Git Credential Manager](https://github.com/GitCredentialManager/git-credential-manager) by downloading **gcm-linux.(version).deb** package from [official releases of gcm](https://github.com/GitCredentialManager/git-credential-manager/releases/latest).
+بعد هذه الخطوة ، يرجى تثبيت [Git Credential Manager](https://github.com/GitCredentialManager/git-credential-manager) عن طريق تنزيل  **gcm-linux.(version).deb** من [الإصدارات الرسمية لـ gcm](https://github.com/GitCredentialManager/git-credential-manager/releases/latest).
 
-After that install and configure with commands:
+بعد ذلك قم بالتثبيت وضبط الاعدادات باستخدام الأوامر:
 
 ```console
 sudo dpkg -i <path-to-package>
@@ -25,11 +25,11 @@ git-credential-manager-core configure
 git config --global credential.credentialStore gpg
 ```
 
-Next, we need to generate a secure credentials store. Run following two commands to create and use a new GPG key pair 
+بعد ذلك ، نحتاج إلى إنشاء مخزن بيانات اعتماد آمن. قم بتشغيل الأمرين التاليين لإنشاء واستخدام زوج مفاتيح GPG جديد
 
 ```console
 gpg --gen-key
-pass init <gpg-id> # where <gpg-id> is the username generated in step 1
+pass init <gpg-id> # حيث <gpg-id> هو اسم المستخدم الذي تم إنشاؤه في الخطوة 1
 ```
 
-Now continue with the rest of setup at [General Settings in Git install]({{ lesson_url('git-en/install') }}).
+الآن تابع بقية الإعداد في [الإعدادات العامة في تثبيت Git]({{ lesson_url('git-en/install') }}).

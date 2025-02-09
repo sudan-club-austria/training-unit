@@ -1,6 +1,7 @@
-title: Git installation
+title: تثبيت Git (installation)
 style: md
 attribution:
+- Translated by Mussab Abdalla
 - Translated by Marketa Muzikova
 - |
     Originally written by Petr Viktorin, 2014-2017 for [PyLadies CZ].
@@ -8,8 +9,8 @@ attribution:
 license: cc-by-sa-40
 subpages:
     linux:
-        title: Git installation - Linux
+        title: Git (installation) تثبيت - (Linux) لينيكس
     windows:
-        title: Git installation - Windows
+        title: Git (installation) تثبيت - (Windows) ويندوز
     macos:
-        title: Git installation - macOS
+        title: Git (installation) تثبيت - (macOS) ماكنتوش
