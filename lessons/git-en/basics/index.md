@@ -1,57 +1,57 @@
 # Git
 
-Whether you code or write documents, often you end up
-with multiple versions of the same file.
-You may want to archive one set of changes that are not needed at the moment,
-then send another set of changes to your colleagues for a review.
-At a certain point, keeping track of all these versions becomes unfeasible.
+سواء كنت تكتب برنامجا أو مستندات ، فغالبًا ما ستنتهي
+مع إصدارات متعددة من نفس الملف.
+قد ترغب في أرشفة مجموعة واحدة من التغييرات غير الضرورية في الوقت الحالي ،
+ثم أرسال مجموعة أخرى من التغييرات إلى زملائك للمراجعة.
+في مرحلة معينة ، يصبح تتبع جميع هذه الإصدارات أمرًا غير ممكن.
 
-Tools like Dropbox or Google Drive, which you may know already, can help a bit.
-These tools allow you to share your files easily, or to restore their content
-to an earlier point in time.
-Here's an example:
+يمكن أن تساعدك أدوات مثل Dropbox أو Google Drive ، والتي قد تعرفها بالفعل ، قليلاً.
+تتيح لك هذه الأدوات مشاركة ملفاتك بسهولة ، أو استعادة محتواها
+إلى نقطة زمنية سابقة.
+فيما يلي مثال:
 
 {{ figure(
     img=static('dropbox.png'),
     alt="Versioning interface in Dropbox"
 ) }}
 
-Unfortunately, you can only see different versions of a *single file*.
-Also, it's hard to tell which version you might want to restore since
-there is no indication of how individual versions differ.
-A relatively large project wouldn't be manageable with this approach.
+لسوء الحظ ، يمكنك فقط رؤية إصدارات مختلفة لـ *ملف واحد*.
+أيضًا ، من الصعب معرفة الإصدار الذي قد ترغب في استعادته حيث
+لا يوجد أي مؤشر على كيفية اختلاف الإصدارات الفردية.
+من غير الممكن  إدارة مشروع كبير باستخدام هذا النهج.
 
-Therefore, programmers tend to use more powerful tools
-called *version control system* (VCS).
-Currently, the most popular one is Git, and we'll learn more about it in this lesson.
+لذلك ، يميل المبرمجون إلى استخدام أدوات أكثر قوة
+تسمى *نظام التحكم في الإصدار(version control system)* (VCS).
+في الوقت الحالي ، يعد Git الأكثر شيوعًا ، وسنتعلم المزيد عنه في هذا الدرس.
 
-Real programs are rarely created by a single person.
-Two heads are better than one, so it's better to work on a project in a team.
+نادراً ما يتم إنشاء البرامج الحقيقية من قبل شخص واحد.
+عقلان أفضل من واحد ، لذلك من الأفضل العمل على مشروع في فريق.
 
-Each team member needs to be able to share their progress with others.
-Git can be used exactly for that: you can set up a *shared repository* online that your team members will synchronize with.
+يحتاج كل عضو في الفريق إلى مشاركة تقدمه مع الآخرين.
+يمكن استخدام Git بالضبط لهذا الغرض: يمكنك إعداد *مستودع(repository) مشترك* عبر الإنترنت سيتزامن معه أعضاء فريقك.
 
 > [note]
-> We will rely on the command line.
-> If you are not confident working with it yet, look at the
-> [introduction]({{ lesson_url('beginners-en/cmdline') }}).
-> 
-> Remember: don't write the `$` at the start.
-> It is shown here to indicate the beginning of each command.
+> سنعتمد على سطر الأوامر(command-line).
+> إذا كنت لا تشعر بالثقة في العمل معه بعد ، فراجع
+> [المقدمة]({{ lesson_url('beginners-en/cmdline') }}).
+>
+> تذكر: لا تكتب `$` في البداية.
+> يتم عرضه هنا للإشارة إلى بداية كل أمر.
 
 
-## Installation
+## التثبيت(installation)
 
-The process of installing Git is described 
-[here]({{ lesson_url('git-en/install') }}).
-If you have skipped the lesson before, you might want to get back to it now.
+تم وصف عملية تثبيت Git
+[هنا]({{ lesson_url('git-en/install') }}).
+إذا كنت قد تخطيت الدرس من قبل ، فقد ترغب في العودة إليه الآن.
 
 
-## Repository
+## المستودع (Repository)
 
-Each project that you want to version-control needs to be stored in its own directory.
-Create a new directory now and navigate inside (use the command `cd`).
-Then, create a new Git <em>repository</em> using the command `git init`:
+يجب تخزين كل مشروع تريد التحكم في إصداراته في ملف خاص به.
+قم بإنشاء ملف جديد الآن وانتقل إلى داخله (استخدم الأمر `cd`).
+ثم ، قم بإنشاء مستودع(repository) Git جديد باستخدام الأمر `git init`:
 
 ```ansi
 ␛[36m$␛[0m mkdir lessongit
@@ -60,16 +60,16 @@ Then, create a new Git <em>repository</em> using the command `git init`:
 Initialized empty Git repository in ./.git/
 ```
 
-At first glance, it looks like nothing happened.
-This command created a *hidden* directory with the name `.git` and stored some
-information about history in there.
-You can see the file using `ls -a` (Linux) or `dir /a` (Windows).
-`.git` is a hidden directory because it is managed only by Git
-and you shouldn't be changing anything inside.
+في البداية ، يبدو أنه لم يحدث شيء.
+قام هذا الأمر بإنشاء ملف *مخفي* باسم `.git` وبعض
+المعلومات حول تاريخ المستودع(repository)  هناك.
+يمكنك رؤية الملف باستخدام `ls -a` (Linux) أو `dir /a` (Windows).
+`.git` هو ملف مخفي لأنه يتم إدارته بواسطة Git فقط
+ولا يجب عليك تغيير أي شيء بداخله.
 
-The repository is empty for now - it does not have any files or history.
-You can see for yourself by invoking `git status`, a command that shows information
-about the state of the repository:
+المستودع(repository) فارغ الآن - ليس لديه أي ملفات أو تاريخ.
+يمكنك أن ترى بنفسك من خلال استدعاء `git status` ، وهو أمر يعرض معلومات
+حول حالة المستودع(repository):
 
 ```ansi
 ␛[36m$␛[0m git status
@@ -80,24 +80,20 @@ Initial commit
 nothing to commit (create/copy files and use "git add" to track)
 ```
 
-*“On branch main”* refers to so-called branches, we'll get back to that later.
-*“Initial commit”* means that there is no commit stored yet.
-And *“nothing to commit”* says that there are no files to be saved and versioned in the directory.
+*“On branch main”* يشير إلى ما يسمى بالفروع ، وسنعود إلى ذلك لاحقًا.
+*“Initial commit”* يعني أنه لا يوجد (commit) مخزنًا بعد.
+و *“nothing to commit”* يقول أنه لا توجد ملفات يتم حفظها وإصدارها في الملف.
 
 
-## First commit
+## ال(commit)  الأول (First commit)
 
-We will now switch for a moment to a plain Text Editor (not Microsoft Word but for example Notepad) or optionally Code Editor (VS Code).
+سننتقل الآن للحظة إلى محرر نص عادي (وليس Microsoft Word ولكن على سبيل المثال Notepad) أو -اختيارياً- محرر كود (VS Code).
 
-Now create a new text file there, write/copy a short poem text inside and save it in the folder where you originally did `git init` in your command line. Name the file `poem.txt` and do not forget to save it after you made the edits.
+الآن قم بإنشاء ملف نصي (text) جديد هناك ، واكتب / انسخ نص قصيدة قصيرًا داخله واحفظه في  المجلد الذي قمت فيه بتشغيل `git init` في سطر الأوامر (command-line) الخاص بك. أسم الملف `poem.txt` ولا تنسى حفظه بعد إجراء التعديلات.
 
-As a quick source of totally unbiased texts to work with, you can have a look [here:](https://www.scottishpoetrylibrary.org.uk/best-scottish-poems/best-of-the-best-scottish-poems)
-
-The file should span at least five lines so that we have enough to work with.
-Then, try executing `git status` again: Git reports that there is a new
-file in the directory and that it isn't managed by Git yet.
-
-<!-- XXX: Color coding! -->
+يجب أن يحتوي الملف على خمسة أسطر على الأقل حتى يكون لدينا ما يكفي للعمل معه.
+ثم ، حاول تنفيذ `git status` مرة أخرى: يبلغك Git أنه يوجد ملف جديد
+ وأنه غير مُدار بواسطة Git بعد.
 
 ```ansi
 ␛[36m$␛[0m git status
@@ -113,19 +109,19 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-> [note] If the state of folder is not looking the same for you
+> [note] إذا لم تبدو حالة المجلد كما هي بالنسبة لك
 >
-> Double check that you have created the file in the same folder as where you did run the `git init`
-> You can check by listing the content of the folder (ls or dir) in the terminal.
+> تحقق مرتين من أنك قمت بإنشاء الملف في نفس المجلد الذي قمت فيه بتشغيل `git init`
+> يمكنك التحقق من ذلك من خلال سرد محتوى المجلد (ls أو dir) في الجهاز.
 
-We need to make Git track each new file explicitly.
-Let's do that for the file with your poem:
+نحتاج إلى جعل Git يتتبع كل ملف جديد صراحةً.
+دعونا نفعل ذلك للملف باستخدام قصيدتك:
 
 ```ansi
 ␛[36m$␛[0m git add poem.txt
 ```
 
-Then check the state of the repository again:
+ثم تحقق من حالة المستودع(repository) مرة أخرى:
 
 ```ansi
 ␛[36m$␛[0m git status
@@ -140,9 +136,9 @@ Changes to be committed:
 
 ```
 
-The lines in green (“changes to be committed”)
-will be included in the next batch of changes (a `commit`) that you will create.
-Let's create our first commit and add a *commit message* "First commit" via a "-m" suffix:
+الأسطر باللون الأخضر ("التغييرات المراد الالتزام بها")
+سيتم تضمينها في الدفعة التالية من التغييرات (التزام `commit`) التي ستقوم بإنشائها.
+دعنا ننشئ ال(commit) الأول ونضيف *رسالة التزام* "First commit" عبر لاحقة "-m":
 
 ```ansi
 ␛[36m$␛[0m git commit -m "First commit"
@@ -151,38 +147,38 @@ Let's create our first commit and add a *commit message* "First commit" via a "-
  create mode 100644 poem.txt
 ```
 
-Congratulations! Your first commit in the repository is finished!
+تهانينا! لقد تم الانتهاء من ال(commit) الأول في المستودع(repository)!
 
-What would happen if you did not add the -m "message" - read the text below. Otherwise you can skip the text block.
+ماذا سيحدث إذا لم تضيف -m "message" - اقرأ النص أدناه. خلاف ذلك ، يمكنك تخطيه.
 
-> [note] Working with editors
+> [note] العمل مع المحررين
 >
-> Without the -m "message" after entering this command, an editor would open where you can write a short description 
-> of this commit, briefly summarizing what changes have been made.
-> In Windows, if you have
-> [set up your Git correctly]({{ lesson_url('git-en/install') }}),
-> Notepad will be used as the editor; simply write something, save (<kbd>Ctrl</kbd>+<kbd>S</kbd>)
-> and close (<kbd>Alt</kbd>+<kbd>F4</kbd>).
+> بدون -m "message" بعد إدخال هذا الأمر ، سيتم فتح محرر حيث يمكنك كتابة وصف قصير
+> لهذا الالتزام ، تلخيص التغييرات التي تم إجراؤها بإيجاز.
+> في Windows ، إذا قمت بذلك
+> [إعداد Git بشكل صحيح]({{ lesson_url('git-en/install') }})،
+> سيتم استخدام Notepad كمحرر ؛ ما عليك سوى كتابة شيء ما ، وحفظه (<kbd>Ctrl</kbd>+<kbd>S</kbd>)
+> وإغلاقه (<kbd>Alt</kbd>+<kbd>F4</kbd>).
 >
-> In Linux or macOS, an editor called Nano appears directly in the command line window.
-> You can recognize it by the keyboard shortcut help on the bottom two lines.
-> Write something, save using <kbd>Ctrl</kbd>+<kbd>O</kbd>,
-> confirm the name of the file (<kbd>Enter</kbd>)
-> and exit the editor using <kbd>Ctrl</kbd>+<kbd>X</kbd>.
+> في Linux أو macOS ، يظهر محرر يسمى Nano مباشرةً في نافذة سطر الأوامر.
+> يمكنك التعرف عليه من خلال اختصار لوحة المفاتيح للمساعدة في السطرين السفليين.
+> اكتب شيئًا ما ، واحفظه باستخدام <kbd>Ctrl</kbd>+<kbd>O</kbd> ،
+> تأكيد اسم الملف (<kbd>Enter</kbd>)
+> والخروج من المحرر باستخدام <kbd>Ctrl</kbd>+<kbd>X</kbd>.
 >
-> If you haven't set up Git accordingly, Vim is invoked directly in the command line window
-> and will be used as the default editor.
-> It is a relatively complicated editor and learning to use it is beyond the scope
-> of this lesson. You can recognize it by one or two lines at the bottom that show a path
-> to a temporary file that you are currently editing.
-> In that case, first press
-> <kbd>Esc</kbd>, then type `:q!` (colon, lower letter Q, exclamation mark)
-> and confirm by pressing <kbd>Enter</kbd>.
-> Then set up Git correctly and try `git commit` again.
-> You can ignore the existing lines starting with `#`, these are just for your information.
-> Git will ignore them as well. Finally, save the file and close the editor.
+> إذا لم تقم بإعداد Git وفقًا لذلك ، يتم استدعاء Vim مباشرةً في نافذة سطر الأوامر
+> وسيتم استخدامه كمحرر افتراضي.
+> إنه محرر معقد نسبيًا وتعلم استخدامه يتجاوز نطاق
+> هذا الدرس. يمكنك التعرف عليهاذا لاحظت سطر أو سطرين في الأسفل يُظهران مسارًا
+> إلى الملف الذي تقوم بتحريره حاليًا.
+> في هذه الحالة ، اضغط أولاً على
+> <kbd>Esc</kbd> ، ثم اكتب `:q!` (نقطتان ، حرف Q صغير ، علامة تعجب)
+> ثم أكد بالضغط على <kbd>Enter</kbd>.
+> ثم قم بإعداد Git بشكل صحيح وحاول `git commit` مرة أخرى.
+> يمكنك تجاهل الأسطر الموجودة التي تبدأ بـ `#` ، فهي فقط للمعلومات.
+> سيتجاهلها Git أيضًا. أخيرًا ، احفظ الملف وأغلق المحرر.
 
-Try reporting on the repository again:
+حاول مراجعة حالة المستودع(repository) مرة أخرى
 
 ```ansi
 ␛[36m$␛[0m git status
@@ -190,11 +186,11 @@ On branch main
 nothing to commit, working tree clean
 ```
 
-This short report means that nothing has changed since the last commit.
-That is expected since we've just commited all our changes!
+يشير هذا التقرير القصير إلى أنه لم يتغير شيء منذ آخر (commit).
+هذا متوقع لأننا قمنا للتو بال(commit) بجميع تغييراتنا!
 
-Now let's have a look at what has changed in the last commit.
-Execute `git show`:
+الآن دعونا نلقي نظرة على ما تغير في آخر (commit).
+في سطر الاوامر نفّذ `git show`:
 
 ```ansi
 ␛[36m$␛[0m git show
@@ -218,35 +214,33 @@ Date:   Mon Mar 20 14:51:34 2017 +0100
 ␛[32m+␛[m␛[32mHolka modrooká, nesedávej tam␛[m
 ```
 
-Notice the unique 
-<span class="yellow">Git commit ID</span>
-that allows you to return to this state of your project at any point in the future.
-The author's name, the date of this commit's creation and the commit message
-are also listed, along with the summary of changes: a new file <tt class="strong">poem.txt</tt>
-containing the <span class="green">text in green</span> has been added.
+لاحظ الـ <span class="yellow">Git commit ID</span>
+الذي يسمح لك بالعودة إلى هذه الحالة من مشروعك في أي وقت في المستقبل.
+كما يتم سرد اسم المؤلف وتاريخ إنشاء هذا ال(commit) ورسالة ال(commit) ، بالإضافة إلى ملخص التغييرات: ملف جديد <tt class="strong">poem.txt</tt>
+يحتوي على <span class="green">نص باللون الأخضر</span> تمت إضافته.
 
 > [note]
-> When the output of a command is too long, you can browse it using the keys
-> (<kbd>↓</kbd>, <kbd>↑</kbd>, <kbd>PgUp</kbd>, <kbd>PgDn</kbd>).
-> In such case, exit the browsing mode by pressing <kbd>q</kbd> for *Quit*.
+> عندما يكون إخراج الأمر طويلاً جدًا ، يمكنك تصفحه باستخدام المفاتيح
+> (<kbd>↓</kbd>، <kbd>↑</kbd>، <kbd>PgUp</kbd>، <kbd>PgDn</kbd>).
+> في مثل هذه الحالة ، اخرج من وضع التصفح بالضغط على <kbd>q</kbd> لـ *إنهاء*.
 
-> [note] Text encoding in Windows
-> If you have trouble with displaying special characters like letters with diacritics,
-> enter the following command before `git show`:
+> [note] (Text encoding) في Windows
+> إذا كنت تواجه مشكلة في عرض الأحرف الخاصة مثل الأحرف ذات العلامات الصوتية ،
+> أدخل الأمر التالي قبل `git show`:
 >
 > ```dosvenv
 > > set LC_ALL=C.UTF-8
 > ```
 >
-> This command will only configure the current command line window.
-> It will have to be entered for any new window that you open.
+> سيقوم هذا الأمر بضبط اعدادات نافذة سطر الأوامر الحالية فقط.
+> سيتعين إدخاله مرة اخرى لأي نافذة جديدة تفتحها.
 
 
-## Second commit
+## ال(commit) الثاني
 
-Make a small change in your poem; replace one word,
-change punctuation, or add a new verse.
-Then check the status of the Git repository again.
+قم بإجراء تغيير صغير في قصيدتك ؛ استبدل كلمة واحدة ،
+غيّر علامات الترقيم ، أو أضف بيتًا جديدًا.
+ثم تحقق من حالة مستودع(repository) Git مرة أخرى.
 
 ```ansi
 ␛[36m$␛[0m git status
@@ -260,8 +254,8 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-The file is shown in red again. Something has changed inside!
-To see the details, execute the command <code>git diff</code>.
+يتم عرض الملف باللون الأحمر مرة أخرى. لقد تغير شيء ما في الداخل!
+للحصول على التفاصيل ، قم بتنفيذ الأمر <code>git diff</code>.
 
 ```ansi
 ␛[36m$␛[0m git diff
@@ -284,37 +278,37 @@ To see the details, execute the command <code>git diff</code>.
 ␛[32m+␛[m␛[32mNesedávej tam␛[m
 ```
 
-The changes are shown on a per-line basis.
-The lines in <tt class="red">red</tt> beginning with <tt class="red">-</tt> indicate
-the original lines that have been removed;
-the lines in <tt class="green">green</tt> starting with <tt class="green">+</tt>
-show the newly added lines.
+يتم عرض التغييرات على أساس كل سطر.
+تشير الأسطر باللون <tt class="red">الأحمر</tt> التي تبدأ بـ <tt class="red">-</tt>
+إلى الأسطر الأصلية التي تمت إزالتها ؛
+الأسطر باللون <tt class="green">الأخضر</tt> التي تبدأ بـ <tt class="green">+</tt>
+تظهر الأسطر المضافة حديثًا.
 
 > [note]
-> Even if just a single word or a letter has changed on any given line,
-> the whole line will be listed as removed and added (including the small change).
-> This interpretation can be customized if needed,
-> but it's a good idea to get used to the default behavior.
+> حتى إذا تغيرت كلمة واحدة أو حرف واحد فقط في أي سطر معين ،
+> سيتم سرد السطر بأكمله على أنه تمت إزالته وإضافته (بما في ذلك التغيير الصغير).
+> يمكن تخصيص هذا التفسير إذا لزم الأمر ،
+> ولكن من الجيد التعود على السلوك الافتراضي.
 
-It is easy to see what exactly has changed since the last commit.
-If your program stops working, but the last commited version still worked,
-use <code>git diff</code> –
-one of the changes listed must have introduced the error!
+من السهل رؤية ما تغير بالضبط منذ آخر (commit).
+إذا توقف برنامجك عن العمل ، ولكن الإصدار الأخير الذي تم ال(commit) به لا يزال يعمل ،
+استخدم <code>git diff</code> –
+يجب أن يكون أحد التغييرات المدرجة قد أدخل الخطأ!
 
 > [note]
-> The line beginning with <tt class="blue">@@</tt> indicates the location in the file
-> where the changes occur. In the example above, the excerpt of the original file
-> starts at line number 1 and it is 6 lines long; the matching block in the changed varsion
-> starts at line 1 as well, but it is 9 lines long.
+> يشير السطر الذي يبدأ بـ <tt class="blue">@@</tt> إلى الموقع في الملف
+> حيث تحدث التغييرات. في المثال أعلاه ، يبدأ مقتطف من الملف الأصلي
+> من السطر رقم 1 وهو 6 أسطر طويلة ؛ يبدأ الكتلة المطابقة في الإصدار المتغير
+> من السطر 1 أيضًا ، لكنه 9 أسطر طويلة.
 
-If you are satisfied with the changes, stage them for the next commit:
+إذا كنت راضيًا عن التغييرات ، فقم بضمها لل(commit) التالي:
 
 ```ansi
 ␛[36m$␛[0m git add poem.txt
 ```
 
-As usual, check the `status` of the repository; the file in green will be included
-within the next commit.
+كما هو معتاد ، تحقق من `status` للمستودع(repository) ؛ سيتم تضمين الملف باللون الأخضر
+ضمن ال(commit) التالي.
 
 ```ansi
 ␛[36m$␛[0m git status
@@ -326,37 +320,37 @@ Changes to be committed:
 
 ```
 
-Before we finalize the next commit, let's talk about the best practices
-in formulating the commit messages.
-There are common conventions that most programmers follow:
-the first line summarizes the changes, the second line is left blank,
-and the following lines list the reasons for the change or describe
-the changes themselves in more detail.
-Each line should have under 70 characters in length;
-the lenth of the comments (lines starting with `#`) can serve as a guide here.
-It is not worth going into detail for changes that are trivial or obvious;
-rather, focus on the broader context and reasons for the changes.
-Anything that can help whomever will try to understand the changes in the commit;
-this might include you few months later.
+قبل الانتهاء من ال(commit) التالي ، دعونا نتحدث عن أفضل الممارسات
+في صياغة رسائل ال(commit).
+هناك اتفاقيات شائعة يتبعها معظم المبرمجين:
+يُلخص السطر الأول التغييرات ، ويترك السطر الثاني فارغًا ،
+والأسطر التالية تسرد أسباب التغيير أو تصف
+التغييرات نفسها بمزيد من التفصيل.
+يجب أن يحتوي كل سطر على أقل من 70 حرفًا ؛
+يمكن أن يكون طول التعليقات (الأسطر التي تبدأ بـ `#`) بمثابة دليل هنا.
+لا يستحق الأمر الخوض في التفاصيل بشأن التغييرات التي تعتبر تافهة أو واضحة ؛
+بدلاً من ذلك ، ركز على السياق الأوسع وأسباب التغييرات.
+أي شيء يمكن أن يساعد أي شخص سيحاول فهم التغييرات في ال(commit) ؛
+قد يشملك أنت بعد بضعة أشهر.
 
-My commit message will be the following:
+ستكون رسالة ال(commit) الخاصة بي على النحو التالي:
 
 ```plain
 Split long lines
 
 Typically, each verse of a poem goes on its own line. I think
-that it's easier to read like this. (Although, the real reason was 
+that it's easier to read like this. (Although, the real reason was
 to demonstrate git diff.)
 ```
 
 > [note]
-> If you ever have trouble summarizing your changes using
-> just 70 characters, you might be taking too many steps at once.
-> E.g. "change string X and add loop Y"
-> might be better to commit as two separate revisions.
+> إذا كنت تواجه مشكلة في تلخيص تغييراتك باستخدام
+> 70 حرفًا فقط ، فقد تكون تقوم بالعديد من الخطوات في وقت واحد.
+> على سبيل المثال ، "تغيير النص X وإضافة المتغير Y"
+> قد يكون من الأفضل فصل هذا ال(commit) كمراجعتين منفصلتين.
 
-Finally, use `git commit` to create your second commit,
-and then check it using `git show`:
+أخيرًا ، استخدم `git commit` لإنشاء ال(commit) الثاني ،
+ثم تحقق منه باستخدام `git show`:
 
 ```ansi
 ␛[36m$␛[0m git show
@@ -365,9 +359,9 @@ Author: Adéla Novotná <adela.novotna@example.cz>
 Date:   Mon Mar 20 14:51:34 2017 +0100
 
     Split long lines
-    
+
     Typically, each verse of a poem goes on its own line. I think
-    that it's easier to read like this. (Although, the real reason was 
+    that it's easier to read like this. (Although, the real reason was
     to demonstrate git diff.)
 
 ␛[1mdiff --git a/poem.txt b/poem.txt␛[m
@@ -389,11 +383,12 @@ Date:   Mon Mar 20 14:51:34 2017 +0100
 ␛[32m+␛[m␛[32mNesedávej tam␛[m
 ```
 
-## Diagram
-These two diagrams below visualize what each command demonstrated thus far does exactly,
-and how the changes move from “not staged” to “commited” and back in case of need.
+## مخطط (Diagram)
 
-Diagram showing the process of viewing and committing changes:
+يوضح هذان المخططان (Diagram) أدناه بالضبط ما فعله كل أمر تم عرضه حتى الآن ،
+وكيف تنتقل التغييرات من "not staged" إلى "commited" والعكس في حالة الضرورة.
+
+مخطط يوضح عملية عرض التغييرات وال(commit) بها:
 
 {{ figure(
     img=static('diagram.png'),
@@ -401,10 +396,10 @@ Diagram showing the process of viewing and committing changes:
 ) }}
 
 
-Now that we have created our first few commits in the repository,
-let's demonstrate more commands that will help us understand
-the whole history of our Git repository.
-The first command is <code>git log</code>.
+الآن بعد أن أنشأنا أول مجموعة من (commit) قليلة في المستودع(repository) ،
+دعونا نوضح المزيد من الأوامر التي ستساعدنا في فهم
+تاريخ مستودع Git بالكامل.
+الأمر الأول هو <code>git log</code>.
 
 ```ansi
 ␛[36m$␛[0m git log
@@ -413,9 +408,9 @@ Author: Adéla Novotná <adela.novotna@example.cz>
 Date:   Mon Mar 20 14:51:34 2017 +0100
 
     Split long lines
-    
+
     Typically, each verse of a poem goes on its own line. I think
-    that it's easier to read like this. (Although, the real reason was 
+    that it's easier to read like this. (Although, the real reason was
     to demonstrate git diff.)
 
 ␛[33mcommit 1a009f4267d5a6ab7ece87cb7514f5b803692e39␛[m
@@ -425,43 +420,43 @@ Date:   Mon Mar 20 14:51:34 2017 +0100
     First commit
 ```
 
-<code>git log</code> prints all commits starting from the newest one and going
-all the way back to the initial commit at the origin of the repository.
+يقوم <code>git log</code> بطباعة جميع عمليات ال(commit) بدءًا من الأحدث وصولاً إلى
+ال(commit) الأولي عند النسخة الاصلية (origin) للمستودع(repository).
 
-When there are so many commits that they don't fit on a single screen
-of your command line window, you can browse back and forth using
+عندما يكون هناك الكثير من عمليات ال(commit) بحيث لا تتناسب مع شاشة واحدة
+من نافذة سطر الأوامر الخاص بك ، يمكنك التصفح ذهابًا وإيابًا باستخدام
 <kbd>PgUp</kbd>/<kbd>PgDn</kbd>.
-Finally, exit by pressing <kbd>q</kbd>.
+أخيرًا ، اخرج بالضغط على <kbd>q</kbd>.
 
 
 > [note]
-> There are many options that customize the output of `git log`.
-> They are all described (at great length)
-> in the built-in documentation (command `git help log`).
-> If the help is displayed in the command line window, press <kbd>q</kbd>
-> to exit.
+> يوجد العديد من الخيارات التي تخصيص مخرجات `git log`.
+> يتم وصفها جميعًا (بطول كبير)
+> في المستندات المضمنة (الأمر `git help log`).
+> إذا تم عرض المساعدة في نافذة سطر الأوامر ، اضغط على <kbd>q</kbd>
+> للخروج.
 >
-> My personal favorite combination is `git log --oneline --graph --decorate --cherry-mark --boundary`.
+>  المزيج المفضل شخصيًا هو `git log --oneline --graph --decorate --cherry-mark --boundary`.
 
-To see all details about any commit,
-execute `git show 5ff0b`, replacing `5ff0b`
-with the first few characters of the <span class="yellow">Git commit ID</span>.
+لعرض جميع التفاصيل حول أي (commit) ،
+نفّذ `git show 5ff0b` ، واستبدل `5ff0b`
+بالأحرف القليلة الأولى لـ <span class="yellow">Git commit ID</span>.
 
-## Conclusion
+## الخلاصة
 
-These are the Git basics that we'll need in the following lessons.
-Whenever you perform <code>git add <var>file</var></code> and `git commit`,
-the current version of the file is saved and will be accessible even if you delete the file later.
-You can always view any past version of any file in your repository,
-and review all changes made since the last time the project was saved.
+هذه هي أساسيات Git التي سنحتاجها في الدروس التالية.
+كلما قمت بأداء <code>git add <var>file</var></code> و `git commit` ،
+يتم حفظ الإصدار الحالي للملف وسيكون متاحًا حتى إذا قمت بحذف الملف لاحقًا.
+يمكنك دائمًا عرض أي إصدار سابق لأي ملف في مستودعك ،
+ومراجعة جميع التغييرات التي تم إجراؤها منذ آخر مرة تم حفظ المشروع فيها.
 
-Maybe all this sounded unnecessarily too complicated for a beginner.
-Indeed, our projects will be relatively simple and easy to manage
-even without the use of Git.
-But it's a good idea to learn using it from the very beginning;
-when you get to participate in bigger projects, already being used to Git
-will come very handy.
+ربما بدا كل هذا معقدًا بشكل غير ضروري للمبتدئين.
+في الواقع ، ستكون مشاريعنا بسيطة نسبيًا وسهلة الإدارة
+حتى بدون استخدام Git.
+ولكن من الجيد أن تتعلم استخدامه من البداية ؛
+عندما تصل إلى المشاركة في مشاريع أكبر ، سيتم استخدام Git بالفعل
+سيكون مفيدًا جدًا.
 
-So, from now on, whenever you make even a small but meaningful change to your program,
-as long as the program works at least as well as it did before,
-use `git add` and `git commit` to save the change in Git.
+لذا ، من الآن فصاعدًا ، كلما قمت بإجراء تغيير صغير ولكن ذي معنى في برنامجك ،
+طالما أن البرنامج يعمل على الأقل بنفس جودة أدائه السابق ،
+استخدم `git add` و `git commit` لحفظ التغيير في Git.
