@@ -19,7 +19,7 @@
 في ال(terminal) الجديد ، أدخل:
 
 ```console
-> git config --globaﻻشسهؤسl core.editor notepad
+> git config --global core.editor notepad
 > git config --global format.commitMessageColumns 80
 > git config --global gui.encoding utf-8
 ```
