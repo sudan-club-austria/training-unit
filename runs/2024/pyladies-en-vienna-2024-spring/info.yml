@@ -135,11 +135,11 @@ plan:
         type: cheatsheet
   - title: جت (Git)
     slug: git
-    date: 2025-02-09
+    date: 2025-02-16
     materials:
       - lesson: git-en/install
       - lesson: git-en/basics
-      # - lesson: git-en/github
+      - lesson: git-en/github
       # - lesson: git-en/branching
       # - title: Basic Git Cheatsheet
       #   url: https://raw.githubusercontent.com/lubojr/naucse.python.cz/117a205e1c98f007e0a97877e87493fef411a768/lessons/git-en/basics/static/git_commands_cheat_sheet.png

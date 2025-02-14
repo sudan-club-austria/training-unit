@@ -1,33 +1,34 @@
-# GitHub
+#  GitHub
 
-If you start working on a project with someone, you will need to share your git repository with him, so you can both benefit from the collaboration and share the changes.
+إذا بدأت العمل على مشروع مع شخص ما ، فستحتاج إلى مشاركة مستودع(repository) git الخاص بك معه ، حتى يتمكن كلاكما من الاستفادة من التعاون ومشاركة التغييرات.
 
-This is where a company **GitHub** (or others like **gitlab** or **bitbucket**) comes in. GitHub is designed as a Git repository hosting service with many additional features. It’s basically an online database that allows you to keep track of and share your Git version control projects outside of your local computer/server.
-It has a *free* and *paid* tier, but the *free* tier is very much sufficient for 99% of the users.
-Additionally GitHub serves as a kind of programmer *social networking platform* featuring
-- heated discussions over steering of open-source projects
-- bug tracking via *Issues*
-- *forking of repositories* (making your own copy of existing repository)
-- opening and merging of *Pull Requests* to allow random bygoes from the internet jungle improve or extend your code
-- Adding informative *Changelogs* as a place to inform users of your software about *breaking changes*
+ هنا يأتي دور شركة **GitHub** (أو غيرها مثل **gitlab** أو **bitbucket**). تم تصميم GitHub كخدمة استضافة لمستودعات(repositories) Git مع العديد من الميزات الإضافية. إنها في الأساس قاعدة بيانات عبر الإنترنت تتيح لك تتبع ومشاركة مشاريع التحكم في الإصدار (version control system)  Git الخاص بك بعيدا عن جهاز الكمبيوتر/الخادم المحلي الخاص بك.
+لدى Github اشتراك *مجاني* و اخر *مدفوع* ، ولكن الاشتراك *المجاني* كافٍ جدًا لـ 99٪ من المستخدمين.
+بالإضافة إلى ذلك ، يعمل GitHub كواحد من *منصات التواصل الاجتماعي* للمبرمجين التي تتميز بـ
+- مناقشات ساخنة حول توجيه مشاريع المصادر المفتوحة (open-source projects)
+- تتبع الأخطاء عبر *المشكلات(issues)*
+- *نسخ المستودعات(forking repository)* (إنشاء نسخة خاصة بك من المستودع(repository) الحالي)
+- فتح(open) و دمج(merge) *طلبات السحب(pull requests)* للسماح لعموم الناس من انحاء الإنترنت بتحسين أو توسيع كودك
+- إضافة *سجلات التغيير(Changelogs)* الإعلامية كمكان لإبلاغ مستخدمي برنامجك عن *التغييرات الجذرية(breaking changes)*
 
-## Using GitHub
-To create a new repository on GitHub, you need to create an account. In case you do not have one yet, go to [https://github.com/signup](https://github.com/signup).
-The email you use for creating an account *does not* have to match the one you used in the [configuring git step]({{ lesson_url('git-en/install') }}) as your local git email.
+## استخدام (GitHub)
 
-After registering and confirming your email, log in and go to the GitHub home page.
+لإنشاء مستودع(repository) جديد على GitHub ، تحتاج إلى إنشاء حساب. في حالة عدم وجود حساب لديك بعد ، انتقل إلى [https://github.com/signup](https://github.com/signup).
+لا يجب أن يتطابق البريد الإلكتروني الذي تستخدمه لإنشاء حساب مع البريد الإلكتروني الذي استخدمته في [خطوة تكوين git]({{ lesson_url('git-en/install') }}) كبريد إلكتروني محلي لـ git.
 
-### Create a repository
+بعد التسجيل وتأكيد بريدك الإلكتروني ، قم بتسجيل الدخول وانتقل إلى صفحة GitHub الرئيسية.
 
-And now we are READY to create our first GitHub repository:
+### إنشاء مستودع(repository)
 
-You can find the `“New repository”` option under the `“+”` sign next to your profile picture, in the top right corner of the navbar.
+والآن نحن مستعدون لإنشاء مستودع(repository) GitHub الأول الخاص بنا:
 
-After clicking the button, GitHub will ask you to name your repository and provide a brief description. You do not need to add *.gitignore* or *README* file yet. Keep the repository empty.
+يمكنك العثور على خيار `“New repository”` أسفل علامة `“+”` بجوار صورة ملفك الشخصي ، في الزاوية العلوية اليمنى من شريط التنقل.
 
-Afterwards depending on you situation GitHub will provide you with detailed instructions how to proceed.
+بعد النقر فوق الزر ، سيطلب منك GitHub تسمية المستودع(repository) الخاص بك وتقديم وصف موجز. لا تحتاج إلى إضافة ملف *.gitignore* أو *README* بعد. احتفظ بالمستودع فارغًا.
 
-#### Create a new repository from scratch on your command line
+بعد ذلك ، سيقدم لك GitHub تعليمات مفصلة حول كيفية المتابعة بناءً على موقفك.
+
+#### إنشاء مستودع(repository) جديد من البداية على سطر الأوامر الخاص بك
 
 ```bash
 echo "# new-repository" >> README.md
@@ -39,9 +40,9 @@ git remote add origin https://github.com/<your-github-username>/<your-github-rep
 git push -u origin main
 ```
 
-#### Or *push* existing repository from the command line
+#### أو *دفع(push)* مستودع(repository) موجود من سطر الأوامر
 
-if you already have created a few commits locally.
+إذا كنت قد أنشأت بالفعل بعض (commits) محليًا.
 
 ```bash
 git remote add origin https://github.com/<your-github-username>/<your-github-repository>.git
@@ -49,42 +50,42 @@ git branch -M main
 git push -u origin main
 ```
 
-What happened now?
+ماذا حدث الآن؟
 
-If you have done the [configuration step]({{ lesson_url('git-en/install') }}), you 
-should be prompted for the first time for a log in to the Git Credential Manager.
-Use the first option "Sign in with your browser" and one of two things should happen.
+إذا قمت بإجراء [خطوة ضبط الإعدادات]({{ lesson_url('git-en/install') }}) ،
+يجب أن تتم مطالبتك لأول مرة بتسجيل الدخول إلى Git Credential Manager.
+استخدم الخيار الأول "تسجيل الدخول باستخدام متصفحك" ويجب أن يحدث أحد أمرين.
 
-If you are currently logged in to `github.com` in your web browser, it should prompt you to authorize the Git Credential Manager to access GitHub. Simply allow the access and that should be it.
+إذا كنت مسجلًا حاليًا الدخول إلى `github.com` في متصفح الويب الخاص بك ، فيجب أن يطالبك بالسماح لـ Git Credential Manager بالوصول إلى GitHub. ما عليك سوى السماح بالوصول ويجب أن يكون ذلك.
 
-If you are not logged in in browser yet, it should open a new tab for you to log in and afterwards authorize Git Credential Manager.
+إذا لم تكن مسجلًا الدخول في المتصفح بعد ، فيجب أن يفتح علامة تبويب جديدة لتسجيل الدخول وبعد ذلك السماح لـ Git Credential Manager.
 
-Once successfully confirming your identity,
-the program will securely remember your login from now on and will allow you to push into your repository.
+بمجرد تأكيد هويتك بنجاح ،
+سيتذكر البرنامج تسجيل الدخول الخاص بك بشكل آمن من الآن فصاعدًا وسيسمح لك بالدفع إلى مستودعك(repository).
 
 {{ figure( img=static('gcm-prompt.png'), alt='Git credential manager prompt for login', ) }}
 
-## Working with GitHub
+## العمل مع (GitHub)
 
-More detailed explanation of some of previous commands would be great. So let's delve into it.
-If you want to start working on a remote GitHub project where for example your friend or co-worker added you as a contributor, you need to download (clone) the copy of the git repository to your computer.
+سيكون من الرائع توضيح أكثر تفصيلاً لبعض الأوامر السابقة. لذلك دعونا نتعمق في ذلك.
+إذا كنت ترغب في البدء في العمل على مشروع GitHub عن بُعد حيث قام صديقك أو زميلك في العمل بإضافتك كمساهم(contributor) ، فأنت بحاجة إلى تنزيل (clone) نسخة من مستودع(repository) git إلى جهاز الكمبيوتر الخاص بك.
 
-```git clone <url.git>``` - downloads a remote repository to a local system into a folder named the same as the name of the repository. Will also create a copy of branches on remote called origin.
+```<git clone <url.git``` - يقوم بتنزيل مستودع بعيد إلى نظام محلي في مجلد يحمل نفس اسم المستودع. سيقوم أيضًا بإنشاء نسخة من الفروع عن بُعد تسمى origin.
 
-```git push <origin> <branch>``` - puts all your local commits to remote repository branch on the remote called origin. (those which were not pushed yet)
+```<git push <origin> <branch``` - يضع جميع عمليات ال(commits) المحلية في فرع(branch) المستودع(repository) البعيد على جهاز التحكم عن بُعد المسمى origin. (التي لم يتم دفعها بعد)
 
-You might be wondering what that **origin** word means in the command above. What happens is that when you clone a remote repository to your local machine, git creates an alias for you. In nearly all cases this one alias is called **origin**. It's essentially shorthand for the remote repository's URL. You can of course have multiple remotes for your repository, but only one can be named origin.
+قد تتساءل عما يعنيه كلمة **origin** في الأمر أعلاه. يحدث أنه عند استنساخ مستودع(repository) بعيد إلى جهازك المحلي ، يقوم git بإنشاء اسم مستعار لك. في جميع الحالات تقريبًا ، يُطلق على هذا الاسم المستعار **origin**. إنه في الأساس اختصار لـ URL للمستودع البعيد. يمكنك بالطبع الحصول على العديد من الأجهزة البعيدة لمستودعك(repository) ، ولكن لا يمكن تسمية سوى واحد منها بالمنشأ.
 
-```git pull``` - **fetches** all remote changes and **merges** them with local changes - this is what you should do before starting to work on a task to ensure that you have the newest version from your coleagues to avoid trouble with merging the features later. Is is essentially just a  combination of ```git fetch``` and ```git merge``` operations.
+```git pull``` - **يجلب** جميع التغييرات البعيدة و **يدمجها** مع التغييرات المحلية - هذا ما يجب عليك فعله قبل البدء في العمل على مهمة لضمان حصولك على أحدث إصدار من زملائك لتجنب المتاعب مع دمج الميزات لاحقًا. إنه في الأساس مجرد مزيج من عمليات ```git fetch``` و ```git merge```.
 
-In order to find out more about what ```git merge``` does, visit the follow-up [branching]({{ lesson_url('git-en/branching')}}) chapter.
+للحصول على مزيد من المعلومات حول ما يفعله ```git merge``` ، قم بزيارة فصل [التفرع(branching)]({{ lesson_url('git-en/branching')}}) التالي.
 
-Please now ensure that you have managed to `push` your local git repository with a poem.txt you have made to `GitHub` before you continue with the lecture.
+الآن ، يرجى التأكد من أنك تمكنت من `push` مستودع git المحلي الخاص بك باستخدام poem.txt الذي قمت بإنشائه إلى `GitHub` قبل المتابعة في المحاضرة.
 
 > [note]
-> Until you push, most operations are safe.
-> When other people are involved in the project, tread with extra caution with "dangerous operations" like rebasing and force pushing.
-> 
-> Git is an example where copying a random "smart answer" from *stackoverflow* without understanding the situation is not always a good idea - both when you work alone and even more when you collaborate with other people.
+> حتى تقوم بالدفع(push) ، فإن معظم العمليات آمنة.
+> عندما يشارك أشخاص آخرون في المشروع ، احرص على توخي الحذر الشديد مع "العمليات الخطرة" مثل إعادة التأسيس(rebasing) والدفع بالقوة
+>(force pushing).
+> يعد Git مثالاً على أنه ليس من الجيد دائمًا نسخ "إجابة ذكية" عشوائية من *stackoverflow* دون فهم الموقف - سواء كنت تعمل بمفردك أو حتى أكثر عندما تتعاون مع أشخاص آخرين.
 
-Have fun with **Git** and **GitHub**!
+استمتع بـ **Git** و **GitHub**!
