@@ -1,55 +1,55 @@
-# Branching in GIT
+# التفرع في جيت (Branching in GIT)
 
-So, now you know Git!
-We will dive into something a bit more complex now :)
+حسنًا ، أنت الآن تعرف Git!
+سنغوص في شيء أكثر تعقيدًا الآن :)
 
-Programmers sometimes need to work on two or even more projects at the same time.
-Let's imagine that a severe mistake is found and needs to be fixed as soon as possible.
+يحتاج المبرمجون في بعض الأحيان إلى العمل على مشروعين أو أكثر في نفس الوقت.
+لنتخيل أنه تم العثور على خطأ كبير ويجب إصلاحه في أسرع وقت ممكن.
 
-So the programmer has to leave what she is currently working on and goes back to
-a "stable" version, fixes the error and releases a new version to the customers.
+لذا يتعين على المبرمج التوقف عن ما يعمل عليه حاليًا والعودة إلى
+إصدار سابق "مستقر" ، وإصلاح الخطأ وإصدار إصدار جديد للعملاء.
 
-After this, she goes back to the original project. But before that, she should also 
-incorporate the fix of the error into the version she is currently working on.
+بعد ذلك ، تعود إلى المشروع الأصلي. ولكن قبل ذلك ، يجب عليك أيضًا
+دمج إصلاح الخطأ في الإصدار الذي تعمل عليه حاليًا.
 
-Git has so called *branches* exactly for this purpose.
-On a single "branch" you can work, but you can switch to another (even older) branch,
-do some changes and then change back to new branch and continue,
-or *merge* the changes.
+يحتوي Git على ما يسمى *بالفروع(branches)* لهذا الغرض بالضبط.
+ يمكنك العمل على "فرع (branch)" واحد ، ولكن يمكنك التبديل إلى فرع(branch) آخر (حتى أقدم) ،
+قم ببعض التغييرات ثم عد إلى الفرع الجديد واستمر ،
+أو *دمج(merge)* التغييرات.
 
 {{ figure(
     img=static('git_branch.png'),
     alt="Diagram showing the usual branching way of work"
 ) }}
 
-Branching comes handy also when more people are working on a same project - 
-everyone is working on his/her own branch and when the time comes,
-all changes are combined (merged) together.
+تظهر فائدة التفرع(branching) أيضًا عندما يعمل المزيد من الأشخاص على نفس المشروع -
+يعمل كل شخص على فرعه(branch) الخاص وعندما يحين الوقت ،
+يتم دمج جميع التغييرات (merge) معًا.
 
 
 > [note]
-> Instead of copying files from directory to directory.
-> Git stores a branch as a reference to a commit.
-> In this sense, a branch represents the tip of a series of commits—it's not a container for commits.
+> بدلاً من نسخ الملفات من دليل إلى آخر.
+> يخزن Git الفرع كمرجع لالتزام.
+> بهذا المعنى ، يمثل الفرع طرف سلسلة من عمليات الالتزام - إنه ليس حاوية لعمليات الالتزام.
 
-You can check what branches you have in your repository.
-For that, we have a command `git branch`:
+يمكنك التحقق من الفروع(branches) الموجودة في مستودعك(repository).
+لهذا ، لدينا الأمر `git branch`:
 
 ```ansi
 ␛[36m$␛[0m git branch
 * ␛[32mmain␛[m
 ```
 
-We should have only one and it is called `main`.
+يجب أن يكون لدينا branch واحد فقط وهو يسمى `main`.
 
-– it is a traditionally name of "backbone" branch for the project
+- إنه اسم تقليدي للفرع "الرئيسي" للمشروع
 
-- In the last two years there was a commonly accepted default branch name change from *master* to *main*, so in older project you can still find *master* branches, while GitHub by default already creates *main* branch.
+- في العامين الماضيين كان هناك تغيير شائع في اسم الفرع الافتراضي من *master* إلى *main*، لذلك في المشاريع القديمة لا يزال بإمكانك العثور على فروع *master*، بينما يقوم GitHub افتراضيًا بالفعل بإنشاء فرع *main*.
 
-To create a new branch, you will again use command `git branch`.
-You will just add a name of the branch as an argument as well.
-So if you want to add the name of the author to the poem,
-you can name the branch `adding-author`.
+لإنشاء فرع جديد ، ستستخدم الأمر `git branch` مرة أخرى.
+ستقوم فقط بإضافة اسم الفرع ك (argument) أيضًا.
+لذا إذا كنت تريد إضافة اسم المؤلف إلى القصيدة ،
+يمكنك تسمية الفرع `adding-author`.
 
 
 ```ansi
@@ -59,10 +59,10 @@ you can name the branch `adding-author`.
 * ␛[32mmain␛[m
 ```
 
-This command created a new branch, but it does not switch into it yet.
-The asterisk symbol in the output of `git branch` is showing, on which branch you are working.
-In this case, it is still `main`.
-To switch between branches, you need another command:
+قام هذا الأمر بإنشاء فرع(branch) جديد ، لكنه لم يتحول إليه بعد.
+يشير رمز النجمة (*) في مخرجات `git branch` ، إلى الفرع(branch) الذي تعمل عليه.
+في هذه الحالة ، لا يزال `main`.
+للتبديل بين الفروع(branches) ، تحتاج إلى أمر آخر:
 
 
 ```ansi
@@ -73,15 +73,15 @@ Switched to branch 'adding-author'
   main␛[m
 ```
 
-So, now you are "on" branch `adding-author`. It also means that your **HEAD** is there - **HEAD** refers to the currently checked-out branch's latest commit.
+لذا ، فأنت الآن "على" فرع(branch) `adding-author`. وهذا يعني أيضًا أن **HEAD** الخاص بك موجود هناك - **HEAD** يشير إلى أحدث التزام للفرع(branch) الذي تم فحصه حاليًا.
 
-Now add some author name into your file `poem.txt`. And with the help of `git add` and `git commit` perform new commit.
-Perfect! You can check how it looks using `git show`, `git status` or `git log`.
+الآن أضف بعض أسماء المؤلفين إلى ملفك `poem.txt`. وبمساعدة `git add` و `git commit` قم بأداء commit جديد.
+ممتاز! يمكنك التحقق منه باستخدام `git show` أو `git status` أو `git log`.
 
-Let's leave the adding the author of the poem for a moment.
-Go back to branch `main` and create a branch called
-`adding-name` from it.
-Then switch to this new branch.
+دعونا نترك إضافة مؤلف القصيدة للحظة.
+عد إلى الفرع `main` وقم بإنشاء فرع يسمى
+`adding-name` منه.
+ثم قم بالتبديل إلى هذا الفرع الجديد.
 
 
 ```ansi
@@ -96,37 +96,36 @@ Switched to branch 'adding-name'
   main␛[m
 ```
 
-Now add the name of the poem to the file in your text editor and using the same procedure
-as before by using commands `git add poem.txt`, `git commit -m "commit message"` save the commit.
+الآن أضف اسم القصيدة إلى الملف في محرر النصوص الخاص بك وباستخدام نفس الإجراء
+كما كان من قبل باستخدام الأوامر `git add poem.txt` ، `git commit -m "commit message"` احفظ الالتزام.
 
-Again, check everything using `git show`, `git status` or `git log`.
+مرة أخرى ، تحقق من كل شيء باستخدام `git show` أو `git status` أو `git log`.
 
-This is a simple example how you can solve the situation from the introduction:
-Leaving work in progress, switch to "stable" version `main` and
-start working in a completely different project part.
+هذا مثال بسيط على كيفية حل الموقف من المقدمة:
+ترك العمل قيد التقدم ، والانتقال إلى الإصدار "المستقر" `main` و
+البدء في العمل في جزء مختلف تمامًا من المشروع.
 
-You can switch between the versions as you want to,
-but it is always a good habit to do a new commit:
-(`git commit`) and with help of `git status` confirm, 
-that everything is where it is supposed to be.
+يمكنك التبديل بين الإصدارات كما تريد ،
+ولكن من الجيد دائمًا إجراء commit جديد:
+(`git commit`) وبمساعدة `git status` تأكيد ،
+أن كل شيء في مكانه الصحيح.
 
-Collaboration of multiple people on same project works on the exactly same principle:
-There is a common base (`main`) and every member
-is working on his/her own branch until all expected changes are there.
+يعمل تعاون عدة أشخاص على نفس المشروع على نفس المبدأ تمامًا:
+هناك قاعدة مشتركة (`main`) ويعمل كل عضو
+على فرعه الخاص حتى يتم إجراء جميع التغييرات المتوقعة.
 
-When a certain branch is ready, it can be incorporated back into `main`.
-Let's see how to do it!
+عندما يكون فرع معين جاهزًا ، يمكن دمجه مرة أخرى في `main`.
+دعونا نرى كيف نفعل ذلك!
 
-## Merging
+## الدمج (Merging)
 
-It would make no sense to split the history of a project,
-if there would be no way how to merge it back together.
-Luckily for us, merging in git is quite easy. Do not trust people who tell you otherwise.
-You will be the professional to impress others with your git skills.
+لن يكون من المنطقي تقسيم تاريخ المشروع ،
+إذا لم تكن هناك طريقة لدمجهما معًا مرة أخرى.
+لحسن الحظ بالنسبة لنا ، فإن الدمج في git سهل للغاية.
 
-Switch back to `main`
-and use commit `git merge` with a name of branch you want to merge.
-This commit will merge branch you want into `main`.
+عد إلى `main`
+واستخدم الأمر `git merge` مع اسم الفرع(branch) الذي تريد دمجه.
+سيقوم هذا ال commit بدمج(merge) الفرع(branch) الذي تريده في `main`.
 
 
 ```ansi
@@ -139,30 +138,28 @@ Fast-forward
  1 file changed, 5 insertions(+), 1 deletion(-)
 ```
 
-Merged! This „`Fast-forward`” means, that there was nothing to actually 
-"merge" - we just added new changes from another branch into the branch `main`.
-You can check how it looks using `git log` or `git status`.
+تم الدمج(merge)! عبارة "Fast-forward" تعني أنه لم يكن هناك ما تم دمجه - لقد أضفنا للتو تغييرات جديدة من فرع(branch) آخر إلى الفرع(branch) `main`.
+يمكنك التحقق منه باستخدام `git log` أو `git status`.
 
-And now try to merge the second branch too - 
+والآن حاول دمج الفرع الثاني أيضًا -
 `git merge adding-author`.
 
-Here it might be more complicated: It can happen that changes can't be 
-automatically merged together and in the command line we will see output as
-`merge conflict`. The reason for it is that git can not in this case 
-safely know "which way to merge to be 100% correct".
+هنا قد يكون الأمر أكثر تعقيدًا: قد يحدث أنه لا يمكن دمج التغييرات تلقائيًا
+معًا وفي سطر الأوامر سنرى العبارة
+`merge conflict`. سبب ذلك هو أنه لا يمكن لـ git في هذه الحالة
+معرفة "الطريقة الصحيحة 100٪" بأمان.
 
-A common example is if two commits in different branches edit the same line of code.
-You will probably know which way is correct but git usually can not, as there can be three options:
-Keep just changes from the first commit, keep just the changes from the second commit or make custom changes (which usually means use both changes but adapt the code a bit).
+مثال شائع هو إذا قام التزامان في فروع مختلفة بتحرير نفس سطر التعليمات البرمجية.
+ربما ستعرف الطريقة الصحيحة ولكن git عادة لا يمكنه ذلك ، حيث يمكن أن يكون هناك ثلاثة خيارات:
+احتفظ فقط بالتغييرات من ال commit الأول ، واحتفظ فقط بالتغييرات من ال commit الثاني أو قم بإجراء تغييرات مخصصة (والتي عادة ما تعني استخدام كلا التغييرين ولكن تكييف الكود قليلاً).
+## كيفية حل تعارضات الدمج (merge conflict)؟
 
-### How to solve merge conflicts?
-
-Open the file in editor and you should see a content of both versions
-marked with signs (">>>" usually) which points to the exact location where conflict happened.
-Change the file to look like it should (also remove the signs), save it and do a commit
+افتح الملف في المحرر وسترى محتوى كلا الإصدارين
+المميز بعلامات (">>>" عادةً) والتي تشير إلى الموقع الدقيق الذي حدث فيه التعارض.
+قم بتغيير الملف ليكون كما ينبغي (قم أيضًا بإزالة العلامات) ، واحفظه وقم بالالتزام
 `git commit`.
 
-Whether there was a conflict or not, there will be a special *merge commit*
+سواء كان هناك تعارض أم لا ، سيكون هناك *التزام دمج (merge commit)* خاص
 
 ```ansi
 ␛[36m$␛[0m git merge adding-author
@@ -172,10 +169,10 @@ Merge made by the 'recursive' strategy.
  1 file changed, 2 insertions(+)
 ```
 
-Everything worked?
+هل نجح كل شيء؟
 
-If yes, you can delete old branches - all their changes are inside the `main`
-and there is usually no reason to continue work on them. You can always create a new branch later again.
+إذا كان الأمر كذلك ، يمكنك حذف الفروع (branches) القديمة - جميع تغييراتها موجودة داخل `main`
+وعادة لا يوجد سبب لمواصلة العمل عليها. يمكنك دائمًا إنشاء فرع(branch) جديد لاحقًا مرة أخرى.
 
 ```ansi
 ␛[36m$␛[0m git branch -d adding-author
@@ -186,5 +183,5 @@ Deleted branch adding-name (was c982a81).
 * ␛[32mmain␛[m
 ```
 
-Congratulations, now you are able to use branches and merge them.
-This brings you further on your adventure in getting to know git as a programming collaboration tool.
+تهانينا ، أنت الآن قادر على استخدام الفروع(branches) ودمجها (merge).
+هذا يقربك أكثر في مغامرتك في التعرف على git كأداة تعاون في البرمجة.
