@@ -1,15 +1,15 @@
-This chapter is full of new things. Hang in there! 
-If anything doesn't make sense now, don't worry:
-What we explain now will teach you important
-things we will use in another lesson.
+هذا الفصل مليء بأشياء جديدة. استمر!
+إذا كان أي شيء غير منطقي الآن ، فلا تقلق:
+ما نشرحه الآن سيعلمك أشياء مهمة
+سنستخدمها في درس آخر.
 
-Try each example in this lesson;
-what Python prints is an important part of the lesson.
+جرب كل مثال في هذا الدرس ؛
+ما يطبعه بايثون هو جزء مهم من الدرس.
 
-# Lists
+# المصفوفات (Lists)
 
-Today we will show you how to work with *lists*.
-We will use square brackets a lot because that's how lists are created:
+اليوم سنعرض لك كيفية العمل مع *المصفوفات*.
+سنستخدم الأقواس المربعة كثيرًا لأن هذه هي الطريقة التي يتم بها إنشاء المصفوفات:
 
 ```python
 numbers = [1, 1, 2, 3, 5, 8, 13]
@@ -17,53 +17,53 @@ print(numbers)
 ```
 
 
-A list is a value that can contain many other values.
-Just like a string contains a sequence of characters,
-a list contains a sequence of anything. Numbers, for example.
-And just as we can use the `for` loop
-to print strings character by character,
-we can loop over list elements:
+المصفوفة (list) هي قيمة يمكن أن تحتوي على العديد من القيم الأخرى.
+تمامًا مثل النص (string) الذي يحتوي على تسلسل من الأحرف (characters)،
+تحتوي المصفوفة (list) على تسلسل من أي شيء. الأرقام ، على سبيل المثال.
+وكما يمكننا استخدام حلقة `for`
+لطباعة النصوص (strings) حرفًا بحرف ،
+يمكننا التكرار على عناصر المصفوفة (list elements):
 
 ```python
 for number in numbers:
     print(number)
 ```
 
-Lists in programs are very common:
-A file can be retrieved as a list of strings
-line by line.
-A list of strings like `7 ♥`
-and `K ♣` can be used as a deck of cards.
-Math is full of numerical lists and
-each online service has a list of users.
+المصفوفات (lists) في البرامج شائعة جدًا:
+يمكن استرداد ملف كمصفوفة (list) من النصوص (strings)
+سطرًا بسطر.
+يمكن استخدام مصفوفة (list) من النصوص (strings) مثل `7 ♥`
+و `K ♣` كمجموعة من البطاقات.
+الرياضيات مليئة بالمصفوفات العددية (numerical lists) و
+لكل خدمة عبر الإنترنت مصفوفة أو  قائمة  (list) من المستخدمين.
 
 
-The values ​​in a list can be of any type,
-we can even mix different types in one list
-(even though we won't meet such mixed lists
-very often - they are more used in tuples,
-which we will tell you about later):
+يمكن أن تكون القيم الموجودة في المصفوفة (list) من أي نوع ،
+يمكننا حتى مزج أنواع مختلفة في مصفوفة واحدة
+(على الرغم من أننا لن نصادف مثل هذه المصفوفات المختلطة
+في كثير من الأحيان - يتم استخدامها أكثر في المجموعات (tuples) ،
+التي سنخبرك عنها لاحقًا):
 
 ```python
 list = [1, 'abc', True, None, range(10), len]
 print(list)
 ```
 
-## Selection from lists
+## الاختيار من المصفوفات (Selection from lists)
 
-You already know the most basic operation with lists, 
-the `for` loop.
-The second most important operation is picking
-individual elements.
-This works the same way as in strings: square brackets and
-the element number. List elements are numbered from zero, 
-just as characters in strings; negative numbers indicate elements from the end.
+أنت تعرف بالفعل العملية الأساسية مع المصفوفات ،
+حلقة `for`.
+العملية الثانية الأكثر أهمية هي اختيار
+عناصر فردية (individual elements).
+يعمل هذا بنفس الطريقة كما في النصوص (strings): الأقواس المربعة و
+رقم العنصر (element number). يتم ترقيم عناصر المصفوفة (list elements) من الصفر ،
+تمامًا مثل الأحرف (characters) في النصوص (strings) ؛ تشير الأرقام السالبة إلى العناصر من النهاية.
 
 ```python
 print(numbers[2])
 ```
 
-We use square brackets to access subsets.
+نستخدم الأقواس المربعة للوصول إلى المجموعات الفرعية (subsets).
 
 ```plain
   ╭───┬───┬───┬───┬───┬───┬───┬───╮
@@ -83,29 +83,29 @@ We use square brackets to access subsets.
                       'PyLadies'[-3:] == 'ies'
 ```
 
-shows you how to write the numbers when you want parts of the list:
+يوضح لك كيفية كتابة الأرقام عندما تريد أجزاء من المصفوفة:
 
 ```python
 print(numbers[2:-3])
 ```
 
-## Changing lists
+## تغيير المصفوفات (Changing lists)
 
-An important feature of lists is that neither numbers nor strings
-(nor `True`/`False`/`None`) have, is
-that lists can be changed (they are mutable).
+من الميزات المهمة للمصفوفات أنها ليست أرقامًا ولا نصوصًا
+(ولا `True`/`False`/`None`) ،
+يمكن تغيير المصفوفات (فهي قابلة للتغيير - mutable).
 
-Numbers can't be changed - if you have `a = 3` and
-you write `a = a + 1`, the number `3` will not change.
-A new number `4` will be calculated, and the variable `a`
-will be set to this new number.
+لا يمكن تغيير الأرقام - إذا كان لديك `a = 3` و
+تكتب `a = a + 1` ، فلن يتغير الرقم `3`.
+سيتم حساب رقم جديد `4` ، والمتغير `a`
+سيتم تعيينه لهذا الرقم الجديد.
 
-By contrast, lists can be changed without setting a variable to a new value.
-The most basic way to change a list is to add elements
-to its end, using the `append` method.
-Doing this doesn't return *anything* (actually it returns `None`)
-but it changes the list we are working on *in place*  (`append` means 
-add to *the end* of the list). Try it:
+على النقيض من ذلك ، يمكن تغيير المصفوفات دون تعيين متغير لقيمة جديدة.
+أبسط طريقة لتغيير المصفوفة هي إضافة عناصر
+إلى نهايتها ، باستخدام طريقة `append`.
+لا يُرجع القيام بذلك *أي شيء* (في الواقع يُرجع `None`)
+ولكنه يغير المصفوفة التي نعمل عليها *في مكانها* (`append` يعني
+أضف إلى *نهاية* المصفوفة). جربه:
 
 ```python
 prime_numbers = [2, 3, 5, 7, 11, 13, 17]
@@ -114,29 +114,31 @@ prime_numbers.append(19)
 print(prime_numbers)
 ```
 
-Such a value change can sometimes be surprising,
-because multiple variables can have the same value.
-Because the value itself changes, it may seem
-that the variable "changes without us touching it":
+يمكن أن يكون تغيير القيمة هذا مفاجئًا في بعض الأحيان ،
+لأن متغيرات متعددة يمكن أن يكون لها نفس القيمة.
+لأن القيمة نفسها تتغير ، قد يبدو الأمر
+أن المتغير "يتغير دون أن نلمسه":
 
 ```python
-a = [1, 2, 3] # creates a list 'a'
-b = a         # no new list is created, 'b' just points to 'a'
+a = [1, 2, 3] # creates a list 'a' # إنشاء مصفوفة 'a'
+b = a         # no new list is created, 'b' just points to 'a' # لم يتم إنشاء مصفوفة جديدة ، 'b' يشير فقط إلى 'a'
 
 # the list created in the first row now has two variable names: "a" and "b",
 # but we are still working with just one and the same list:
+# المصفوفة التي تم إنشاؤها في الصف الأول لها الآن اسمان للمتغيرات: "a" و "b" ،
+# لكننا ما زلنا نعمل بمصفوفة واحدة ونفسها فقط:
 
 print(b)
 a.append(4)
 print(b)
 ```
 
-## More ways to edit lists
+## المزيد من طرق تعديل المصفوفات (More ways to edit lists)
 
-Apart from the `append` method that adds
-only one element, there is also the `extend` method,
-which can add more elements.
-The elements to be added here are in the form of a list:
+بصرف النظر عن طريقة `append` التي تضيف
+عنصر واحد فقط ، هناك أيضًا طريقة `extend` ،
+التي يمكن أن تضيف المزيد من العناصر.
+العناصر المراد إضافتها هنا تكون على شكل مصفوفة:
 
 ```python
 more_prime_nr = [23, 29, 31]
@@ -144,10 +146,10 @@ prime_numbers.extend(more_prime_nr)
 print(prime_numbers)
 ```
 
-The `extend` method can work with other
-types of variables - it can work with anything on which
-we can use a `for` loop: For example,
-individual strings, rows of files, or numbers from `range()`.
+يمكن أن تعمل طريقة `extend` مع أخرى
+أنواع المتغيرات - يمكن أن تعمل مع أي شيء
+يمكننا استخدام حلقة `for` عليه: على سبيل المثال ،
+نصوص فردية ، صفوف من الملفات ، أو أرقام من `()range`.
 
 ```python
 listA = []
@@ -156,12 +158,11 @@ listA.extend(range(10))
 print(listA)
 ```
 
-## Changing elements
+## تغيير العناصر (Changing elements)
 
-But enough adding.
-You can change individual elements of lists,
-simply by assigning a value to the element,
-as if it were a variable:
+يمكنك تغيير عناصر فردية من المصفوفات ،
+ببساطة عن طريق تعيين قيمة للعنصر ،
+كما لو كان متغيرًا:
 
 ```python
 numbers = [1, 0, 3, 4]
@@ -169,10 +170,10 @@ numbers[1] = 2
 print(numbers)
 ```
 
-You can also assign new values to a sublist - in this case
-the subset is replaced by the individual values we write.
-Like with `extend`, you can replace the elements with anything 
-that works with `for` loops - list, string, `range()`, etc.
+يمكنك أيضًا تعيين قيم جديدة لمصفوفة فرعية - في هذه الحالة
+يتم استبدال المجموعة الفرعية بالقيم الفردية التي نكتبها.
+كما هو الحال مع `extend` ، يمكنك استبدال العناصر بأي شيء
+يعمل مع حلقات `for` - مصفوفة ، نص ، `()range` ، إلخ.
 
 ```python
 numbers = [1, 2, 3, 4]
@@ -180,11 +181,11 @@ numbers[1:-1] = [6, 5]
 print(numbers)
 ```
 
-## Deleting elements
+## حذف العناصر (Deleting elements)
 
-We can also change the length of the
-list by replacing a sublist with fewer elements,
-or by removing some of the elements completely:
+يمكننا أيضًا تغيير طول
+المصفوفة عن طريق استبدال مصفوفة فرعية بعدد أقل من العناصر ،
+أو عن طريق إزالة بعض العناصر تمامًا:
 
 ```python
 numbers = [1, 2, 3, 4]
@@ -194,10 +195,10 @@ numbers[1:-1] = []
 print(numbers)
 ```
 
-This form of deleting elements is quite obscure,
-therefore we have a special command named `del`.
-It deletes everything that we tell it to - individual
-elements, sublists and even variables!
+هذا الشكل من حذف العناصر غامض إلى حد ما ،
+لذلك لدينا أمر خاص يسمى `del`.
+يحذف كل ما نطلبه منه - فردي
+عناصر ، مصفوفات فرعية وحتى متغيرات!
 
 ```python
 numbers = [1, 2, 3, 4, 5, 6]
@@ -209,11 +210,11 @@ del numbers
 print(numbers)
 ```
 
-Other deleting methods are:
-* `pop`, which removes *and returns* the last element in the list - for example, if
-  I have a list of cards in a deck, `pop` is like "drawing a card".
-* `remove`, which finds the element in the list and removes it,
-* `clear`, which clears the entire list.
+طرق حذف أخرى هي:
+* `pop` ، التي تزيل *وتُرجع* العنصر الأخير في المصفوفة - على سبيل المثال ، إذا
+  لدي مصفوفة بطاقات في مجموعة ، فإن `pop` يشبه "سحب بطاقة".
+* `remove` ، التي تجد العنصر في المصفوفة وتزيله ،
+* `clear` ، التي تمسح المصفوفة بأكملها.
 
 ```python
 numbers = [1, 2, 3, 'abc', 4, 5, 6, 12]
@@ -228,9 +229,9 @@ numbers.clear()
 print(numbers)
 ```
 
-## Sorting
+## الترتيب (Sorting)
 
-And we also have a `sort` method that sorts list elements.
+ولدينا أيضًا طريقة `sort` تقوم بترتيب عناصر المصفوفة.
 
 ```python
 listA = [4, 7, 8, 3, 5, 2, 4, 8, 5]
@@ -238,17 +239,17 @@ listA.sort()
 print(listA)
 ```
 
-In order to be sorted, the elements of the list must be
-*comparable* - we have to be able to use the `<` operator with them.
-A mixed list of numbers and strings cannot be sorted.
-The operator `<` defines how exactly the elements will
-be sorted (e.g., numbers by size; strings according to the special "alphabet"
-where upper case is smaller than lower case, etc.).
+لكي يتم ترتيبها ، يجب أن تكون عناصر المصفوفة
+*قابلة للمقارنة* - يجب أن نكون قادرين على استخدام عامل التشغيل `<` معها.
+لا يمكن ترتيب مصفوفة مختلطة من الأرقام والنصوص.
+يحدد العامل `<` كيف سيتم ترتيب العناصر بالضبط
+(على سبيل المثال ، الأرقام حسب الحجم ؛ النصوص وفقًا لـ "الأبجدية" الخاصة
+حيث تكون الأحرف الكبيرة أصغر من الأحرف الصغيرة ، إلخ).
 
-The `sort` method has a `reverse` argument. 
-If you set it to *True*, it will sort the elements in backwards order.
-The default value is *False*, so if you want the elements to be
-sorted from smaller to larger, you don't have to specify this argument.
+تحتوي طريقة `sort` على قيمة `reverse`.
+إذا قمت بتعيينها إلى *True* ، فسوف تقوم بترتيب العناصر بترتيب عكسي.
+القيمة الافتراضية هي *False* ، لذلك إذا كنت تريد أن تكون العناصر
+مرتبة من الأصغر إلى الأكبر ، فلا يتعين عليك تحديد هذه القيمة.
 
 ```python
 listA = [4, 7, 8, 3, 5, 2, 4, 8, 5]
@@ -256,34 +257,34 @@ listA.sort(reverse=True)
 print(listA)
 ```
 
-## Other methods
+## طرق أخرى (Other methods)
 
-Lots of what we can do with strings, we can also do with lists.
-For example adding and multiplying:
+الكثير مما يمكننا فعله بالنصوص ، يمكننا فعله أيضًا بالمصفوفات.
+على سبيل المثال  الإضافة والضرب  - يمكننا صنع مقطوعة موسيقية كالتالي -:
 
 ```python
 melody = ['C', 'E', 'G'] * 2 + ['E', 'E', 'D', 'E', 'F', 'D'] * 2 + ['E', 'D', 'C']
 print(melody)
 ```
 
-As with strings, the list can be added only to other lists
-- not to a string or to a number.
+كما هو الحال مع النصوص ، لا يمكن إضافة المصفوفة إلا إلى مصفوفات أخرى
+- ليس إلى نص أو إلى رقم.
 
-Other known methods are `len`, `count`, and` index`,
-and the `in` operator.
+الطرق المعروفة الأخرى هي `len` و `count` و `index` ،
+وعامل التشغيل `in`.
 
 ```python
-print(len(melody)) # Length of the list
-print(melody.count('E')) # How many 'E's are in the list?
-print(melodie.index('E')) # Position of the first 'E'
-print('E' in melody) # Is 'E' in the list?
+print(len(melody)) # Length of the list # طول المصفوفة
+print(melody.count('E')) # How many 'E's are in the list? # كم عدد 'E' الموجودة في المصفوفة؟
+print(melody.index('E')) # Position of the first 'E' # موضع أول 'E'
+print('E' in melody) # Is 'E' in the list? # هل 'E' موجودة في المصفوفة؟
 ```
 
-The last three methods work a little bit differently:
-for strings they are work on *substrings*,
-for lists they work on *individual* elements.
-So although our melody contains the elements
-`D` and ` E` next to each other, `DE` is not in the list:
+تعمل الطرق الثلاثة الأخيرة بشكل مختلف قليلاً:
+بالنسبة للنصوص ، فإنها تعمل على *نصوص فرعية* ،
+بالنسبة للمصفوفات ، فإنها تعمل على عناصر *فردية*.
+لذلك على الرغم من أن المقطوعة الموسيقية تحتوي على العناصر
+`D` و `E` بجوار بعضهما البعض ، إلا أن `DE` ليس في المصفوفة:
 
 ```python
 print('DE' in melody)
@@ -291,9 +292,9 @@ print(melody.count('DE'))
 print(melody.index('DE'))
 ```
 
-### Two tasks for practice
+### مهمتان للتمرين (Two tasks for practice)
 
-Write a function that returns a middle element of a list.
+اكتب دالة (function) تُرجع العنصر الأوسط في المصفوفة (list).
 
 {% filter solution%}
 ```python
@@ -307,7 +308,7 @@ print(middle_element(test_list))
 ```
 {% endfilter%}
 
-Write a function which counts how many entries of a list are larger than 10 and smaller than 15:
+اكتب دالة (function) تحسب عدد العناصر في المصفوفة (list) التي تكون أكبر من 10 وأصغر من 15:
 
 {% filter solution%}
 ```python
@@ -323,11 +324,11 @@ print(count_selecter(test_list))
 ```
 {% endfilter%}
 
-## A list as a condition
+## مصفوفة كشرط (A list as a condition)
 
-A list can be used in an `if` (or` while`) statement
-which is true while there is something in that list.
-In other words, `list` is an 'abbreviation' for `len(list) > 0`.
+يمكن استخدام المصفوفة (list) في عبارة `if` (أو `while`)
+التي تكون صحيحة طالما يوجد شيء في تلك المصفوفة.
+بعبارة أخرى ، `list` هي "اختصار" لـ `len(list) > 0`.
 
 ```python
 if list:
@@ -336,19 +337,19 @@ else:
     print ('The list is empty!')
 ```
 
-Strings can be used similarly.
-And even numbers - the condition is *True* if they are not zero.
+يمكن استخدام النصوص (strings) بشكل مماثل.
+وحتى الأرقام - يكون الشرط *True* إذا لم تكن صفرًا.
 
-## Creating lists
+## إنشاء المصفوفات (Creating lists)
 
-Just like the `int` function converts values to
-integers and `str` converts values to strings,
-the `list` function converts values to a list.
-As an argument, we can give it any value,
-which can be processed by a `for` loop.
-A string will turn into a list of characters, a file
-will turn into a list of rows, a `range` will turn 
-into a list of numbers.
+ مثلما تحول الدالة (function) `int`  القيم إلى
+أعداد صحيحة والدالة (function) `str` تحول القيم إلى نصوص ،
+فان الدالة (function) `list` تحول القيم إلى مصفوفة (list).
+يمكننا إعطائها أي قيمة  (argument) ،
+تقبل المعالجة بواسطة حلقة `for`.
+سيتحول النص (string) إلى مصفوفة (list) من الأحرف (characters) ، وسيتحول الملف
+ إلى مصفوفة (list) من الصفوف (rows)، وسيتحول `range`
+إلى مصفوفة (list) من الأرقام.
 
 ```python
 alphabet = list('abcdefghijklmnopqrstuvwxyz')
@@ -357,12 +358,12 @@ print(alphabet)
 print(numbers)
 ```
 
-The `list` function can also create a list from a list.
-It may sound useless, but it isn't - it creates a *new* list that
-is not dependent on the old list.
-It will contain the same elements in the same order,
-but it will not be the same list:
-You can change it independently of the old one.
+يمكن للدالة (function) `list` أيضًا إنشاء مصفوفة (list) من مصفوفة (list).
+قد يبدو الأمر عديم الفائدة ، لكنه ليس كذلك - فهو ينشئ مصفوفة (list) *جديدة*
+غير معتمدة على المصفوفة القديمة.
+ستحتوي على نفس العناصر بنفس الترتيب ،
+لكنها لن تكون نفس المصفوفة:
+يمكنك تغييرها بشكل مستقل عن المصفوفة القديمة.
 
 ```python
 a = [1, 2, 3]
@@ -373,12 +374,12 @@ a.append(4)
 print(b)
 ```
 
-Another way to create lists
-(especially more complex lists) is to first make an empty
-list, and then fill it up using the `append` function.
-For example, if you want a list with numbers that are
-powers of two, pass the numbers into a `for` loop, and 
-for each number, add the appropriate power to the list:
+طريقة أخرى لإنشاء المصفوفات
+(خاصة المصفوفات الأكثر تعقيدًا) هي إنشاء مصفوفة فارغة أولاً ،
+ثم ملؤها باستخدام الدالة (function) `append`.
+على سبيل المثال ، إذا كنت تريد مصفوفة (list) بأرقام هي
+قوى العدد اثنين ، مرر الأرقام إلى حلقة `for` ، و
+لكل رقم ، أضف القوة المناسبة إلى المصفوفة:
 
 ```python
 power_of_two = []
@@ -387,71 +388,72 @@ for number in range (10):
 print(power_of_two)
 ```
 
-If you want a list that represents a deck of cards,
-call `append` for all combinations of color and value.
+إذا كنت تريد مصفوفة (list) تمثل مجموعة من البطاقات ،
+استدعِ `append` لجميع تركيبات اللون والقيمة.
 
 ```python
 deck = []
-for color in '♠', '♥', '♦', '♣': # (Use text names on Windows)
+for color in '♠', '♥', '♦', '♣': # (Use text names on Windows) # (استخدم الأسماء النصية على ويندوز)
     for value in list(range(2, 11)) + ['J', 'Q', 'K', 'A']:
         deck.append(str(value) + color)
 print(deck)
 ```
 
-## Lists and Strings
+## المصفوفات والنصوص (Lists and Strings)
 
-Lists and strings are types of "sequences",
-so it is not surprising that they can be converted
-from one type to another.
-The `list` function creates a list of characters from a string.
-If we want to get a list of words, we use the `split` method on a sentence:
+المصفوفات والنصوص (strings) هما نوعان من "التسلسلات" ،
+لذلك ليس من المستغرب أنه يمكن تحويلهما
+من نوع إلى آخر.
+تنشئ الدالة (function) `list` مصفوفة (list) من الأحرف (characters) من نص (string).
+إذا أردنا الحصول على مصفوفة (list) من الكلمات ، فإننا نستخدم طريقة `split` على جملة:
 
 ```python
 words = 'This sentence is complex, split it into words!'.split()
 print(words)
 ```
 
-The `split` method can also take an argument.
-If we pass it a separator character, the string is "cut" 
-at this given separator, instead of at spaces (and new lines).
-So, when we have some data separated by commas,
-there is nothing easier than using `split` with a comma argument:
+يمكن أن تأخذ طريقة `split` قيمة (argument) أيضًا.
+إذا مررنا لها حرف فاصل (separator character) ، فسيتم "قطع" النص
+عند هذا الفاصل المحدد ، بدلاً من المسافات (والأسطر الجديدة).
+لذلك ، عندما يكون لدينا بعض البيانات مفصولة بفواصل ،
+لا يوجد أسهل من استخدام `split` مع قيمة فاصلة:
 
 ```python
-records = '3A, 8B, 2E, 9D'.split(',')
-print(records)
+records  =  '3A, 8B, 2E, 9D' . split ( ',' )
+print ( records )
 ```
 
-If we want to join a list of strings into
-a single string, we use the method `join`.
-Note that this method is called on the *delimiter* character that we want to use
-between the elements of a list, and as an argument, it takes the list.
+
+إذا أردنا دمج مصفوفة (list) من النصوص (strings) في
+نص (string) واحد ، فإننا نستخدم طريقة (method) `join`.
+لاحظ أن هذه الطريقة (method) يتم استدعاؤها على حرف *الفاصل* (delimiter character) الذي نريد استخدامه
+بين عناصر المصفوفة (list elements) ، وكـ وسيط (argument) ، فإنها تأخذ المصفوفة (list).
 
 ```python
 sentence = ' '.join(words)
 print(sentence)
 ```
 
-## Task
+## مهمة (Task)
 
-Imagine that users enter their names and surnames, and you store them in
-a list for future use, for instance, student records. 
-Not all users are careful when entering their names,
-so the names can appear with incorrectly capitalized letters.
-For example:
+تخيل أن المستخدمين (users) يدخلون أسماءهم وألقابهم ، وتقوم بتخزينها في
+مصفوفة (list) للاستخدام المستقبلي ، على سبيل المثال ، سجلات الطلاب (student records).
+ليس كل المستخدمين (users) حريصين عند إدخال أسمائهم ،
+لذلك يمكن أن تظهر الأسماء بأحرف كبيرة (capitalized letters) بشكل غير صحيح.
+على سبيل المثال:
 
 ```python
 records = ['john doe', 'John Smith', 'Stuart little', 'petr File']
 ```
 
-Your task is:
+مهمتك هي:
 
-* Write a function that selects only those correctly entered entries where
-the first letters of the first name and last name are capitalized.
-* Write a function that selects only the incorrectly entered records.
-* *(Optional)* - Write a function that returns a list with corrected records.
+* اكتب دالة (function) تحدد فقط الإدخالات التي تم إدخالها بشكل صحيح حيث
+الحروف الأولى من الاسم الأول واسم العائلة مكتوبة بأحرف كبيرة.
+* اكتب دالة (function) تحدد فقط السجلات التي تم إدخالها بشكل غير صحيح.
+* *(اختياري (Optional))* - اكتب دالة (function) تُرجع مصفوفة (list) بسجلات مصححة.
 
-The result should look like this:
+يجب أن تبدو النتيجة هكذا:
 
 ```python
 records = ['john doe', 'John Smith', 'Stuart little', 'petr File']
@@ -467,12 +469,12 @@ print(corected_entries) # → ['John Doe', 'John Smith', 'Stuart Little', 'Petr 
 ```
 
 > [note]
-> An easy way to find out if the string is written in lower case,
-> is the `islower()` method, which returns True if the string contains only lower
-> case letters, otherwise it returns False. For example, `'abc'.islower() == True` but
+> طريقة سهلة لمعرفة ما إذا كان النص (string) مكتوبًا بأحرف صغيرة (lower case) ،
+> هي طريقة (method) `()islower`، التي تُرجع True إذا كان النص (string) يحتوي فقط على أحرف صغيرة (lower)
+> ، وإلا فإنها تُرجع False. على سبيل المثال ، `'abc'.islower() == True` ولكن
 > `'aBc'.islower() == False`.
 >
-> The easiest way to convert first letters to upper case is `capitalize()`:
+> أسهل طريقة لتحويل الحروف الأولى إلى أحرف كبيرة هي `capitalize()`:
 > `'abc'.capitalize() == 'Abc'`
 
 {% filter solution%}
@@ -508,12 +510,12 @@ def correct_entries(listA):
 ```
 {% endfilter%}
 
-## Lists and random
+## المصفوفات و (random)
 
-The `random` module contains two functions that can be used with lists.
+تحتوي وحدة (module) `random` على دالتين (functions) يمكن استخدامهما مع المصفوفات (lists).
 
-First, the `shuffle` function shuffles elements - all elements are left in a random order.
-Just like `sort`, `shuffle` does not return anything.
+أولاً ، تقوم الدالة (function) `shuffle` بخلط العناصر - يتم ترك جميع العناصر بترتيب عشوائي (random order).
+تمامًا مثل `sort` ، لا تُرجع `shuffle` أي شيء.
 
 ```python
 import random
@@ -528,8 +530,8 @@ random.shuffle(deck)
 print(deck)
 ```
 
-The second one is the `choice` function that selects a random element from the list.
-Using a list, it's much easier to implement rock/paper/scissors:
+الثانية هي الدالة (function) `choice` التي تختار عنصرًا عشوائيًا (random element) من المصفوفة (list).
+باستخدام مصفوفة (list) ، من الأسهل بكثير تنفيذ لعبة حجر/ورقة/مقص:
 
 ```python
 import random
@@ -537,26 +539,26 @@ possibilities = ['rock', 'scissors', 'paper']
 pc_choice = random.choice(possibilities)
 ```
 
-## Nested lists
+## المصفوفات المتداخلة (Nested lists)
 
-In the beginning of this lesson we said that a list
-can contain any type of value.
-A list can even contain other lists:
+في بداية هذا الدرس قلنا أن المصفوفة (list)
+يمكن أن تحتوي على أي نوع من القيم.
+يمكن أن تحتوي المصفوفة (list) حتى على مصفوفات (lists) أخرى:
 
 ```python
 list_of_lists = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
 
-Such a list behaves as expected - we can choose
-elements (which are, of course, lists):
+تتصرف هذه المصفوفة (list) كما هو متوقع - يمكننا اختيار
+عناصر (elements) (وهي بالطبع مصفوفات (lists)):
 
 ```python
 first_list = list_of_lists[0]
 print(first_list)
 ```
 
-And since elements are themselves lists,
-we can talk about elements like "the first element of the second list":
+وبما أن العناصر (elements) هي نفسها مصفوفات (lists) ،
+يمكننا التحدث عن عناصر مثل "العنصر الأول من المصفوفة الثانية":
 
 ```python
 second_list = list_of_lists[1]
@@ -564,23 +566,23 @@ first_element_of_second_list = second_list[0]
 print(first_element_of_second_list)
 ```
 
-And because `list_of_lists[1]`
-indicates the list, we can take the elements directly from it:
+ولأن `list_of_lists[1]`
+يشير إلى المصفوفة (list) ، يمكننا أخذ العناصر (elements) مباشرة منها:
 
 ```python
 first_element_of_second_list = (list_of_lists[1])[0]
 ```
 
-Or:
+أو:
 
 ```python
 first_element_of_second_list = list_of_lists[1][0]
 ```
 
-This approach is quite useful.
-Same as nested `for` loops
-allowed us to list a table, nested lists
-allow us to store a table.
+هذا النهج مفيد للغاية.
+نفس حلقات `for` المتداخلة (nested `for` loops)
+سمحت لنا بإدراج جدول ، المصفوفات المتداخلة (nested lists)
+تسمح لنا بتخزين جدول.
 
 ```python
 def create_tab(size=11):
@@ -599,12 +601,13 @@ print(multiplication_tab[5][2]) # five times two
 print(multiplication_tab[8][7]) # eight times seven
 
 # List the entire table
+# سرد الجدول بأكمله
 for row in multiplication_tab:
     for number in row:
         print(number, end = '')
     print()
 ```
 
-What can we do with such a stored table? For example,
-you can save the positions of figures on a chessboard, 
-or of the crosses and circles in a *2D* tictactoe.
+ماذا يمكننا أن نفعل بمثل هذا الجدول المخزن؟ على سبيل المثال،
+يمكنك حفظ مواضع القطع على لوحة الشطرنج ،
+أو علامات الإكس والدوائر في لعبة إكس أو *ثنائية الأبعاد* (2D).

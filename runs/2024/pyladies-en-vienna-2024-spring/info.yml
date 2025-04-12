@@ -44,7 +44,7 @@ mentors:
       - mail: mailto:behairiahmed@gmail.com
 
 plan:
-  - title:  تثبيت البرامج (Installations)
+  - title: تثبيت البرامج (Installations)
     slug: install_home
     date: 2024-12-15
     materials:
@@ -60,60 +60,60 @@ plan:
     slug: install
     date: 2024-12-22
     materials:
-    - lesson: beginners-en/introduction2
-    - lesson: beginners-en/cmdline
-    - lesson: beginners-en/first-steps
-    - lesson: beginners-en/lesson-1-homework
-      type: homework
-    - title: تمرين Google colab
-      url: https://drive.google.com/file/d/1vjJpP9_PYsAfh4_e90x-NO4x1bbM5bd2
-      type: cheatsheet
-    - title: مُلخص اختصارات لوحة المفاتيح
-      url: https://drive.google.com/file/d/1Bvnb52oirQDiZ7WI5t4Q8UeCd10-_gpT
-      type: cheatsheet
+      - lesson: beginners-en/introduction2
+      - lesson: beginners-en/cmdline
+      - lesson: beginners-en/first-steps
+      - lesson: beginners-en/lesson-1-homework
+        type: homework
+      - title: تمرين Google colab
+        url: https://drive.google.com/file/d/1vjJpP9_PYsAfh4_e90x-NO4x1bbM5bd2
+        type: cheatsheet
+      - title: مُلخص اختصارات لوحة المفاتيح
+        url: https://drive.google.com/file/d/1Bvnb52oirQDiZ7WI5t4Q8UeCd10-_gpT
+        type: cheatsheet
 
   - title: البرنامج الأول، (Print)
     slug: hello
     date: 2024-12-29
     materials:
-    - lesson: beginners-en/hello-world
-    - lesson: beginners-en/print
-    - lesson: beginners-en/variables
-    - title: Basics cheatsheet
-      url: https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc.pdf
-      type: cheatsheet
-    - title: VS Code Tips and tricks
-      url: https://www.youtube.com/watch?v=fj2tuTIcUys
-      type: cheatsheet
-    - lesson: beginners-en/lesson-2-homework
-      type: homework
+      - lesson: beginners-en/hello-world
+      - lesson: beginners-en/print
+      - lesson: beginners-en/variables
+      - title: Basics cheatsheet
+        url: https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc.pdf
+        type: cheatsheet
+      - title: VS Code Tips and tricks
+        url: https://www.youtube.com/watch?v=fj2tuTIcUys
+        type: cheatsheet
+      - lesson: beginners-en/lesson-2-homework
+        type: homework
 
   - title: الشروط (Conditions)، الدوال (functions) و المكتبات (modules)
     slug: loops
     date: 2025-01-12
     materials:
-    - lesson: beginners-en/comparisons
-    - lesson: beginners-en/and-or
-    - lesson: beginners-en/functions
-    - title: Basics cheatsheet
-      url: https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc.pdf
-      type: cheatsheet
-    - title: Homework
-      url: https://docs.google.com/document/d/1ZX-fsMmQzQBvgHDRM9EuRk4TaetT5kP2fWXV5HuaXZ4
-      type: homework
+      - lesson: beginners-en/comparisons
+      - lesson: beginners-en/and-or
+      - lesson: beginners-en/functions
+      - title: Basics cheatsheet
+        url: https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc.pdf
+        type: cheatsheet
+      - title: Homework
+        url: https://docs.google.com/document/d/1ZX-fsMmQzQBvgHDRM9EuRk4TaetT5kP2fWXV5HuaXZ4
+        type: homework
 
   - title: الحلقات (Loops) , (for و while)
     date: 2025-01-12
     slug: strings
     materials:
-    - lesson: beginners-en/colabturtle
-    - lesson: beginners-en/while
-    - title: If/While cheatsheet
-      url: https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_if_while.pdf
-      type: cheatsheet
-    - title: Homework
-      url: https://docs.google.com/document/d/1lsA28-Np3AyLuR6U-prwGijm5b3vwGWczjCuD0EVDQM/edit
-      type: homework
+      - lesson: beginners-en/colabturtle
+      - lesson: beginners-en/while
+      - title: If/While cheatsheet
+        url: https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_if_while.pdf
+        type: cheatsheet
+      - title: Homework
+        url: https://docs.google.com/document/d/1lsA28-Np3AyLuR6U-prwGijm5b3vwGWczjCuD0EVDQM/edit
+        type: homework
 
   - title: النصوص (Strings) , و الدوال المخصصة (Custom functions)
     date: 2025-02-02
@@ -153,19 +153,18 @@ plan:
       - lesson: beginners-en/tictactoe
         type: homework
 
-# - title: Lists, Tuples
-#   slug: list
-#   date: 2024-04-30
-#   materials:
-#    - lesson: beginners-en/list
-#    - lesson: beginners-en/tuple
-#    - title: Lists cheatsheet
-#      url: https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_lists.pdf
-#      type: cheatsheet
-#    - title: Homework (PDF)
-#      url: https://drive.google.com/file/d/1fF0nl90GcCoaog0vgz4nmKGyspfGsQvS/view
-#      type: homework
-
+  - title: المصفوفات (Lists) والمجموعات (Tuples)
+    slug: list
+    date: 2025-04-13
+    materials:
+      - lesson: beginners-en/list
+      - lesson: beginners-en/tuple
+      - title: Lists cheatsheet
+        url: https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_lists.pdf
+        type: cheatsheet
+      - title: تمارين(Practice exercises)
+        url: https://docs.google.com/document/d/1q5amsiut4H1rCHx17sZ1IMHEO7N7-duUfjEzImgamuQ/edit
+        type: homework
 # - title: Dictionaries
 #   slug: dict
 #   date: 2024-05-07

@@ -1,26 +1,26 @@
-# Tuples
+# المجموعات (Tuples)
 
-Now that we know about lists, let's look at their sibling: the so-called
-*tuples*.
+الآن بعد أن عرفنا عن المصفوفات (lists)، دعنا نلقي نظرة على شقيقتها: ما يسمى بـ
+*المجموعات*.
 
-Tuples, just like lists, can contain <var>n</var> elements.
-A Tuple with two elements is a *pair*; with three
-elements it's a *3-tuple* and with four elements
-it's a *4-tuple*, etc.
+يمكن أن تحتوي المجموعات (tuples)، تمامًا مثل المصفوفات (lists)، على عدد <var>n</var> من العناصر.
+المجموعة (Tuple) التي تحتوي على عنصرين هي *زوج* (pair)؛ مع ثلاثة
+عناصر يسمى *ثلاثي* (3-tuple) ومع أربعة عناصر
+يسمى *رباعي* (4-tuple)، إلخ.
 
-> [note]
-> There are tuples with one element
-> and with null elements (*empty tuple*),
-> but we will not deal with them at the beginning.
+>[note]
+> هناك مجموعات (tuples) بعنصر واحد
+> وبلا عناصر (*مجموعة فارغة* - empty tuple)،
+> لكننا لن نتعامل معها في البداية.
 
-Tuples are created as lists, they do not have square brackets around them.
-Just the commas between the elements are enough.
+يتم إنشاء المجموعات (tuples) مثل المصفوفات (lists)، ولكنها لا تحتوي على أقواس مربعة حولها.
+فقط الفواصل بين العناصر كافية.
 
-They behave almost like lists, but they cannot change.
-They don't have methods like `append`
-and `pop`, and cannot be assigned to elements.
-But they can be used in `for` loops
-and they can read individual elements.
+تتصرف المجموعات (tuples) تقريبًا مثل المصفوفات (lists)، لكن لا يمكن تغييرها.
+ليس لديها طرق (methods) مثل `append`
+و `pop`، ولا يمكن تعيين قيم للعناصر.
+لكن يمكن استخدامها في حلقات `for`
+ويمكنها قراءة العناصر الفردية.
 
 ```python
 people = 'mom', 'aunt', 'grandmother'
@@ -29,16 +29,16 @@ for person in people:
 print('First is {}'.format(people[0]))
 ```
 
-> [note]
-> Does this look familiar?
-> We have already used tuples in
+>[note]
+> هل يبدو هذا مألوفًا؟
+> لقد استخدمنا المجموعات (tuples) بالفعل في
 > `for greeting in 'Ahoj', 'Hello', 'Hola', 'Hei', 'SYN'`
 
 
-If you want to pass a tuple to a function, there will be a problem 
-that a comma separates the individual arguments.
-In similar cases, you have to encapsulate the tuple into
-brackets to make it clear that it is one value.
+إذا كنت تريد تمرير مجموعة (tuple) إلى دالة (function)، فستكون هناك مشكلة
+حيث تفصل الفاصلة بين الوسائط الفردية.
+في حالات مماثلة، عليك تغليف المجموعة (tuple) بأقواس
+لتوضيح أنه قيمة واحدة.
 
 ```python
 list_of_pairs = []
@@ -48,52 +48,52 @@ for i in range(10):
 print(list_of_pairs)
 ```
 
-Tuples are useful if you want to return 
-more than one value from the function.
-You simply declare the return values with a comma between them.
-It looks like you're returning a few values, but
-in fact, only one tuple is returned.
+تكون المجموعات (tuples) مفيدة إذا كنت تريد إرجاع
+أكثر من قيمة واحدة من الدالة (function).
+ما عليك سوى الإعلان عن قيم الإرجاع بفصلها بفواصل.
+يبدو الأمر وكأنك تُرجع عدة قيم، لكن
+في الواقع، يتم إرجاع مجموعة (tuple) واحدة فقط.
 
 ```python
 def floor_and_remainder(a, b):
     return a//b, a%b
 ```
 
-> [note]
-> Such a floor_and_remainder function already exists 
-> in Python: it's called `divmod` and it's always 
-> available (you don't have to import it).
+>[note]
+> دالة (function) `floor_and_remainder` كهذه موجودة بالفعل
+> في بايثون: تسمى `divmod` وهي دائمًا
+> متاحة (ليس عليك استيرادها).
 
-Python can do another trick: if you want to assign values
-into several variables at once, you can just separate the variables 
-(the left side) by a comma, and the right side can be some 
-"compound" value - for example a tuple.
+يمكن لبايثون أن تقوم بحيلة أخرى: إذا كنت تريد تعيين قيم
+في عدة متغيرات في وقت واحد، يمكنك فقط فصل المتغيرات
+(الجانب الأيسر) بفاصلة، ويمكن أن يكون الجانب الأيمن بعض
+قيمة "مركبة" - على سبيل المثال مجموعة (tuple).
 
 ```python
 floor_number, remainder = floor_and_remainder(12, 5)
 ```
 
-A tuple is the best for this purpose, but
-it works with all the values ​​that can be used with a `for` loop:
+المجموعة (tuple) هي الأفضل لهذا الغرض، لكن
+إنه يعمل مع جميع القيم التي يمكن استخدامها مع حلقة `for`:
 
 ```python
 x, o = 'xo'
 one, two, three = [1, 2, 3]
 ```
 
-## Functions returning tuples
+## الدوال التي تُرجع مجموعات (Functions returning tuples)
 
-`zip` is an interesting function.
-It is used in `for` loops, just like the `range` function that returns numbers.
+`zip` هي دالة (function) مثيرة للاهتمام.
+يتم استخدامه في حلقات `for`، تمامًا مثل الدالة (function) `range` التي تُرجع أرقامًا.
 
-When `zip` gets two lists (or other values that can be used in a `for` loop),
-it returns pairs -- the first element of the first list is paired with
-the first element of the second list,
-then the second element with the second, the third element with the third and so on.
+عندما تحصل `zip` على مصفوفات (lists) (أو قيم أخرى يمكن استخدامها في حلقة `for`)،
+فإنها تُرجع أزواجًا (pairs) - يتم إقران العنصر الأول من المصفوفة الأولى بـ
+العنصر الأول من المصفوفة الثانية،
+ثم العنصر الثاني مع الثاني، والعنصر الثالث مع الثالث وهكذا.
 
-It is useful when you have two lists with the same
-structure - the relevant elements "belong" together
-and you want to process them together:
+يكون مفيدًا عندما يكون لديك مصفوفات (lists) بنفس
+الهيكل - العناصر ذات الصلة "تنتمي" معًا
+وتريد معالجتها معًا:
 
 ```python
 people = 'mom', 'aunt', 'grandmother', 'assassin'
@@ -102,13 +102,13 @@ for person, property in zip(people, properties):
     print ('{} is {}'.format(person, property))
 ```
 
-When `zip` gets three lists it will return triplets, and so on.
+عندما تحصل `zip` على ثلاث مصفوفات (lists)، فإنها ستُرجع ثلاثيات (triplets)، وهكذا.
 
-The other function that returns pairs is `enumerate`.
-As an argument, it takes a list (or other values that can be used in a `for` loop)
-and it pairs up the element's index (its order in the list) with the respective element.
-So the first element will be (0, *first element of the given list*), then
-(1, *second element*), (2, *third element*) and so on.
+الدالة (function) الأخرى التي تُرجع أزواجًا (pairs) هي `enumerate`.
+كـ قيمة (argument)، تأخذ مصفوفة (list) (أو قيم أخرى يمكن استخدامها في حلقة `for`)
+وتقوم بإقران فهرس العنصر (ترتيبه في المصفوفة) مع العنصر المقابل.
+لذا سيكون العنصر الأول هو (0، *العنصر الأول من المصفوفة المعطاة*)، ثم
+(1، *العنصر الثاني*)، (2، *العنصر الثالث*) وهكذا.
 
 ```python
 prime_numbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
@@ -117,9 +117,9 @@ for i, prime_number in enumerate(prime_numbers):
     print('Prime number on position {} is {}'.format(i, prime_number))
 ```
 
-## Small tuples
+## مجموعات صغيرة (Small tuples)
 
-How to create a tuple with no or one element? Like this:
+كيفية إنشاء مجموعة (tuple) بدون عنصر أو بعنصر واحد؟ هكذا:
 
 ```python
 empty_tuple = ()
@@ -127,38 +127,38 @@ one_elem_tuple = ('a',)
 ```
 
 
-The second example works also without brackets - `one_el_tuple = 'a',`
-but it looks like a forgotten comma.
-When you *really* need a single-element tuple, 
-you should better encapsulate it for clarity.
+يعمل المثال الثاني أيضًا بدون أقواس - `one_eleem_tuple = 'a' ,`
+لكنه يبدو وكأنه فاصلة منسية.
+عندما تحتاج *حقًا* إلى مجموعة (tuple) بعنصر واحد،
+يجب عليك تغليفها بشكل أفضل للتوضيح.
 
 
-## When to use the list and when the tuple?
+## متى نستخدم المصفوفة ومتى نستخدم المجموعة؟ (When to use the list and when the tuple?)
 
-Lists are used when you do not know in advance
-how many values you will have,
-or when there are a lot of values.
-For example, a list of words in a sentence,
-a list of contest participants, a list of moves in a game,
-or a list of cards in a deck.
-In contrast, in `for greeting in 'Ahoj', 'Hello', 'Hola', 'Hei', 'SYN'`
-we are using a tuple.
+تُستخدم المصفوفات (lists) عندما لا تعرف مسبقًا
+كم عدد القيم التي ستكون لديك،
+أو عندما يكون هناك الكثير من القيم.
+على سبيل المثال، مصفوفة (list) بالكلمات في جملة،
+مصفوفة (list) بالمشاركين في مسابقة، مصفوفة (list) بالحركات في لعبة،
+أو مصفوفة (list) بالبطاقات في مجموعة.
+على النقيض من ذلك، في `for greeting in 'Ahoj', 'Hello', 'Hola', 'Hei', 'SYN'`
+نحن نستخدم مجموعة (tuple).
 
-Tuples are often used for values
-of different types where each "position"
-inside the tuple has a different meaning.
-For example, you can use a list for the letters of the alphabet,
-but for pairs of index-value from `enumerate`, you'd use a tuple.
+غالبًا ما تُستخدم المجموعات (tuples) للقيم
+من أنواع مختلفة حيث لكل "موضع"
+داخل المجموعة معنى مختلف.
+على سبيل المثال، يمكنك استخدام مصفوفة (list) لأحرف الأبجدية،
+ولكن لأزواج الفهرس والقيمة من `enumerate`، ستستخدم مجموعة (tuple).
 
-The empty tuple and one-element tuple are a little strange, but they exist:
-For example, the list of playing cards in your hand, or the
-list of people currently enrolled in the competition
-may occasionally be empty.
+المجموعة الفارغة (empty tuple) والمجموعة ذات العنصر الواحد (one-element tuple) غريبان بعض الشيء، لكنهما موجودان:
+على سبيل المثال، مصفوفة (list) أوراق اللعب في يدك، أو
+مصفوفة (list) الأشخاص المسجلين حاليًا في المسابقة
+قد تكون فارغة في بعض الأحيان.
 
-Lists and tuples also have technical limits:
-Tuples cannot be changed, and when we will learn how to work with dictionaries,
-we will find that lists cannot be used as dictionary keys.
+للمصفوفات (lists) والمجموعات (tuples) أيضًا حدود فنية:
+لا يمكن تغيير المجموعات (tuples)، وعندما نتعلم كيفية العمل مع القواميس (dictionaries)،
+سنجد أنه لا يمكن استخدام المصفوفات (lists) كمفاتيح للقواميس(dictionaries).
 
-Often, it is not entirely obvious which type to use
--- in that case, it probably doesn't really matter.
-Follow your instinct. :)
+في كثير من الأحيان، ليس من الواضح تمامًا أي نوع يجب استخدامه
+-- في هذه الحالة، ربما لا يهم حقًا.
+اتبع حدسك. :)
