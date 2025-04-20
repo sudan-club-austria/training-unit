@@ -3,14 +3,12 @@
 نوع بيانات أساسي آخر سنقدمه هو *القاموس*، أو باختصار، `dict`.
 
 القاموس هو هيكل بيانات يتكون من أزواج متعددة من *مفتاح/قيمة*،
-يربط *المفاتيح* بقيمها المقابلة.
-
-غرضه الرئيسي هو العثور بسرعة وكفاءة على قيمة لمفتاح معين.
+يربط *المفاتيح* بقيمها المقابلة. غرضه الرئيسي هو العثور بسرعة وكفاءة على قيمة لمفتاح معين.
 
 تفرض بايثون قيودًا على ما يمكن أن تكون عليه *مفاتيح* القاموس.
 يجب ألا تتكرر المفاتيح (لا يمكن لمفتاح واحد أن يرتبط بقيمتين مختلفتين)
 ويجب ألا تكون قابلة للتغيير (القيم *القابلة للتعديل*، مثل القوائم والقواميس
-غير مسموح بها بالتالي). مفاتيح السلاسل النصية هي الأكثر شيوعًا، على الرغم من استخدام أنواع أخرى مثل الأرقام والمجموعات أيضًا.
+لذلك غير مسموح بها). مفاتيح السلاسل النصية هي الأكثر شيوعًا، على الرغم من استخدام أنواع أخرى مثل الأرقام والمجموعات أيضًا.
 
 يمكن أن تكون *القيم* المستهدفة، كما في حالة، على سبيل المثال، القوائم، أي شيء
 يمكن تعيينه لمتغير. يمكن أن تتكرر القيم ويمكن أن تشير مفاتيح متعددة إلى نفس القيمة.
@@ -27,23 +25,22 @@
 يتم فصل أزواج المفتاح/القيمة بفواصل `,`.
 
 > [note]
-> **Are dictionaries ordered?**
-> As of [Python 3.7](https://docs.python.org/3/whatsnew/3.7.html)
-> officially (effectively
-> [already from Python 3.6](https://docs.python.org/3/whatsnew/3.6.html#new-dict-implementation))
-> dictionaries are guaranteed to preserve order in which their key/value pairs
-> are inserted. Before, the ordering was not guaranteed, as it can be still
-> found mentioned in older text books.
+> **هل القواميس مرتبة؟**
+> ابتداءً من [Python 3.7](https://docs.python.org/3/whatsnew/3.7.html)
+> رسميًا (وعمليًا منذ
+> [Python 3.6](https://docs.python.org/3/whatsnew/3.6.html#new-dict-implementation))
+> أصبحت القواميس تضمن الحفاظ على ترتيب أزواج المفتاح/القيمة بحسب ترتيب إدخالها.  
+> قبل ذلك، لم يكن هناك ضمان لترتيب القيم، وهو ما قد تجده مذكورًا في بعض الكتب القديمة.
 
-You can get values from the dictionary similar as
-from lists, but instead of an index, you have to use a key.
+
+يمكنك الحصول على القيم من القاموس بطريقة مشابهة للقوائم، ولكن بدلاً من استخدام الفهرس، عليك استخدام المفتاح.
 
 ```pycon
 >>> me['name']
 'Marketa'
 ```
 
-If you try to access a non-existent key, Python won't like it:
+إذا حاولت الوصول إلى مفتاح غير موجود، بايثون لن تقبل بذلك:
 
 ```pycon
 >>> me['age']
@@ -52,7 +49,7 @@ Traceback (most recent call last):
 KeyError: 'age'
 ```
 
-You can change the values of keys:
+يمكنك تغيير قيم المفاتيح:
 
 ```pycon
 >>> me['numbers'] = [20, 8, 42]
@@ -60,7 +57,7 @@ You can change the values of keys:
 {'name': 'Marketa', 'city': 'Prague', 'numbers': [20, 8, 42]}
 ```
 
-... or add keys and values:
+... أو إضافة مفاتيح وقيم:
 
 ```pycon
 >>> me['language'] = 'Python'
@@ -68,7 +65,7 @@ You can change the values of keys:
 {'name': 'Marketa', 'city': 'Prague', 'numbers': [20, 8, 42], 'language': 'Python'}
 ```
 
-... or delete keys and values using the `del` command (also the same as for lists):
+... أو حذف مفاتيح وقيم باستخدام الأمر `del` (نفس الأمر المستخدم للقوائم):
 
 ```pycon
 >>> del me['numbers']
@@ -76,10 +73,9 @@ You can change the values of keys:
 {'name': 'Marketa', 'city': 'Prague', 'language': 'Python'}
 ```
 
-Dictionaries in Python have a couple of useful methods which are good to know.
+تحتوي القواميس في بايثون على عدد من الطرق المفيدة التي يجدر معرفتها.
 
-One of them is the `get` method which allows you to get a value for a key
-when the key exists or return a default value when it does not exist:
+إحدى هذه الطرق هي طريقة `get` التي تسمح لك بالحصول على قيمة لمفتاح عندما يكون المفتاح موجودًا أو إرجاع قيمة افتراضية عندما لا يكون موجودًا:
 
 ```pycon
 >>> record.get('name') # key exits and value is returned
@@ -89,9 +85,7 @@ when the key exists or return a default value when it does not exist:
 'n/a'
 ```
 
-Other useful method is `pop`, removing a key from the dictionary and
-returning its value. `pop` throws an error in case of a missing
-value, unless a default value is provided:
+طريقة أخرى مفيدة هي `pop`، والتي تزيل مفتاحًا من القاموس وتعيد قيمته. تُطلق `pop` خطأً في حالة عدم وجود قيمة، إلا إذا تم توفير قيمة افتراضية.:
 
 ```pycon
 >>> record.pop('name') # 'name' is removed from dictionary
@@ -107,8 +101,7 @@ KeyError: 'name'
 >>> record.pop('name', 'n/a') # 'n/a' is returned
 ```
 
-The `update` method updates a dictionary from another one (rewrites existing
-and adds new keys):
+تقوم طريقة `update` بتحديث قاموس من قاموس آخر (تعيد كتابة الموجود وتضيف مفاتيح جديدة):
 
 ```pycon
 >>> record
