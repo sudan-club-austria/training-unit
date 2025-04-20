@@ -1,33 +1,30 @@
-# Dictionaries
+# القواميس
 
-Another basic data type which we will introduce is the
-*dictionary*, or short, `dict`.
+نوع بيانات أساسي آخر سنقدمه هو *القاموس*، أو باختصار، `dict`.
 
-Dictionary is a data structure consisting of multiple *key/value* pairs,
-mapping *keys* to their corresponding *values*.
+القاموس هو هيكل بيانات يتكون من أزواج متعددة من *مفتاح/قيمة*،
+يربط *المفاتيح* بقيمها المقابلة.
 
-Its main purpose is to find quickly and efficiently a value for a given key.
+غرضه الرئيسي هو العثور بسرعة وكفاءة على قيمة لمفتاح معين.
 
-Python constraints what dictionary *keys* can be.
-The keys must not repeat (one key cannot map to two different values)
-and must not be changeable (*mutable* values, such as lists and dictionaries
-are therefore not allowed). Strings keys are the most common, though other
-types such as numbers and tuples are also used.
+تفرض بايثون قيودًا على ما يمكن أن تكون عليه *مفاتيح* القاموس.
+يجب ألا تتكرر المفاتيح (لا يمكن لمفتاح واحد أن يرتبط بقيمتين مختلفتين)
+ويجب ألا تكون قابلة للتغيير (القيم *القابلة للتعديل*، مثل القوائم والقواميس
+غير مسموح بها بالتالي). مفاتيح السلاسل النصية هي الأكثر شيوعًا، على الرغم من استخدام أنواع أخرى مثل الأرقام والمجموعات أيضًا.
 
-The target *values*, as in the case of, e.g., lists, can by anything
-which can be assigned to a variable. The values can repeat and multiple
-keys can point to the same value.
+يمكن أن تكون *القيم* المستهدفة، كما في حالة، على سبيل المثال، القوائم، أي شيء
+يمكن تعيينه لمتغير. يمكن أن تتكرر القيم ويمكن أن تشير مفاتيح متعددة إلى نفس القيمة.
 
 ![a dictionary](static/dict.png)
 
-There is a dictionary with 3 keys, and each one of them has a value:
+يوجد قاموس بثلاثة مفاتيح، ولكل منها قيمة:
 
 ```pycon
 >>> me = {'name': 'Marketa', 'city': 'Prague', 'numbers': [20, 8]}
 ```
 
-Note the curly braces `{}` and the colons `:` between each key and value.
-The key/value pairs are separated by commas `,`.
+لاحظ الأقواس المعقوفة `{}` والنقطتين الرأسيتين `:` بين كل مفتاح وقيمة.
+يتم فصل أزواج المفتاح/القيمة بفواصل `,`.
 
 > [note]
 > **Are dictionaries ordered?**
