@@ -191,9 +191,9 @@ len: length
 ```
 
 > [note]
-> توجد أيضًا طريقة `keys()` التي تُرجع المفاتيح فقط.
+> توجد أيضًا طريقة `()keys` التي تُرجع المفاتيح فقط.
 >
-> تُرجع `keys()` و `values()` و `items()` كائنات خاصة
+> تُرجع `()keys` و `()values` و `()items` كائنات خاصة (objects)
 > يمكن استخدامها في حلقات `for` (نقول أن هذه الكائنات "قابلة للتكرار")،
 > وتتصرف كمجموعة.
 > هذا موصوف جيدًا في [الوثائق](https://docs.python.org/3/library/stdtypes.html#dictionary-view-objects).
@@ -288,7 +288,7 @@ colours = {
 }
 ```
 
-You can fill a new dictionary from one or more existing ones:
+يمكنك ملء قاموس جديد من قاموس واحد أو أكثر من القواميس الموجودة:
 ```python
 new_colours = {
     **colours,          # ** unpacks dictionary into key-value pairs
@@ -298,9 +298,9 @@ new_colours = {
 }
 ```
 
-It is possible to convert a dictionary into *another dictionary*.
-This new dictionary won't be in any way connected to the
-old one.
+من الممكن تحويل قاموس إلى *قاموس آخر*.
+لن يكون هذا القاموس الجديد مرتبطًا بالقاموس
+القديم بأي شكل من الأشكال.
 
 ```python
 colour_riped = dict(colours)
@@ -310,8 +310,8 @@ print(colours['apple'])
 print(colour_riped['apple'])
 ```
 
-We can also convert a sequence of *pairs* (e.g., list of tuples)
-(which work as *key* and *value*) into a dictionary:
+يمكننا أيضًا تحويل تسلسل من *الأزواج* (على سبيل المثال، قائمة من الصفوف)
+(التي تعمل كـ *مفتاح* و *قيمة*) إلى قاموس:
 
 ```pycon
 >>> data = [(1, 'one'), (2, 'two'), (3, 'three')]
@@ -324,17 +324,17 @@ We can also convert a sequence of *pairs* (e.g., list of tuples)
 ```
 
 
-## Dictionaries and function keyword arguments - *args **kwargs
+## القواميس ومعاملات الكلمات المفتاحية للدالة - `*args` `**kwargs`
 
-`*args` and `**kwargs` allow you to pass multiple arguments or keyword arguments to a function.
+يسمح لك `*args` و `**kwargs` بتمرير وسائط متعددة أو وسائط كلمات مفتاحية إلى دالة.
 
-If you do not know how many arguments will be passed into your function, or you do not really care,
-add a `*` before the parameter name in the function definition.
+إذا كنت لا تعرف عدد الوسائط التي سيتم تمريرها إلى الدالة، أو إذا كنت لا تهتم حقًا،
+فأضف `*` قبل اسم المعامل في تعريف الدالة.
 
-`**kwargs` allows us to pass a variable number of keyword arguments to a Python function.
-In the function, we use the double-asterisk before the parameter name to denote this type of argument.
+يسمح لنا `**kwargs` بتمرير عدد متغير من وسائط الكلمات المفتاحية إلى دالة بايثون.
+في الدالة، نستخدم علامة النجمتين المزدوجتين قبل اسم المعامل للدلالة على هذا النوع من الوسائط.
 
-`args` are collected in a function always as tuples, while `kwargs` are collected as dictionaries.
+يتم تجميع `args` في دالة دائمًا كصفوف، بينما يتم تجميع `kwargs` كقواميس.
 
 
 ```pycon
@@ -347,7 +347,7 @@ args: (1, 2, 3)
 kwargs: {'a': 'Hi Bob!', 'b': True}
 ```
 
-Example of real-life usage of `*args` could be for example:
+مثال على الاستخدام الواقعي لـ `*args` يمكن أن يكون على سبيل المثال:
 
 ```pycon
 >>> def my_sum(*args):
@@ -360,9 +360,9 @@ Example of real-life usage of `*args` could be for example:
 6
 ```
 
-## Exercise
+## تمرين
 
-We have this dictionary of computer access information of two users and another lookup table with cities information.
+لدينا هذا القاموس الذي يحتوي على معلومات الوصول إلى الكمبيوتر لمستخدمين اثنين وجدول بحث آخر يحتوي على معلومات المدن.
 ```python
 users = {
   'aeinstein': {
@@ -393,8 +393,8 @@ cities = {
   }
 }
 ```
-Print out following information about each user if they have it:
-Their `'username'`, `'full name'` (first and last with first letter capitalized), `'email'`, `'city'` they live in and `'country'` they live in.
+اطبع المعلومات التالية عن كل مستخدم إذا كانت متوفرة لديه:
+`'اسم المستخدم'`، `'الاسم الكامل'` (الاسم الأول والأخير مع كتابة الحرف الأول كبيرًا)، `'البريد الإلكتروني'`، `'المدينة'` التي يعيش فيها و `'الدولة'` التي يعيش فيها.
 
 {% filter solution %}
 ```python
@@ -421,12 +421,12 @@ for username, properties in users.items():
 {% endfilter %}
 
 
-## And that's all for now
+## وهذا كل شيء الآن
 
-If you would like to know all the tricks
-about dictionaries you can look at the [cheatsheet](https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_dictionaries.pdf).
+إذا كنت ترغب في معرفة جميع الحيل
+حول القواميس، يمكنك إلقاء نظرة على [ورقة الغش](https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_dictionaries.pdf).
 
-If you want to demystify the `*args` and `**kwargs` and learn more than we could fit in the lecture, have a look [here](https://realpython.com/python-kwargs-and-args/).
+إذا كنت ترغب في إزالة الغموض عن `*args` و `**kwargs` وتعلم المزيد مما يمكننا تضمينه في المحاضرة، فألق نظرة [هنا](https://realpython.com/python-kwargs-and-args/).
 
-A complete description can be found here in the
-Python [documentation](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict).
+يمكن العثور على وصف كامل هنا في
+[وثائق](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict) بايثون.
