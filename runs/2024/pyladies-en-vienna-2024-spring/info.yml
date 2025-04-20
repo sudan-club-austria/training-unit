@@ -165,18 +165,18 @@ plan:
       - title: تمارين(Practice exercises)
         url: https://docs.google.com/document/d/1q5amsiut4H1rCHx17sZ1IMHEO7N7-duUfjEzImgamuQ/edit
         type: homework
-# - title: Dictionaries
-#   slug: dict
-#   date: 2024-05-07
-#   materials:
-#    - lesson: beginners-en/dict
-#    - lesson: beginners-en/tuple
-#    - title: Homework (PDF)
-#      url: https://drive.google.com/file/d/1sJhOmCTC1wspG6um4KRNJvtpUib3L2x7/view
-#      type: homework
-#    - title: Dictionaries cheatsheet
-#      url: https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_dictionaries.pdf
-#      type: cheatsheet
+
+  - title: القواميس (Dictionaries)
+    slug: dict
+    date: 2024-04-20
+    materials:
+     - lesson: beginners-en/dict
+     - title: Homework (PDF)
+       url: https://drive.google.com/file/d/1sJhOmCTC1wspG6um4KRNJvtpUib3L2x7/view
+       type: homework
+     - title: Dictionaries cheatsheet
+       url: https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_dictionaries.pdf
+       type: cheatsheet
 
 # - title: Recap session
 #   slug: recap1
