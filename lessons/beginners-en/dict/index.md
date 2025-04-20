@@ -85,7 +85,7 @@ KeyError: 'age'
 'n/a'
 ```
 
-طريقة أخرى مفيدة هي `pop`، والتي تزيل مفتاحًا من القاموس وتعيد قيمته. تُطلق `pop` خطأً في حالة عدم وجود قيمة، إلا إذا تم توفير قيمة افتراضية.:
+طريقة أخرى مفيدة هي `pop`، والتي تزيل مفتاحًا من القاموس وتعيد قيمته. يُنتج `pop` خطأً في حالة عدم وجود قيمة، إلا إذا تم توفير قيمة افتراضية:
 
 ```pycon
 >>> record.pop('name') # 'name' is removed from dictionary
@@ -115,15 +115,15 @@ KeyError: 'name'
 
 ```
 
-## Lookup table
+## جدول البحث
 
-A use of dictionaries other than data clustering is the
-so-called *lookup table*.
-It stores values of same type.
+أحد استخدامات القواميس بخلاف تجميع البيانات هو ما يسمى بـ
+*جدول البحث*.
+يخزن قيمًا من نفس النوع.
 
-This is useful for example with phone book.
-For every name there is one phone number.
-Other examples are dictionaries with properties of food, or word translations.
+هذا مفيد على سبيل المثال مع دليل الهاتف.
+لكل اسم يوجد رقم هاتف واحد.
+أمثلة أخرى هي قواميس تحتوي على خصائص الطعام، أو ترجمات الكلمات.
 
 
 ```python
@@ -147,7 +147,7 @@ colours = {
 }
 ```
 
-Update Lubo's number to be the same as Fabian's as they now temporarily share phones.
+قم بتحديث رقم لوبو ليكون مطابقًا لرقم فابيان حيث أنهما يتشاركان الهواتف مؤقتًا الآن.
 
 {% filter solution %}
 ```python
@@ -156,9 +156,9 @@ print(phones)
 ```
 {% endfilter %}
 
-## Iteration
+## التكرار (Iteration)
 
-When you loop over a dictionary using `for`, you will get only keys:
+عند المرور عبر قاموس باستخدام `for`، ستحصل على المفاتيح فقط:
 
 ```pycon
 >>> func_descript = {'len': 'length', 'str': 'string', 'dict': 'dictionary'}
@@ -169,7 +169,7 @@ dict
 len
 ```
 
-If you want to access the values, you will have to use the method `values`:
+إذا كنت ترغب في الوصول إلى القيم، فسيتعين عليك استخدام طريقة `values`:
 
 ```pycon
 >>> for value in func_descript.values():
@@ -179,8 +179,8 @@ dictionary
 length
 ```
 
-But in most cases, you will need both -- keys and values.
-For this purpose, dictionaries have the method `items`.
+ولكن في معظم الحالات، ستحتاج إلى كليهما - المفاتيح والقيم.
+لهذا الغرض، تحتوي القواميس على طريقة `items`.
 
 ```pycon
 >>> for key, value in func_descript.items():
@@ -191,14 +191,14 @@ len: length
 ```
 
 > [note]
-> There is also the method `keys()` which returns just keys.
+> توجد أيضًا طريقة `keys()` التي تُرجع المفاتيح فقط.
 >
-> `keys()`, `values()` and `items()` return special objects
-> which can be used in `for` loops (we say that those objects are "iterable"),
-> and they behave as a set.
-> This is well described in the [documentation](https://docs.python.org/3/library/stdtypes.html#dictionary-view-objects)
+> تُرجع `keys()` و `values()` و `items()` كائنات خاصة
+> يمكن استخدامها في حلقات `for` (نقول أن هذه الكائنات "قابلة للتكرار")،
+> وتتصرف كمجموعة.
+> هذا موصوف جيدًا في [الوثائق](https://docs.python.org/3/library/stdtypes.html#dictionary-view-objects).
 
-In a `for` loop, you can't add keys to a dictionary nor delete them:
+في حلقة `for`، لا يمكنك إضافة مفاتيح إلى قاموس ولا حذفها:
 
 ```pycon
 >>> for key, value in func_descript.items():
@@ -214,8 +214,7 @@ Traceback (most recent call last):
 RuntimeError: dictionary changed size during iteration
 ```
 
-This limitation can be easily overcome by using a list copy
-of the iterator:
+يمكن التغلب على هذا القيد بسهولة عن طريق استخدام نسخة من عنصر التكرار:
 
 ```pycon
 >>> for key, value in list(func_descript.items()):
@@ -229,9 +228,9 @@ of the iterator:
 {}
 ```
 
-However, you can change values for already existing keys.
+ومع ذلك، يمكنك تغيير قيم المفاتيح الموجودة بالفعل.
 
-Update the `phones` dictionary so that all numbers contain a '+43' prefix.
+قم بتحديث قاموس `phones` بحيث تحتوي جميع الأرقام على '+43'.
 
 {% filter solution %}
 ```python
@@ -242,7 +241,7 @@ print(phones)
 {% endfilter %}
 
 
-Using a `for` loop, ensure that following `keys_to_delete` are deleted from the dictionary `phones`.
+باستخدام حلقة `for`، تأكد من حذف `keys_to_delete` التالية من قاموس `phones`..
 
 ```python
 keys_to_delete = ['Lubo', 'Tyna', 'Oliwia']
@@ -259,13 +258,13 @@ print(phones)
 {% endfilter %}
 
 
-## How to create a dictionary
+## كيفية إنشاء قاموس
 
-Dictionaries can be created in two ways.
-The first way uses curly brackets `{}`.
-The other way is by using the keyword `dict`.
-This works similar to `str`, `int` or `list`, so it will
-convert some specific objects to a dictionary.
+يمكن إنشاء القواميس بطريقتين.
+تستخدم الطريقة الأولى الأقواس المعقوفة `{}`.
+الطريقة الأخرى هي باستخدام الكلمة الأساسية `dict`.
+يعمل هذا بشكل مشابه لـ `str` أو `int` أو `list`، لذا سيقوم
+بتحويل بعض الكائنات المحددة إلى قاموس.
 
 ```pycon
 >>> {}  # empty dictionary
