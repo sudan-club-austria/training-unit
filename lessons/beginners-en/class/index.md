@@ -1,39 +1,39 @@
-# Objects and values
+# الكائنات والقيم (Objects and values)
 
-Before we start with classes, we will learn about objects.
+قبل أن نبدأ مع الفئات (classes)، سنتعلم عن الكائنات (objects).
 
-What does *object* mean for programmers?
+ماذا يعني *كائن* (object) للمبرمجين؟
 
-It's actually easy with Python - every value (that's something you can "store"
-into a variable) is an object.
-Some programming languages (e.g. JavaScript, C++, Java) also have 
-values other than objects. And for example C doesn't have objects at all.
-But in Python there is no difference between value and object, so
-it's a little bit difficult to understand. On the other hand, you don't have
-to know the details.
+الأمر سهل بالفعل مع بايثون - كل قيمة (value) (هذا شيء يمكنك "تخزينه"
+في متغير (variable)) هو كائن (object).
+بعض لغات البرمجة (programming languages) (مثل JavaScript و C++‎ و Java) لديها أيضًا
+قيم (values) أخرى غير الكائنات (objects). وعلى سبيل المثال، لغة C ليس لديها كائنات (objects) على الإطلاق.
+ولكن في بايثون لا يوجد فرق بين القيمة (value) والكائن (object)، لذا
+من الصعب بعض الشيء فهم ذلك. من ناحية أخرى، ليس عليك
+معرفة التفاصيل.
 
-The basic attribute of objects is that they contain data (information) and *behaviour* -
-instructions and/or methods how to work with data.
-For example, strings contain information (a sequence of characters) as well as
-useful methods such as `upper` and `count`.
-If strings were not objects, Python would have to have a lot more
-functions, such as `str_upper` and `str_count`.
-Objects connect data and functionality together.
+السمة الأساسية للكائنات (objects) هي أنها تحتوي على بيانات (data) (معلومات) و *سلوك* (behaviour) -
+تعليمات و/أو طرق (methods) لكيفية التعامل مع البيانات.
+على سبيل المثال، تحتوي النصوص (strings) على معلومات (تسلسل من الأحرف) بالإضافة إلى
+طرق (methods) مفيدة مثل `upper` و `count`.
+إذا لم تكن النصوص (strings) كائنات (objects)، لكان على لغة بايثون أن تحتوي على الكثير
+من الدوال (functions)، مثل `str_upper` و `str_count`.
+تربط الكائنات (objects) البيانات والوظائف معًا.
 
 
 > [note]
-> You will maybe say that, for example, `len` is a function, and you will be correct.
-> Python is not 100% an object oriented language.
-> But the function `len` also works on objects which do not have anything in common with strings.
+> ربما تقول أن، على سبيل المثال، `len` هي دالة (function)، وستكون على حق.
+> بايثون ليست لغة موجهة للكائنات (object oriented language) بنسبة 100٪.
+> لكن الدالة (function) `len` تعمل أيضًا على كائنات (objects) ليس لها أي شيء مشترك مع النصوص (strings).
 
 
-# Classes
+#  الفئات (Classes)
 
-The data of each object is specific for each concrete object
-(e.g. `"abc"` contains different characters than `"def"`),
-but the functionality - the methods - are the same for all objects of the same 
-type (class). For example, the string method `count()` could be
-written like this:
+تكون بيانات (data) كل كائن (object) محددة لكل كائن (object) ملموس
+(على سبيل المثال، `"abc"` يحتوي على أحرف مختلفة عن `"def"`)،
+ولكن الوظائف - الطرق (methods) - هي نفسها لجميع الكائنات (objects) من نفس
+النوع (type) (الفئة (class)). على سبيل المثال، يمكن كتابة طريقة نصية (string method) `()count `
+هكذا:
 
 
 ```python
@@ -45,17 +45,17 @@ def count(string, character):
     return sum
 ```
 
-And although a different string will return a different value,
-the method itself is same for all strings.
+وعلى الرغم من أن نصًا (string) مختلفًا سيُرجع قيمة مختلفة،
+فإن الطريقة (method) نفسها هي نفسها لجميع النصوص (strings).
 
-This common behaviour is defined by the *type* or *class* of the object. 
+يتم تعريف هذا السلوك المشترك بواسطة *نوع* (type) أو *فئة* (class) الكائن (object).
 
 
 > [note]
-> In previous versions of Python there was a difference between "type"
-> and "class", but now they are synonyms.
+> في الإصدارات السابقة من بايثون كان هناك فرق بين "النوع" (type)
+> و "الفئة" (class)، لكنهما الآن مترادفان.
 
-You can find out type of an object by using the function `type`:
+يمكنك معرفة نوع (type) كائن (object) باستخدام الدالة (function) `type`:
 
 
 ```pycon
@@ -67,16 +67,15 @@ You can find out type of an object by using the function `type`:
 <class 'str'>
 >>> with open('file.txt') as f:
 ...     type(f)
-... 
+...
 <class '_io.TextIOWrapper'>
 ```
 
-The function `type` returns some classes.
-What is a class? It's a description how every object of the same type
-behaves.
+تُرجع الدالة (function) `type` بعض الفئات (classes).
+ما هي الفئة (class)؟ إنها وصف لكيفية تصرف كل كائن (object) من نفس النوع (type).
 
-Most of the classes in Python are callable as if they were functions. 
-This following code will create an object of the class we called:
+معظم الفئات (classes) في بايثون قابلة للاستدعاء كما لو كانت دوال (functions).
+سيقوم هذا الكود التالي بإنشاء كائن (object) من الفئة (class) الذي استدعيناه:
 
 ```pycon
 >>> string_class = type("abc")
@@ -86,11 +85,11 @@ This following code will create an object of the class we called:
 '[1, 2, 3]'
 ```
 
-So it's behaving as the function `str`! Isn't it strange?
+إذن، إنه يتصرف مثل الدالة (function) `str`! أليس هذا غريبًا؟
 
-Now I have to apologise:
-[materials for functions](../functions/)
-lied a bit. Functions `str`, `int`, `float`, etc., are actually classes.
+الآن يجب أن نعتذر:
+[للدوال](../functions/)
+كذبنا قليلاً. الدوال (functions) `str` و `int` و `float` وما إلى ذلك، هي في الواقع فئات (classes).
 
 ```pycon
 >>> str
@@ -101,22 +100,22 @@ lied a bit. Functions `str`, `int`, `float`, etc., are actually classes.
 True
 ```
 
-But we can call them as if they were functions.
-So classes contain not only the "description" how object of the class
-will behave, but they can also create objects.
+لكن يمكننا استدعائها كما لو كانت دوال (functions).
+لذا لا تحتوي الفئات (classes) فقط على "وصف" لكيفية تصرف كائن (object) من الفئة (class)،
+ولكن يمكنها أيضًا إنشاء كائنات (objects).
 
 
-## Custom classes
+## فئات مخصصة (Custom classes)
 
-Now we will try to create our own class.
+الآن سنحاول إنشاء فئتنا (class) الخاصة.
 
-Writing custom classes is useful when you want to use different objects 
-with similar behaviour in your program.
-For example, a card game could have Card class, a web application could 
-have a User class, and a spreadsheet application could have Row class.
+يكون كتابة فئات مخصصة (custom classes) مفيدًا عندما تريد استخدام كائنات (objects) مختلفة
+بسلوك مماثل في برنامجك.
+على سبيل المثال، يمكن أن تحتوي لعبة بطاقات على فئة Card، ويمكن أن يحتوي تطبيق ويب
+على فئة User، ويمكن أن يحتوي تطبيق جداول بيانات على فئة Row.
 
-Let's write a program that handles animals.
-First, you create a Kittie class which can meow:
+دعنا نكتب برنامجًا يتعامل مع الحيوانات.
+أولاً، تقوم بإنشاء فئة Kittie يمكنه المواء:
 
 
 ```python
@@ -125,48 +124,50 @@ class Kittie:
         print("Meow!")
 ```
 
-Just as a function is defined by the `def` keyword, classes are
-defined by the `class` keyword. Then of course you have to continue with a colon
-and indentation of the class body.
-Similar as `def` creates a function, `class` creates a class and assigns it to the 
-name of the class (in our example to `Kittie`).
+تمامًا كما يتم تعريف الدالة (function) بواسطة الكلمة المفتاحية `def`، يتم تعريف الفئات (classes)
+بواسطة الكلمة المفتاحية `class`. ثم بالطبع عليك المتابعة بنقطتين رأسيتين
+وإزاحة جسم الفئة (class body).
+بشكل مشابه لكيفية إنشاء `def` لدالة (function)، تنشئ `class` فئتاً (class) وتعينها إلى
+اسم الفئة (في مثالنا إلى `Kittie`).
 
-It's a convention that classes are named with an uppercase first letter so they
-are not easily confused with "normal" variables.
+من المتعارف عليه تسمية الفئات (classes) بحرف كبير أول حتى لا
+يتم الخلط بينها وبين المتغيرات "العادية" بسهولة.
 
 
 > [note]
-> Basic classes (`str`, `int`, etc.)
-> don't start with an uppercase letter because of historic
-> reasons – originally they were really functions.
+> الفئات الأساسية (`str` و `int` وما إلى ذلك)
+> لا تبدأ بحرف كبير بسبب تاريخي
+> أسباب - في الأصل كانت دوال (functions) حقًا.
 
-In the class body, you define methods, which looks like functions.
-The difference is that class methods have `self` as the first argument,
-which we will explain later - meowing comes first:
+في جسم الفئة (class body)، تقوم بتعريف طرق (methods)، والتي تبدو مثل الدوال (functions).
+الفرق هو أن طرق الفئة (class methods) لديها `self` كـ وسيط (argument) أول،
+والذي سنشرحه لاحقًا - المواء يأتي أولاً:
 
 ```python
 # Creation of the object
+# إنشاء الكائن
 kittie = Kittie()
 
 # Calling the method
+# استدعاء الطريقة
 kittie.meow()
 ```
 
-In this case you have to be really careful about uppercase letters:
-`Kittie` (with uppercase K) is the class - the description how kitties behave.
-`kittie` (lowercase k) is the object (an *instance*) of the Kittie class:
-a variable that represents a Kittie.
-That object is created by calling the class (same as we
-can create a string by calling `str()`).
+في هذه الحالة، عليك أن تكون حذرًا جدًا بشأن الأحرف الكبيرة:
+`Kittie` (بحرف K كبير) هو الفئة (class) - وصف لكيفية تصرف القطط الصغيرة.
+`kittie` (بحرف k صغير) هو الكائن (object) (مثيل - *instance*) من فئة Kittie:
+متغير (variable) يمثل قطة صغيرة.
+يتم إنشاء هذا الكائن (object) عن طريق استدعاء الفئة (class) (تمامًا كما
+يمكننا إنشاء نص (string) عن طريق استدعاء `()str`).
 
-Meow!
+مواء!
 
-## Attributes 
+## الخصائص (Attributes)
 
-Objects that are created from custom classes have one feature that
-classes like `str` don't allow: The ability to define class *attributes* -
-information that is stored by the instance of the class.
-You can recognise attributes by the period between class instance and the name of its attribute.
+الكائنات (objects) التي يتم إنشاؤها من فئات مخصصة (custom classes) لديها ميزة واحدة
+لا تسمح بها فئات مثل `str`: القدرة على تعريف *خصائص* (attributes) الفئة -
+معلومات يتم تخزينها بواسطة مثيل (instance) الفئة (class).
+يمكنك التعرف على الخصائص (attributes) بواسطة النقطة بين مثيل الفئة (class instance) واسم خاصيته.
 
 
 ```python
@@ -180,15 +181,15 @@ print(smokey.name)
 print(misty.name)
 ```
 
-In the beginning we said that objects are connecting behaviour with data.
-Behaviour is defined in the class, data is stored in attributes.
-We can differentiate Kitties, for example, by their names because of the attributes.
+في البداية قلنا أن الكائنات (objects) تربط السلوك بالبيانات.
+يتم تعريف السلوك في الفئة (class)، ويتم تخزين البيانات في الخصائص (attributes).
+يمكننا التمييز بين القطط الصغيرة، على سبيل المثال، بأسمائها بسبب الخصائص (attributes).
 
 > [note]
-> By using a period after a class object, you can access the class methods 
-> as well as its attributes.
-> What happens if an attribute has the same name as method?
-> Try it!
+> باستخدام نقطة بعد كائن (object) الفئة (class)، يمكنك الوصول إلى طرق (methods) الفئة
+> وكذلك خصائصه (attributes).
+> ماذا يحدث إذا كان لخاصية (attribute) نفس اسم طريقة (method)؟
+> جربها!
 >
 > ```python
 > misty = Kittie()
@@ -196,14 +197,14 @@ We can differentiate Kitties, for example, by their names because of the attribu
 > misty.meow()
 > ```
 
-## Parameter `self`
+## المعامل self  (Parameter self)
 
-Now we will briefly go back to methods, to be specific, we will go back
-to the parameter `self`.
+الآن سنعود بإيجاز إلى الطرق (methods)، وبشكل خاص، سنعود
+إلى المعامل (parameter) `self`.
 
-Each method has access to any specific object that it's working on just because of
-parameter `self`.
-Now after you have named your kitties, you can use the `self` parameter to add the name to meowing.
+لكل طريقة (method) حق الوصول إلى أي كائن (object) محدد تعمل عليه فقط بسبب
+المعامل (parameter) `self`.
+الآن بعد أن سميت قططك الصغيرة، يمكنك استخدام المعامل (parameter) `self` لإضافة الاسم إلى المواء.
 
 
 ```python
@@ -221,21 +222,21 @@ smokey.meow()
 misty.meow()
 ```
 
-What just happened? The command `smokey.meow` called a *method* which when it's called assigns the object
-`smokey` as first argument to the function `meow`.
+ماذا حدث للتو؟ الأمر `smokey.meow` استدعى *طريقة* (method) تقوم عند استدعائها بتعيين الكائن (object)
+`smokey` كـ وسيط (argument) أول للدالة (function) `meow`.
 
 > [note]
-> This is how a *method* is different from a *function*:
-> A method "remembers" the object it is working on.
+> هكذا تختلف *الطريقة* (method) عن *الدالة* (function):
+> تتذكر الطريقة (method) الكائن (object) الذي تعمل عليه.
 
-And that first argument which contains a specific object of the just created class is
-usually called `self`.
-You can of course call it differently, but other programmers will not like you. :)
+وذلك الوسيط (argument) الأول الذي يحتوي على كائن (object) محدد من الفئة (class) الذي تم إنشاؤه للتو يسمى
+عادةً `self`.
+يمكنك بالطبع تسميته بشكل مختلف، لكن المبرمجين الآخرين لن يحبوك. :)
 
-Can such a method take more that one argument?
-It can - in that case, `self` will be substituted as the first argument,
-and the rest of the arguments will be taken from how you called the method.
-For example:
+هل يمكن لمثل هذه الطريقة (method) أن تأخذ أكثر من وسيط (argument) واحد؟
+يمكنها ذلك - في هذه الحالة، سيتم استبدال `self` كـ وسيط (argument) أول،
+وسيتم أخذ بقية الوسائط (arguments) من كيفية استدعائك للطريقة (method).
+على سبيل المثال:
 
 ```python
 class Kittie:
@@ -250,24 +251,24 @@ smokey.name = 'Smokey'
 smokey.eat('fish')
 ```
 
-## Method `__init__`
+## الطريقة `__init__` (Method `__init__`)
 
-There is another place where you can pass arguments to the class:
-when you create a new object (calling the class).
-You can easily solve the problem that you might see in the previous code:
-After the kittie object is created, you must add a name so the method
-`meow` can work.
+هناك مكان آخر يمكنك فيه تمرير وسائط (arguments) إلى الفئة (class):
+عندما تقوم بإنشاء كائن (object) جديد (استدعاء الفئة).
+يمكنك بسهولة حل المشكلة التي قد تراها في الكود السابق:
+بعد إنشاء كائن (object) القطة الصغيرة، يجب عليك إضافة اسم حتى تتمكن الطريقة (method)
+`meow` من العمل.
 
-You can also create classes by passing parameters when you are calling it:
+يمكنك أيضًا إنشاء فئات (classes) عن طريق تمرير معاملات (parameters) عند استدعائها:
 
 ```python
 smokey = Kittie(name='Smokey')
 ```
-Python uses the `__init__` method (2 underscores, `init`, 2 underscores) for this option.
-Those underscores indicate that this method name is somehow special. The method `__init__`
-is actually called right when the object is being created, or in other words - when it's
-being initialized (`init` stands for *initialization*).
-So you can write it like this:
+تستخدم بايثون الطريقة `__init__` (تسطيران سفليان، `init`، تسطيران سفليان) لهذا الخيار.
+تشير هذه التسطيرات إلى أن اسم هذه الطريقة (method name) مميز بطريقة ما. الطريقة `__init__`
+يتم استدعاؤها بالفعل مباشرة عند إنشاء الكائن (object)، أو بعبارة أخرى - عند
+تتم تهيئته (`init` تعني *التهيئة* - initialization).
+لذا يمكنك كتابتها هكذا:
 
 ```python
 class Kittie:
@@ -284,11 +285,11 @@ smokey = Kittie('Smokey')
 smokey.meow()
 ```
 
-And now there is no possibility to create a kittie without a name,
-and `meow` will work all the time.
+والآن لا توجد إمكانية لإنشاء قطة صغيرة بدون اسم،
+وستعمل `meow` طوال الوقت.
 
-There are many more methods with underscores, e.g. the `__str__`
-method is called when you need to convert the object into a string:
+هناك العديد من الطرق (methods) الأخرى التي تحتوي على تسطيرات سفلية، على سبيل المثال، `__str__`
+يتم استدعاء الطريقة (method) عندما تحتاج إلى تحويل الكائن (object) إلى نص (string):
 
 ```python
 class Kittie:
@@ -308,17 +309,17 @@ smokey = Kittie('Smokey')
 print(smokey)
 ```
 
-## Exercise: Cat
+## تمرين: قطة (Exercise: Cat)
 
-Now that you know how to create the kittie class, try to make a class for cats.
+الآن بعد أن عرفت كيفية إنشاء فئة القطة الصغيرة، حاول إنشاء فئة للقطط.
 
-- The Cat can meow with the `meow` method.
-- The Cat has 9 lives when she's created (she can't have more than 9 and less than 0 lives). 
-- The Cat can say if she is alive (has more than 0 lives) with the `alive` method.
-- The Cat can lose lives (method `takeoff_life`).
-- The Cat can be fed with the `eat` method that takes exactly 1 argument - a specific food (string).
- If the food is `fish`, the Cat will gain one life (if she is not already dead or
- doesn't have maximum lives).
+* يمكن للقطة أن تموء باستخدام الطريقة `meow`.
+* لدى القطة 9 أرواح عند إنشائها (لا يمكن أن يكون لديها أكثر من 9 وأقل من 0 أرواح).
+* يمكن للقطة أن تقول ما إذا كانت على قيد الحياة (لديها أكثر من 0 أرواح) باستخدام الطريقة `alive`.
+* يمكن للقطة أن تفقد أرواحًا (الطريقة `takeoff_life`).
+* يمكن إطعام القطة باستخدام الطريقة `eat` التي تأخذ وسيطًا واحدًا بالضبط - طعامًا محددًا (نص).
+    إذا كان الطعام `fish`، فستكتسب القطة روحًا واحدة (إذا لم تكن ميتة بالفعل أو
+    ليس لديها الحد الأقصى من الأرواح).
 
 {% filter solution %}
 ```python
@@ -350,6 +351,6 @@ class Cat:
 ```
 {% endfilter %}
 
-And that's now everything about classes.
-[Next time](../inheritance/) we will learn about inheritance.
-And also about doggies. :)
+وهذا كل شيء عن الفئات (classes) الآن.
+[في المرة القادمة](../inheritance/) سنتعلم عن الوراثة (inheritance).
+وعن الكلاب الصغيرة أيضًا. :)

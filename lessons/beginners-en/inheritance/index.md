@@ -1,7 +1,7 @@
-# Inheritance
+# الوراثة (Inheritance)
 
-We already know what classes are, and we have seen the class for kitties
-as an example:
+نعرف بالفعل ما هي الفئات (classes)، وقد رأينا الفئة (class) للقطط الصغيرة
+كمثال:
 
 ```python
 class Kittie:
@@ -15,7 +15,7 @@ class Kittie:
         print("{}: Meow meow! I like {} very much!".format(self.name, food))
 ```
 
-Now create a similar class for dogs:
+الآن قم بإنشاء فئة (class) مماثلة للكلاب:
 
 ```python
 class Doggie:
@@ -29,19 +29,19 @@ class Doggie:
         print("{}: Woof woof! I like {} very much!".format(self.name, food))
 ```
 
-Most of the code is the same!
-If you would have to write a class for chicks, ducks, and rabbits, 
-it would be quite boring task without Ctrl+C.
-And because programmers are lazy to write the same piece of
-code multiple times (and mostly maintain it) they created
-mechanism how to avoid that. How?
+معظم الكود هو نفسه!
+إذا كان عليك كتابة فئة (class) للكتاكيت والبط والأرانب،
+ستكون مهمة مملة للغاية بدون Ctrl+C.
+ولأن المبرمجين كسالى لكتابة نفس الجزء من
+الكود عدة مرات (والأهم من ذلك صيانته)، فقد أنشأوا
+آلية لتجنب ذلك. كيف؟
 
-Kitties and doggies are animals.
-So you can create a class for all animals, and write
-into it everything that applies to all animals.
-And in the classes about each animal, you just
-write the specifics.
-That's how it's done in Python:
+القطط الصغيرة والكلاب حيوانات (animals).
+لذا يمكنك إنشاء فئة (class) لجميع الحيوانات (animals)، وكتابة
+كل ما ينطبق على جميع الحيوانات فيه.
+وفي الفئات (classes) الخاصة بكل حيوان، يمكنك فقط
+كتابة التفاصيل.
+هذه هي الطريقة التي تتم بها الأمور في بايثون:
 
 ```python
 class Animal:
@@ -70,27 +70,27 @@ smokey.eat('mouse')
 doggo.eat('bone')
 ```
 
-How does it work?
-With the command `class Kittie(Animal)` you are
-telling Python that the class `Kittie` *inherits*
-behaviour from the class `Animal`.
-In other programming languages they say
-that `Kittie` is *derived from* `Animal` 
-or it *extends* `Animal`.
-Derived classes are called *subclasses* and the main one
-is the *superclass*
+كيف يعمل هذا؟
+باستخدام الأمر `class Kittie(Animal)` أنت
+تخبر بايثون أن الفئة (class) `Kittie` *ترث* (inherits)
+سلوكًا من الفئة (class) `Animal`.
+في لغات البرمجة الأخرى يقولون
+أن `Kittie` *مشتق من* (derived from) `Animal`
+أو أنه *يمتد* (extends) `Animal`.
+تسمى الفئات المشتقة (derived classes) *فئات فرعية* (subclasses) والفئة الرئيسية
+هي *فئة أساسية* (superclass).
 
-When Python searches for a method/function (or other attribute),
-for example `smokey(eat)`, and it doesn't find it in the class itself
-it will look into the superclass. So everything that has been
-defined for Animal applies to Kittie (unless you
-tell Python otherwise).
+عندما تبحث بايثون عن طريقة/دالة (method/function) (أو سمة أخرى - attribute)،
+على سبيل المثال `smokey(eat)`، ولم تجدها في الفئة نفسها
+ستبحث في الفئة الأساسية (superclass). لذا فإن كل ما تم
+تعريفه لـ Animal ينطبق على Kittie (إلا إذا
+أخبرت بايثون بخلاف ذلك).
 
 
-## Overwriting methods and `super()`
+## تجاوز الطرق و `super()` (Overwriting methods and `super()`)
 
-If you don't like some behaviour of the superclass, you can
-define a method with the same name in the subclass:
+إذا لم يعجبك بعض سلوك الفئة الأساسية (superclass)، يمكنك
+تعريف طريقة (method) بنفس الاسم في الفئة الفرعية (subclass):
 
 ```python
 class Kittie(Animal):
@@ -103,13 +103,13 @@ smokey.eat('dry food')
 ```
 
 > [python]
-> It's similar to what we did in the previous lesson with
-> `misty.meow = 12345`. Python searches for the attributes in the object,
-> then in the class, and then in the superclass (and then in superclass' superclass).
+> إنه مشابه لما فعلناه في الدرس السابق مع
+> `misty.meow = 12345`. تبحث بايثون عن السمات (attributes) في الكائن (object)،
+> ثم في الفئة (class)، ثم في الفئة الأساسية (superclass) (ثم في الفئة الأساسية للفئة الأساسية).
 
-Sometimes it can happen that you need some behaviour from the original method
-in the overwritten method. You can call it with the special function `super()`,
-which allows calling methods in a superclass.
+في بعض الأحيان قد تحتاج إلى بعض السلوك من الطريقة الأصلية
+في الطريقة المتجاوزة (overwritten method). يمكنك استدعائها باستخدام الدالة الخاصة  `()super`،
+التي تسمح باستدعاء الطرق (methods) في فئة أساسية (superclass).
 
 ```python
 class Kittie(Animal):
@@ -121,11 +121,11 @@ smokey = Kittie('Smokey')
 smokey.eat('dry food')
 ```
 
-Keep in mind that you have to pass everything that this `super()` method
-needs (apart from `self`, which is passed automatically).
-You can use this - you can pass different values
-than the original function received (in this case, a `snake` class will
-receive the name `Stanley`, but you want to change it to `Ssstanley`):
+ضع في اعتبارك أنه يجب عليك تمرير كل ما تحتاجه طريقة  `()super` هذه
+(بصرف النظر عن `self`، الذي يتم تمريره تلقائيًا).
+يمكنك استخدام هذا - يمكنك تمرير قيم مختلفة
+عما تلقته الدالة الأصلية (في هذه الحالة، فئة `snake` سيتلقى
+الاسم `Stanley`، لكنك تريد تغييره إلى `Ssstanley`):
 
 ```python
 class snake(Animal):
@@ -139,19 +139,19 @@ stanley = snake('Stanley')
 stanley.eat('mouse')
 ```
 
-As you can see, you can use `super()` even with special methods
-like `__init__`.
+كما ترى، يمكنك استخدام  `()super` حتى مع الطرق الخاصة
+مثل `__init__`.
 
 
-## Polymorphism
+## تعدد الأشكال (Polymorphism)
 
-Programmers didn't invent inheritance only because they are lazy
-to write the same code multiple times. That is, of course, one
-good reason, but superclasses have also another
-important feature: When we know that `Kittie` and `Doggie`
-and any other similar class are animals, we can create a list
-of animals, but we don't care what animals they are 
-specifically:
+لم يخترع المبرمجون الوراثة (inheritance) لمجرد أنهم كسالى
+لكتابة نفس الكود عدة مرات. هذا بالطبع سبب وجيه،
+لكن الفئات الأساسية (superclasses) لها أيضًا ميزة أخرى
+مهمة: عندما نعلم أن `Kittie` و `Doggie`
+وأي فئة مشابهة أخرى هي حيوانات (animals)، يمكننا إنشاء قائمة
+من الحيوانات (animals)، لكننا لا نهتم بنوع هذه الحيوانات
+تحديدًا:
 
 {# XXX: last 4 lines are new and should be highlighted #}
 ```python
@@ -178,27 +178,27 @@ for animal in animals:
     animal.eat('meat')
 ```
 
-This is some quite important behaviour of subclasses:
-When you have a `Kittie`, you can use it anywhere
-where a program expects `Animal`, because each kittie
-*is* an animal.
+هذا سلوك مهم جدًا للفئات الفرعية (subclasses):
+عندما يكون لديك `Kittie`، يمكنك استخدامه في أي مكان
+حيث يتوقع البرنامج `Animal`، لأن كل قطة صغيرة
+*هي* حيوان (animal).
 
 > [note]
-> This is a good approach when you won't know which class should be
-> inherited in which class.
-> Each *kittie* or *doggie* is an *animal*,
-> each *cabin* or *house* is a *building*.
-> In those examples, heredity makes sense.
+> هذا نهج جيد عندما لا تعرف أي فئة يجب أن تكون
+> موروثة في أي فئة.
+> كل *قطة صغيرة* (kittie) أو *كلب صغير* (doggie) هو *حيوان* (animal)،
+> كل *كوخ* (cabin) أو *منزل* (house) هو *مبنى* (building).
+> في هذه الأمثلة، يكون التوريث منطقيًا.
 >
-> But sometimes our approach fails - for example if we would say
-> each *car* is a *steering wheel*, then we know that
-> we shouldn't use inheritance.
-> Even if we can "rotate" both cars and steering wheels, it means a different thing, 
-> and we definitely can't use cars everywhere where we would want to
-> use steering wheels. So in this case we should say to ourselves:
-> Each kittie *has* a name and each car *has* a steering wheel, so we
-> should create two different classes, and in the car class, we 
-> use steering wheel as default variable:
+> ولكن في بعض الأحيان يفشل نهجنا - على سبيل المثال إذا قلنا
+> كل *سيارة* (car) هي *عجلة قيادة* (steering wheel)، فإننا نعلم أن
+> لا ينبغي لنا استخدام الوراثة (inheritance).
+> حتى لو كان بإمكاننا "تدوير" كل من السيارات وعجلات القيادة، فهذا يعني شيئًا مختلفًا،
+> وبالتأكيد لا يمكننا استخدام السيارات في كل مكان نرغب فيه
+> استخدام عجلات القيادة. لذا في هذه الحالة يجب أن نقول لأنفسنا:
+> كل قطة صغيرة (kittie) *لديها* اسم وكل سيارة (car) *لديها* عجلة قيادة (steering wheel)، لذا يجب علينا
+> إنشاء فئتين مختلفتين، وفي فئة السيارة، نقوم
+> باستخدام عجلة القيادة كمتغير افتراضي:
 >
 > ```python
 > class Car:
@@ -206,15 +206,15 @@ where a program expects `Animal`, because each kittie
 >         self.wheel = Wheel()
 > ```
 >
-> (And when some programmer gets mad at you that you
-> are breaking [Liskov_substitution_principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle)
-> it's because of this problem.)
+> (وعندما يغضب منك بعض المبرمجين لأنك
+> تخرق [مبدأ ليسكوف للاستبدال](https://en.wikipedia.org/wiki/Liskov_substitution_principle)
+> فذلك بسبب هذه المشكلة.)
 
-## Generalization
+## التعميم (Generalization)
 
-When you look back at the functions `meow` and `woof`, you will maybe find out
-that they can be named better, so they can be used for each animal, similarly
-as `eat`.
+عندما تنظر إلى الدوال (functions) `meow` و `woof`، ربما ستكتشف
+أنه يمكن تسميتها بشكل أفضل، بحيث يمكن استخدامها لكل حيوان، بشكل مشابه
+لـ `eat`.
 
 {# XXX: Every instance of "speak" should be highlighted #}
 ```python
@@ -242,13 +242,12 @@ for animal in animals:
     animal.eat('meat')
 ```
 
-As this example shows, writing superclasses from which we can easily inherit
-methods is not easy. It is definitely not easy when we want to create a 
-subclass in a different program than where the superclass is.
-So that's why you should inherit classes within your code:
-We do not recommend to inherit classes that someone else wrote,
-unless the author of the superclass explicitly mentions that (and
-mainly how) you can inherit from their class.
+كما يوضح هذا المثال، فإن كتابة فئات أساسية (superclasses) يمكننا من خلالها بسهولة توريث
+الطرق (methods) ليس بالأمر السهل. ليس الأمر سهلاً بالتأكيد عندما نريد إنشاء
+فئة فرعية (subclass) في برنامج مختلف عن البرنامج الذي يوجد فيه الفئة الأساسية (superclass).
+لذا لهذا السبب يجب عليك توريث الفئات (classes) داخل التعليمات البرمجية الخاصة بك:
+لا نوصي بتوريث الفئات (classes) التي كتبها شخص آخر،
+إلا إذا ذكر مؤلف الفئة الأساسية (superclass) صراحةً (وبشكل أساسي كيف) يمكنك التوريث من فئته.
 
-And that's all about classes. Now you know enough to create
-your own zoo :)
+وهذا كل شيء عن الفئات (classes) الآن. أنت الآن تعرف ما يكفي لإنشاء
+حديقة الحيوانات الخاصة بك :)
