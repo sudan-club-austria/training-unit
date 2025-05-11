@@ -1,13 +1,13 @@
-# Exceptions
+# الاستثناءات (Exceptions)
 
-We have already talked about [error messages]({{ lesson_url('beginners-en/print') }}).
-When an error occurs, Python complains, tells us where the error (line) is,
-and terminates the program.  But there is much more that we can learn about
-error messages (aka *exceptions*).
+لقد تحدثنا بالفعل عن [رسائل الخطأ]({{ lesson_url('beginners-en/print') }}).
+عند وقوع خطأ، تتذمر بايثون، وتخبرنا بمكان الخطأ (السطر)،
+وتنهي البرنامج. ولكن هناك الكثير مما يمكننا تعلمه عن
+رسائل الخطأ (المعروفة أيضًا باسم *الاستثناءات* - exceptions).
 
-## Printing errors:
+## طباعة الأخطاء:
 
-Let's repeat how Python prints an error which is in a nested function.
+دعنا نكرر كيف تطبع بايثون خطأً موجودًا في دالة متداخلة.
 
 ```python
 def outer_function():
@@ -19,9 +19,8 @@ def inner_function(divisor):
 print(outer_function())
 ```
 
-When we run the code it stops with an error and a message like:
+عندما نقوم بتشغيل الكود، يتوقف بسبب خطأ ورسالة مثل:
 
-<!-- XXX: Highlight the line numbers -->
 ```pycon
 Traceback (most recent call last):
   File "example.py", line 7, in <module>
@@ -33,19 +32,19 @@ Traceback (most recent call last):
 ZeroDivisionError: division by zero
 ```
 
-Python can't know where the original error is that needs to be fixed, so it shows
-you everything in the error message.
+لا يمكن لبايثون أن تعرف مكان الخطأ الأصلي الذي يحتاج إلى إصلاح، لذا فهي تعرض
+لك كل شيء في رسالة الخطأ.
 
-Either we shouldn't call `in_func` with argument `0`.
+إما أننا لا يجب أن نستدعي `in_func` بالوسيط `0`.
 
-Or the `in_function` must be written to handle the case that the divisor can be `0`
-and it should do something else than try to divide by zero.
+أو يجب كتابة `in_function` للتعامل مع حالة أن المقسوم يمكن أن يكون `0`
+ويجب أن تفعل شيئًا آخر غير محاولة القسمة على صفر.
 
-## Raising an exception
+## رفع استثناء (Raising an exception)
 
-In Python, an *exception* is raised by the command `raise`.
-The command is followed by the name of the exception we want to raise and
-an optional short description of what went wrong (in parentheses).
+في بايثون، يتم رفع *استثناء* (exception) بواسطة الأمر `raise`.
+يتبع الأمر اسم الاستثناء الذي نريد رفعه
+ووصف قصير اختياري لما حدث خطأ (بين قوسين).
 
 ```python
 MAX_ALLOWED_VALUE = 20
@@ -59,9 +58,9 @@ verify_number(5)
 verify_number(25)
 ```
 
-What exceptions are available in Python?
-Python provides a hierarchy of standard (built-in) exceptions. This
-is just a subset of them:
+ما هي الاستثناءات المتاحة في بايثون؟
+توفر بايثون تسلسلًا هرميًا للاستثناءات القياسية (المضمنة - built-in). هذا
+مجرد مجموعة فرعية منها:
 
 ```plain
 BaseException
@@ -87,35 +86,32 @@ BaseException
       ╰── ValueError                wrong value, e.g. int('xyz')
 ```
 
-> [note] What does this hierarchy mean?
+> [note] ماذا يعني هذا التسلسل الهرمي؟
 >
-> The hierarchy of exceptions is like a family tree with the most generic type
-> of exception as the root, every branch becoming more specific.
-> E.g., `KeyError` is also a `LookupError` and `Exception` but it is
-> not, e.g., a `SyntaxError`.
+> التسلسل الهرمي للاستثناءات يشبه شجرة عائلة مع النوع الأكثر عمومية
+> من الاستثناء كجذر، وكل فرع يصبح أكثر تحديدًا.
+> على سبيل المثال، `KeyError` هو أيضًا `LookupError` و `Exception` ولكنه
+> ليس، على سبيل المثال، `SyntaxError`.
 >
-> You will learn more about these hierarchies and when we will talk about
-> the Object Oriented Programming, classes and inheritance.
->
-> For the moment, it is enough to say that the exceptions are **classes** and
-> that the more specific **child** exceptions **inherit** the properties
-> of their generic generic **parent**.  Namely, the `Exception` is the parent
-> class of the `LookupError` and the `LookupError` is the parent classes of the
-> `KeyError` exception. Therefore the `KeyError` has properties
-> of `LookupError` and `Exception` exceptions.
+> في الوقت الحالي، يكفي القول أن الاستثناءات هي **فئات** (classes) و
+> أن الاستثناءات **الفرعية** (child) الأكثر تحديدًا **ترث** (inherit) خصائص
+> **الأصل** (parent) العام الأكثر عمومية. أي أن `Exception` هي الفئة الأصل
+> لـ `LookupError` و `LookupError` هي الفئة الأصل لـ
+> استثناء `KeyError`. لذلك فإن `KeyError` له خصائص
+> استثناءات `LookupError` و `Exception`.
 
-For the full list of built-in exception see the [Python documentation](https://docs.python.org/3/library/exceptions.html).
+للحصول على القائمة الكاملة للاستثناءات المضمنة، راجع [وثائق بايثون](https://docs.python.org/3/library/exceptions.html).
 
-## Handling Exceptions
+## معالجة الاستثناءات (Handling Exceptions)
 
-Why there are so many built-in exceptions? Because this way we can more easily
-*catch* exceptions of specific error states.
+لماذا يوجد الكثير من الاستثناءات المضمنة؟ لأنه بهذه الطريقة يمكننا بسهولة أكبر
+*التقاط* (catch) استثناءات حالات خطأ محددة.
 
-It is not always desired that an exception kills our program. And we also cannot
-(or do not want to) cover all possible error conditions in the code
-where the exceptions are raised from.
+ليس من المرغوب دائمًا أن يقتل استثناء برنامجنا. ولا يمكننا أيضًا
+(أو لا نريد) تغطية جميع حالات الخطأ المحتملة في الكود
+التي يتم رفع الاستثناءات منها.
 
-Let me show you an example:
+دعني أريك مثالاً:
 
 ```python
 def prompt_number():
@@ -137,49 +133,49 @@ while True:
     print(f"Entered number: {number}")
 ```
 
-Run the code and try different inputs. What happens if the input is not
-an integer number?
+قم بتشغيل الكود وجرب مدخلات مختلفة. ماذا يحدث إذا كان الإدخال ليس
+عددًا صحيحًا؟
 
-Invalid input does not cause an error, instead it gets replaced by `0`.
+لا يتسبب الإدخال غير الصالح في حدوث خطأ، بل يتم استبداله بـ `0`.
 
-So how does this work?
+إذن كيف يعمل هذا؟
 
-We call the `int()` function within the `try` block.
-If there is no error, this function is executed, it returns a value which
-is assigned to the `number` variable and leaves the `try` block.
+نستدعي الدالة `()int` داخل كتلة `try`.
+إذا لم يكن هناك خطأ، يتم تنفيذ هذه الدالة، وتُرجع قيمة
+يتم تعيينها للمتغير `number` وتترك كتلة `try`.
 
-In case of a `ValueError` exception raised by `int()` caused by an invalid input
-value, this exception is caught and the execution continues
-in the `except ValueError` block. There, a message is printed and
-`0` is assigned to the `number` variable.
+في حالة رفع استثناء `ValueError` بواسطة `()int` بسبب إدخال غير صالح
+القيمة، يتم التقاط هذا الاستثناء ويستمر التنفيذ
+في كتلة `except ValueError`. هناك، يتم طباعة رسالة و
+يتم تعيين `0` للمتغير `number`.
 
-In this case we specifically catch the `ValueError` exception.
-We could achieve the same by catching generic `Exception`, because, as you can
-see in the hierarchy above, `ValueError` is a specific type of `Exception`.
+في هذه الحالة، نقوم بالتقاط استثناء `ValueError` تحديدًا.
+يمكننا تحقيق نفس الشيء عن طريق التقاط استثناء عام `Exception`، لأنه، كما يمكنك
+أن ترى في التسلسل الهرمي أعلاه، `ValueError` هو نوع محدد من `Exception`.
 
-## Don't catch'em all!
+## لا تلتقطهم جميعًا\! (Don't catch'em all\!)
 
-Try to be as selective as possible when catching the expected exceptions.
-There is no need to catch the most of the errors.
+حاول أن تكون انتقائيًا قدر الإمكان عند التقاط الاستثناءات المتوقعة.
+ليست هناك حاجة لالتقاط معظم الأخطاء.
 
 > [note]
-> When an unexpected error happens it is **much better** to terminate the program
-> rather than to continue with wrong values.
-> When an unexpected error happens we want to know about it as soon as it
-> appears. With the wrong values bad things will happen later in the code anyway
-> and the real cause will be **difficult** to trace.
+> عند حدوث خطأ غير متوقع، من **الأفضل بكثير** إنهاء البرنامج
+> بدلاً من الاستمرار بقيم خاطئة.
+> عند حدوث خطأ غير متوقع، نريد أن نعرف عنه بمجرد
+> ظهوره. مع القيم الخاطئة، ستحدث أشياء سيئة لاحقًا في الكود على أي حال
+> وسيكون السبب الحقيقي **صعبًا** للتتبع.
 
-For example, catching the exception `KeyboardInterrupt`
-could have the side effect that the program couldn't be terminated if we needed to
-(with shortcut <kbd>Ctrl</kbd>+<kbd>C</kbd>).
+على سبيل المثال، التقاط استثناء `KeyboardInterrupt`
+يمكن أن يكون له تأثير جانبي يتمثل في عدم إمكانية إنهاء البرنامج إذا احتجنا إلى ذلك
+(باستخدام الاختصار \<kbd\>Ctrl\</kbd\>+\<kbd\>C\</kbd\>).
 
-Use the command `try/except` only in situations when you
-anticipate some exception, i.e., you know exactly what can happen
-and why, and you are able to fix the error state in the except block.
+استخدم الأمر `try/except` فقط في الحالات التي
+تتوقع فيها بعض الاستثناءات، أي أنك تعرف بالضبط ما يمكن أن يحدث
+ولماذا، وأنت قادر على إصلاح حالة الخطأ في كتلة `except`.
 
-A typical example would be reading the input from a user. If the user
-enters gibberish, it is better to ask again until the
-user enters something meaningful:
+مثال نموذجي سيكون قراءة الإدخال من المستخدم. إذا قام المستخدم
+بإدخال كلام غير مفهوم، فمن الأفضل أن تسأل مرة أخرى حتى
+يقوم المستخدم بإدخال شيء ذي معنى:
 
 ```pycon
 >>> def fetch_number():
@@ -196,20 +192,20 @@ Type a number: 42
 42
 ```
 
-## Other clauses
+## بنود أخرى (Other clauses)
 
-Additionally to `except`, there are two more clauses - blocks that can 
-be used with `try`, and these are `else` and `finally`.
+بالإضافة إلى `except`، هناك بندان آخران - كتلتان يمكن
+استخدامهما مع `try`، وهما `else` و `finally`.
 
-The first one `else` will be run if no exception in the `try` block was raised.
-And `finally` runs every time and is executed even in the case of an uncaught exception
-and may be used even without any `except` clause. It is mostly used for clean-ups.
+سيتم تشغيل الأول `else` إذا لم يتم رفع أي استثناء في كتلة `try`.
+ويتم تشغيل `finally` في كل مرة ويتم تنفيذه حتى في حالة وجود استثناء غير معالج
+ويمكن استخدامه حتى بدون أي بند `except`. يستخدم في الغالب لعمليات التنظيف.
 
-You can also have several `except` blocks. Only one of them will be triggered. 
-The first one that can handle the raised exception.
+يمكن أن يكون لديك أيضًا عدة كتل `except`. سيتم تشغيل واحدة فقط منها.
+الأول الذي يمكنه معالجة الاستثناء المرفوع.
 
 > [note]
-> Always catch more specific exceptions before the generic ones.
+> قم دائمًا بالتقاط الاستثناءات الأكثر تحديدًا قبل الاستثناءات العامة.
 
 ```python
 try:
@@ -231,13 +227,13 @@ finally:
     print("This will always be printed; even if there's e.g. a 'return' in the 'try' block.")
 ```
 
-## Task
+## مهمة (Task)
 
-Let's add exception handling and proper input checking to our square size
-calculator from [comparisons lesson]({{ lesson_url('beginners-en/comparisons') }}).
+دعنا نضيف معالجة الاستثناءات والتحقق الصحيح من الإدخال الى برنامج حساب مساحة المربع
+من [درس المقارنات]({{ lesson_url('beginners-en/comparisons') }}).
 
-Modify the code so that until the user enters a non-negative
-number the programs will keep prompting for the input again.
+قم بتعديل الكود بحيث حتى يقوم المستخدم بإدخال قيمة غير سالبة
+سيستمر البرنامج في طلب الإدخال مرة أخرى.
 
 {% filter solution %}
 

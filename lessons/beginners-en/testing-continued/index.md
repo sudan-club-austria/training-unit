@@ -1,35 +1,35 @@
-## Negative tests
+## الاختبارات السلبية (Negative tests)
 
-Tests that verify that a program works correctly
-under correct conditions are called *positive tests*.
-An exception raised during the positive testing lead to failure of the test.
+تسمى الاختبارات التي تتحقق من أن البرنامج يعمل بشكل صحيح
+في ظل ظروف صحيحة *الاختبارات الإيجابية* (positive tests).
+يؤدي الاستثناء الذي يتم رفعه أثناء الاختبار الإيجابي إلى فشل الاختبار.
 
-Tests which check behaviour for invalid inputs are called *negative tests*.
-The purpose of the negative testing is verification of the graceful handling
-of error states. Raising of an exception is often the expected behaviour
-of the tested code.
+تسمى الاختبارات التي تتحقق من السلوك للإدخالات غير الصالحة *الاختبارات السلبية* (negative tests).
+الغرض من الاختبار السلبي هو التحقق من المعالجة السليمة
+لحالات الخطأ. غالبًا ما يكون رفع استثناء هو السلوك المتوقع
+للتعليمات البرمجية المختبرة.
 
-For example, the `computer_move` function should raise an error
-(e.g., `ValueError`) when the board is full.
-
-> [note]
-> It is much better to raise an exception than doing nothing
-> and silently letting the program get stuck elsewhere.
-> You can use such function in a more complex program
-> and be sure that it will raise an understandable error
-> when it is called under bad conditions.
-> The error helps you to fix the actual problem. The sooner you discover
-> an error the easier is to fix it.
-
-Use the `with` statement and the `raises` function 
-to test that your code raises the expected exception.
-The `raises` function is imported from the `pytest` module.
-
+على سبيل المثال، يجب أن تثير الدالة `computer_move` خطأً
+(على سبيل المثال، `ValueError`) عندما تكون اللوحة ممتلئة.
 
 > [note]
-> We have not talked about the `with` statement and context managers yet.
-> But don't worry, you will learn about them later.  Just check how it is used
-> to test whether an exception is raised.
+> من الأفضل بكثير رفع استثناء بدلاً من عدم فعل أي شيء
+> والسماح للبرنامج بالتعثر في مكان آخر بصمت.
+> يمكنك استخدام مثل هذه الدالة في برنامج أكثر تعقيدًا
+> وتأكد من أنها سترفع خطأً مفهوماً
+> عند استدعائها في ظروف سيئة.
+> يساعدك الخطأ في إصلاح المشكلة الفعلية. كلما اكتشفت
+> خطأً مبكرًا، كان إصلاحه أسهل.
+
+استخدم عبارة `with` والدالة `raises`
+لاختبار ما إذا كان الكود الخاص بك يثير الاستثناء المتوقع.
+يتم استيراد الدالة `raises` من وحدة `pytest`.
+
+
+> [note]
+> لم نتحدث بعد عن عبارة `with` ومديري السياق (context managers).
+> لكن لا تقلق، ستتعلم عنها لاحقًا. فقط تحقق من كيفية استخدامها
+> لاختبار ما إذا كان يتم رفع استثناء.
 
 ```python
 import pytest
@@ -41,9 +41,9 @@ def test_move_failure():
         tic_tac_toe.computer_move('oxoxoxoxoxoxoxoxoxox')
 ```
 
-Let's now try to edit the function for getting a perimeter of rectangle
-so that it raises a ValueError if any of the sides is smaller or equal to zero.
-Add a test for the new functionality.
+هيا نحاول الآن تعديل الدالة الخاصة بالحصول على محيط المستطيل
+بحيث تثير ValueError إذا كان أي من الجانبين أصغر من أو يساوي الصفر.
+أضف اختبارًا للوظيفة الجديدة.
 
 
 {% filter solution %}
@@ -66,18 +66,18 @@ def test_find_perimeter_exception_negative():
 ```
 {% endfilter %}
 
-## Pytest fixtures
+## تجهيزات Pytest (Pytest fixtures)
 
-``Fixtures`` in pytest are reusable components that set up specific states (e.g. database connections, test data).
+``Fixtures`` في pytest هي مكونات (component) قابلة لإعادة الاستخدام تقوم بإعداد حالات محددة (مثل اتصالات قاعدة البيانات (database connections)، وبيانات الاختبار(test data)).
 
-### Key Features
+### الميزات الرئيسية (Key Features)
 
-- Reusability: Define a fixture once and use it across multiple test functions.
-- Scoping: Fixtures can be scoped (available) at different levels like function, class, module, or session.
-- Automatic Cleanup: Fixtures can be set up to automatically clean up resources after a test is done.
-- Dependency Injection: Test functions can use fixtures by including them as arguments. (It is not possible to add "normal" arguments to test functions, only references to fixtures).
+* قابلية إعادة الاستخدام (Reusability): عرّف تجهيزًا مرة واحدة واستخدمه عبر العديد من دوال الاختبار.
+* تحديد النطاق (Scoping): يمكن تحديد نطاق التجهيزات (متاحة) على مستويات مختلفة مثل الدالة، أو الفئة، أو الوحدة، أو الجلسة.
+* التنظيف التلقائي (Automatic Cleanup): يمكن إعداد التجهيزات لتنظيف الموارد تلقائيًا بعد انتهاء الاختبار.
+* حقن التبعية (Dependency Injection): يمكن لدوال الاختبار استخدام التجهيزات عن طريق تضمينها كـ وسائط (arguments). (لا يمكن إضافة وسائط "عادية" إلى دوال الاختبار، فقط مراجع للتجهيزات).
 
-You can easily create and use a ``fixture in pytest`` in a following way:
+يمكنك بسهولة إنشاء واستخدام ``fixture`` في pytest بالطريقة التالية:
 
 ```python
 import pytest
@@ -89,9 +89,9 @@ def test_sum(sample_data):
     assert sum(sample_data) == 10
 ```
 
-By default ``fixture`` is called once per a test function - ``scope=function`` parameter of a fixture.
+بشكل افتراضي، يتم استدعاء ``fixture`` مرة واحدة لكل دالة اختبار - معامل ``scope="function"`` للتجهيز.
 
-For resource utilization purposes it could be useful to create a fixture only once per whole ``module``:
+لأغراض استخدام الموارد، قد يكون من المفيد إنشاء تجهيز مرة واحدة فقط لكل ``وحدة`` (module) كاملة:
 
 ```python
 import pytest
@@ -112,4 +112,4 @@ def test_retry_attempts(config_data):
     assert config_data["retry_attempts"] == 5
 ```
 
-This approach is useful when the setup does not involve external resources that require explicit cleanup after the tests.
+يكون هذا النهج مفيدًا عندما لا يتضمن الإعداد موارد خارجية تتطلب تنظيفًا صريحًا بعد الاختبارات.

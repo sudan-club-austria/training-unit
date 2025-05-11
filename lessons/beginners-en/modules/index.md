@@ -1,22 +1,22 @@
-You've already learned that it is not convenient write longer programs in the
-Python interpreter and you've been writing your Python *scripts* as
-text files with the `.py` extension.
+لقد تعلمت بالفعل أنه ليس من الملائم كتابة برامج أطول في
+مفسر بايثون - *وحدة تحكم بايثون التفاعلية (Python interactive console)*- وكنت تكتب *نصوص* بايثون الخاصة بك كـ
+ملفات نصية بامتداد `.py`.
 
-The scripts can be easily edited and executed repeatedly. This works nicely
-up to the point when it becomes too limiting to hold all our code in a
-single file (e.g., the script becomes too long, parts of code repeat in
-different scripts).
+يمكن تعديل النصوص وتنفيذها بشكل متكرر بسهولة. يعمل هذا بشكل جيد
+حتى النقطة التي يصبح فيها من المحدود جدًا الاحتفاظ بكل التعليمات البرمجية الخاصة بنا في
+ملف واحد (على سبيل المثال، يصبح النص طويلًا جدًا، وتتكرر أجزاء من التعليمات البرمجية في
+نصوص مختلفة).
 
-Can we organize our code better than that?
+هل يمكننا تنظيم التعليمات البرمجية الخاصة بنا بشكل أفضل من ذلك؟
 
-# Modules
+# الوحدات (Modules)
 
-Python allows us to organize code in *modules*. A *module* is something like
-a box containing some ready-to-use code.  We can pull it from a shelf, *import*
-it, and then use it in our script.
+يسمح لنا بايثون بتنظيم التعليمات البرمجية في *وحدات* (modules). *الوحدة* (module) هي شيء مثل
+صندوق يحتوي على بعض التعليمات البرمجية الجاهزة للاستخدام. يمكننا سحبها من الرف، *استيرادها* (import)،
+ثم استخدامها في النص الخاص بنا.
 
-For example, you can import the function `sqrt` from
-the module `math`:
+على سبيل المثال، يمكنك استيراد الدالة (function) `sqrt` من
+الوحدة (module) `math`:
 
 ```python
 from math import sqrt
@@ -24,15 +24,15 @@ from math import sqrt
 print(sqrt(2))
 ```
 
-In this case, the module `math` (Python standard library)
-contains a set of various mathematical functions and constants.
-With the `from <module> import <names>` command we pulled from the
-`math` modules one function `sqrt`, which refers
-to the function calculating [square root](https://en.wikipedia.org/wiki/Square_root),
-and made it available in our program.
+في هذه الحالة، الوحدة (module) `math` (مكتبة بايثون القياسية - Python standard library)
+تحتوي على مجموعة من الدوال (functions) والثوابت الرياضية المختلفة.
+باستخدام الأمر`<from <module> import <names` قمنا بسحب دالة واحدة `sqrt` من
+وحدات `math` ، والتي تشير
+إلى الدالة التي تحسب [الجذر التربيعي](https://en.wikipedia.org/wiki/Square_root)،
+وجعلناها متاحة في برنامجنا.
 
-Alternatively, you can import a whole module and access its names through
-the module name and period `.`. For example:
+بدلاً من ذلك، يمكنك استيراد وحدة (module) كاملة والوصول إلى أسمائها من خلال
+اسم الوحدة (module) والنقطة `(.)`، على سبيل المثال:
 
 ```python
 import math
@@ -40,7 +40,7 @@ import math
 print(math.cos(math.pi))
 ```
 
-... or:
+... أو:
 
 ```python
 import turtle
@@ -51,33 +51,33 @@ turtle.forward(100)
 turtle.exitonclick()
 ```
 
-## Packages
+## الحزم (Packages)
 
-Python allows a special kind of module which itself contains sub-modules.
-A module which is a collection of modules is called a *package* in the Python
-jargon. A package can have sub-packages and, in more complex projects, it is
-common to have several levels of sub-modules.
+تسمح بايثون بنوع خاص من الوحدات (modules) التي تحتوي بدورها على وحدات فرعية (sub-modules).
+تسمى الوحدة (module) التي هي عبارة عن مجموعة من الوحدات (modules) *حزمة* (package) في مصطلحات بايثون.
+يمكن أن تحتوي الحزمة (package) على حزم فرعية (sub-packages)، وفي المشاريع الأكثر تعقيدًا، من الشائع
+أن يكون هناك عدة مستويات من الوحدات الفرعية (sub-modules).
 
-Do not fear! Import of a sub-module from a *package* does not differ from the
-regular top-level module. The sub-modules are separated by dots, but apart from
-that, you work with them the same way:
+لا تخف! لا يختلف استيراد وحدة فرعية (sub-module) من *حزمة* (package) عن
+الوحدة (module) العادية ذات المستوى الأعلى. يتم فصل الوحدات الفرعية (sub-modules) بنقاط، ولكن بصرف النظر عن
+ذلك، فإنك تعمل معها بنفس الطريقة:
 
 ```python
-import os       # os is a package
-import os.path  # path is submodule of os package, os.path is a full module name
+import os       # os هي حزمة (package)
+import os.path  # path هي وحدة فرعية (submodule) من حزمة os، os.path هو اسم وحدة كامل (full module name)
 
 directory = "./test"
 if not os.path.exists(directory):
     os.mkdir(directory)
 ```
 
-## Custom modules
+## وحدات مخصصة (Custom modules)
 
-You can also create your own module, simply, by creating a Python file.
-Functions and variables (and other named objects) that you create there will be available
-in programs where you import this module.
+يمكنك أيضًا إنشاء وحدتك (module) الخاصة، ببساطة عن طريق إنشاء ملف بايثون.
+ستكون الدوال والمتغيرات (والكائنات المسماة الأخرى) التي تنشئها هناك متاحة
+في البرامج التي تستورد هذه الوحدة (module) فيها.
 
-Let's try it. First, create a new Python file `meadow.py` and write:
+هيا نجربها. أولاً، قم بإنشاء ملف بايثون جديد باسم `meadow.py` واكتب:
 
 
 ```python
@@ -89,7 +89,7 @@ def description():
         colour=meadow_colour, number=number_of_kitties)
 ```
 
-And then write in another file `write.py` with the following content:
+ثم اكتب في ملف آخر باسم `write.py` بالمحتوى التالي:
 
 ```python
 import meadow
@@ -97,42 +97,42 @@ import meadow
 print(meadow.description())
 ```
 
-and run:
+وقم بتشغيل:
 
 ```console
 $ python3 write.py
 ```
 
 > [note]
-> Python searches for the imported modules in a defined following order:
-> - `built-in` modules from the Python Standard Library (e.g. sys, math)
-> - modules in a directory specified by `sys.path`, which by default is the same folder where the executed script is located (not the current working directory - where Python command was launched)
-> - directories in the `PYTHONPATH` environment variable
-> - the rest of the modules in Python’s standard library (not built-ins) - (e.g. random, os)
-> That is why in 4th lesson with turtle, we said to NOT name the current script turtle.py
+> تبحث بايثون عن الوحدات المستوردة (imported modules) بترتيب محدد على النحو التالي:
+> - وحدات `مدمجة` (built-in) من مكتبة بايثون القياسية (Python Standard Library) (مثل sys و math)
+> - وحدات في مجلد محدد بواسطة `sys.path`، والذي يكون افتراضيًا نفس المجلد حيث يوجد النص قيد التنفيذ (وليس مجلد العمل الحالي - حيث تم تشغيل أمر بايثون)
+> - أدلة في متغير البيئة `PYTHONPATH`
+> - بقية الوحدات في مكتبة بايثون القياسية (ليست مدمجة) - (مثل random و os)
+> لهذا السبب قلنا في الدرس الرابع مع turtle، ألا تسمي النص الحالي turtle.py
 
-Do not forget to have both files (meadow.py and write.py) in the same directory.
+لا تنسَ وجود كلا الملفين (meadow.py و write.py) في نفس المجلد.
 
-## Import mechanics and undesired side-effects
+## آليات الاستيراد والآثار الجانبية غير المرغوب فيها (Import mechanics and undesired side-effects)
 
-What exactly does the command `import meadow` do?
+ماذا يفعل الأمر `import meadow` بالضبط؟
 
-First, Python looks for a matching file (`meadow.py`) and runs all the commands
-in the file, from top to bottom, like it was a regular script.
-Once it is done, all the names in the global scope (variables, functions,
-etc.) are remembered and made available for use outside of the module.
+أولاً، تبحث بايثون عن ملف مطابق (`meadow.py`) وتقوم بتشغيل جميع الأوامر
+في الملف، من الأعلى إلى الأسفل، كما لو كان نصًا عاديًا.
+بمجرد الانتهاء، يتم حفظ جميع الأسماء في النطاق العام (المتغيرات والدوال،
+إلخ) وجعلها متاحة للاستخدام خارج الوحدة (module).
 
-When you try to import the same module again, the commands in the module
-are not executed and Python re-uses the already initialized module.
+عند محاولة استيراد نفس الوحدة (module) مرة أخرى، لا يتم تنفيذ الأوامر الموجودة في الوحدة
+وتعيد بايثون استخدام الوحدة التي تم تهيئتها بالفعل.
 
-Try it! Write in the end of `meadow.py`:
+جربها! اكتب في نهاية `meadow.py`:
 
 ```python
 print('The meadow is green!')
 ```
 
-And then run `python` in the command line (if you already have an interactive
-Python open, close it, and run again) and enter:
+ثم قم بتشغيل `python` في سطر الأوامر (إذا كان لديك بالفعل مترجم بايثون تفاعلي
+مفتوح، أغلقه، وقم بتشغيله مرة أخرى) وأدخل:
 
 ```pycon
 >>> import meadow
@@ -142,48 +142,51 @@ The meadow is green!
 >>>
 ```
 
-The message we print at the end of the module appears only once.
+تظهر الرسالة التي نطبعها في نهاية الوحدة (module) مرة واحدة فقط.
 
-When the module is "doing something" (it prints something, asks the user,
-writes something into a file) we say that it has a *side effect*.
-We generally try to avoid writing modules with side effects.
-The purpose of a module is to give us *functions*, that we
-will use to do something, not to do it instead of us.
-E.g., when we write `import turtle`, no window opens. It opens
-only when we write `turtle.forward()`.
+عندما تقوم الوحدة (module) بـ "فعل شيء ما" (تطبع شيئًا، أو تسأل المستخدم،
+تكتب شيئًا في ملف)، نقول إن لها *تأثيرًا جانبيًا* (side effect).
+نسعى عمومًا لتجنب كتابة وحدات ذات آثار جانبية.
+الغرض من الوحدة (module) هو تزويدنا بـ *دوال* (functions)، والتي
+سنستخدمها لفعل شيء ما، وليس فعلها بدلاً منا.
+على سبيل المثال، عندما نكتب `import turtle`، لا تفتح نافذة. تفتح
+فقط عندما نكتب `()turtle.forward`.
 
-So you had better delete the `print` from our module.
+لذا من الأفضل حذف أمر `print` من وحدتنا (module).
 
-## One directory for every project
+## مجلد واحد لكل مشروع (One directory for every project)
 
-From now on, we will work on bigger projects that contain
-more files. We recommend that you create a folder for each
-of them.
+من الآن فصاعدًا، سنعمل على مشاريع أكبر تحتوي على
+المزيد من الملفات. نوصي بإنشاء مجلد لكل
+منهم.
 
-## The `import` best practice
+## أفضل ممارسات `import` (The `import` best practice)
 
-Python imports are case-sensitive. `import Spam` is different from `import spam`.
+عمليات استيراد بايثون حساسة لحالة الأحرف. `import Spam` يختلف عن `import spam`.
 
-### Where to put the imports?
+### أين نضع عمليات الاستيراد؟ (Where to put the imports?)
 
-Always keep imports at the top of your script before you the start of your
-own code.
+احتفظ دائمًا بعمليات الاستيراد في أعلى النص الخاص بك قبل بدء
+التعليمات البرمجية الخاصة بك.
 
-### Does the order of the imports matter?
+### هل ترتيب عمليات الاستيراد مهم؟ (Does the order of the imports matter?)
 
-Generally, the order of the imports does not matter. though, we often
-order the imports,
+بشكل عام، ترتيب عمليات الاستيراد غير مهم. على الرغم من ذلك، غالبًا ما نقوم
+بترتيب عمليات الاستيراد،
 
-1) modules from the Python system library (e.g., `math`)
-2) third-party libraries (installed with the `pip` command)
-3) imports from our own modules
+1) وحدات من مكتبة نظام بايثون (Python system library) (مثل `math`)
 
-If you decide to import multiple names from the module do it in one import
-command, e.g.:
+2) مكتبات الطرف الثالث (third-party libraries) (المثبتة باستخدام أمر `pip`)
+
+3) عمليات استيراد من وحداتنا الخاصة
+
+
+إذا قررت استيراد عدة أسماء من الوحدة (module)، فافعل ذلك في أمر استيراد واحد،
+على سبيل المثال:
 
 ```python
 from math import pi, sin, cos
 ```
 
-## Further reading
-You can find more info about [import and modules here](https://chrisyeh96.github.io/2017/08/08/definitive-guide-python-imports.html#basics-of-the-python-import-and-syspath).
+## قراءة متعمقة (Further reading)
+يمكنك العثور على مزيد من المعلومات حول [الاستيراد والوحدات هنا](https://chrisyeh96.github.io/2017/08/08/definitive-guide-python-imports.html#basics-of-the-python-import-and-syspath).

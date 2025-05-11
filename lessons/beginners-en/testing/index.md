@@ -1,73 +1,72 @@
-# Testing
+# الاختبار (Testing)
 
-Programming is not just about writing code. 
-It is important to verify that the code does what it should.
-The process of verification that the program works as expected is called *testing*.
+لا يقتصر البرمجة (programming) على كتابة التعليمات البرمجية فقط.
+من المهم التحقق من أن التعليمات البرمجية تفعل ما ينبغي عليها فعله.
+تسمى عملية التحقق من أن البرنامج يعمل كما هو متوقع *الاختبار* (testing).
 
-You have probably already tested your programs by executing them.
-When you test your program, you usually enter some input data and print the result if it is correct.
+ربما قمت بالفعل باختبار برامجك عن طريق تنفيذها.
+عندما تختبر برنامجك، عادةً ما تدخل بعض بيانات الإدخال وتطبع النتيجة إذا كانت صحيحة.
 
-This is okay for a small program, but it gets harder as the program gets bigger.
-Bigger programs have more options what they can do based on the possible
-user input and configuration. Their manual testing becomes time-consuming,
-especially when it needs to be repeated after every change, and it becomes more
-likely errors slip unnoticed into our code.
+هذا جيد لبرنامج صغير، لكنه يصبح أصعب كلما كبر البرنامج.
+تحتوي البرامج الأكبر على المزيد من الخيارات لما يمكنها فعله بناءً على الاحتمالات
+إدخال وتكوين المستخدم. يصبح اختبارها اليدوي يستغرق وقتًا طويلاً،
+خاصة عندما يحتاج إلى التكرار بعد كل تغيير، ويصبح أكثر
+من المحتمل أن تتسلل الأخطاء دون أن يلاحظها أحد إلى التعليمات البرمجية الخاصة بنا.
 
-Humans are not very good at performing boring repetitive tasks, that is
-the domain of computers. And, not surprisingly, that is the reason why
-developers write the code that verifies their programs.
+البشر ليسوا جيدين جدًا في أداء المهام المتكررة المملة، فهذا هو
+مجال الحواسيب. وليس من المستغرب أن هذا هو السبب وراء
+قيام المطورين بكتابة التعليمات البرمجية التي تتحقق من برامجهم.
 
-## Installing the pytest library
+## تثبيت مكتبة pytest (Installing the pytest library)
 
-Up to now, we have used only the modules that come installed with Python, 
-for example, modules such as `math` or `turtle`.
-There are many more *libraries* that are not included in Python
-but you can install them to your Python environment and use them.
+حتى الآن، استخدمنا فقط الوحدات (modules) التي تأتي مثبتة مع بايثون،
+على سبيل المثال، وحدات مثل `math` أو `turtle`.
+هناك العديد من *المكتبات* (libraries) الأخرى التي لم يتم تضمينها في بايثون
+ولكن يمكنك تثبيتها في بيئة بايثون الخاصة بك واستخدامها.
 
-The library for testing in Python is called `unittest`.
-It is quite difficult to use this library so we will use a better one.
-We will install the library `pytest` which is faster, easier to use and very popular.
+تسمى مكتبة الاختبار في بايثون `unittest`.
+من الصعب جدًا استخدام هذه المكتبة لذا سنستخدم مكتبة أفضل.
+سنقوم بتثبيت مكتبة `pytest` التي هي أسرع وأسهل في الاستخدام وشائعة جدًا.
 
-Submit the following command. (It is a command-line command, 
-just as `cd` or `mkdir`; do not enter it into the Python console.)
+أرسل الأمر التالي. (إنه أمر سطر أوامر - command-line command،
+تمامًا مثل `cd` أو `mkdir`؛ لا تدخله في وحدة تحكم بايثون - Python console.)
 
 ```console
 $ python -m pip install pytest
 ```
 
-> [note] What is pip and why do we use it?
-> `pip` is a Python command-line tool for installing 3rd-party
-> Python libraries from the [Python Package Index (PyPI)](https://pypi.org)
-> and other sources (e.g., Git repositories).
+> [note] ما هو pip ولماذا نستخدمه؟
+> `pip` هي أداة سطر أوامر بايثون (Python command-line tool) لتثبيت مكتبات الطرف الثالث (3rd-party)
+> مكتبات بايثون من [فهرس حزم بايثون (PyPI)](https://pypi.org)
+> ومصادر أخرى (مثل مستودعات Git).
 >
-> `python -m pip install pytest` makes Python to install `pytest` library from PyPI.
+> `python -m pip install pytest` يجعل بايثون يقوم بتثبيت مكتبة `pytest` من PyPI.
+> للحصول على مساعدة حول كيفية استخدام pip، قم بتشغيل `python -m pip --help`.
+
+> [note]` <python -m <command`  أو `<command>`
 >
-> For help on how to use pip run `python -m pip --help`.
-
-> [note] python -m &lt;command&gt; or just &lt;command&gt;
-> `python -m <command>` tells Python to execute a script from the
-> Python module named `<command>` (e.g., `python -m pip ...`).
-> In a properly configured Python environment, it should be possible to call
-> the `<command>` directly, without the help of the `python` command
-> (e.g., `pip ...`)
+> `<python -m <command`  يخبر بايثون بتنفيذ نص (script) من
+> وحدة بايثون (Python module) المسماة `<command>` (على سبيل المثال، `python -m pip ...`).
+> في بيئة بايثون مهيأة بشكل صحيح، يجب أن يكون من الممكن استدعاء
+> `<command>` مباشرة، بدون مساعدة أمر `python`
+> (على سبيل المثال، `pip ...`)
 >
-> To save ourselves the trouble of unnecessary complications with a possibly
-> misconfigured Python environment we recommend using the longer
-> `python -m <command>` version.
+> لتوفير عناء التعقيدات غير الضرورية مع بيئة بايثون قد تكون
+> مهيأة بشكل خاطئ، نوصي باستخدام النسخة الأطول
+>`<python -m <command`.
 
-## Writing tests
+## كتابة الاختبارات (Writing tests)
 
-We will show testing through a very simple example.
-There is a function `add` that can add two numbers.
-There is another function that tests if the 
-`add` function returns correct results for specific numbers.
+سنعرض الاختبار من خلال مثال بسيط للغاية.
+هناك دالة (function) `add` يمكنها جمع رقمين.
+هناك دالة أخرى تختبر ما إذا كانت
+ترجع الدالة `add` نتائج صحيحة لأرقام محددة.
 
-Make a copy of the code into a file named `test_addition.py`
-in a new empty directory.
+انسخ الكود إلى ملف باسم `test_addition.py`
+في مجلد فارغ جديد.
 
-The naming of files and test functions is important for `pytest` (with default settings). 
-It is important for names of files containing tests and test functions
-to start with `test_`.
+يعد تسمية الملفات ودوال الاختبار مهمًا بالنسبة لـ `pytest` (بالإعدادات الافتراضية (default settings)).
+من المهم أن تبدأ أسماء الملفات التي تحتوي على الاختبارات ودوال الاختبار بـ `test_`.
 
 ```python
 def add(a, b):
@@ -77,19 +76,19 @@ def test_add():
     assert add(1, 2) == 3
 ```
 
-> [note] The naming of files and test functions matters
-> `pytest` scans your code and
-> searches for the included tests. When found, these tests are executed.
+> [note] تسمية الملفات ودوال الاختبار مهمة
+> يقوم `pytest` بفحص التعليمات البرمجية الخاصة بك و
+> يبحث عن الاختبارات المضمنة. عند العثور عليها، يتم تنفيذ هذه الاختبارات.
 >
-> By default, the names of the test files and the test functions must start with
-> the `test_` prefix in order to be recognized as tests.
+> بشكل افتراضي، يجب أن تبدأ أسماء ملفات الاختبار ودوال الاختبار بـ
+> البادئة `test_` ليتم التعرف عليها كاختبارات.
 
-What does the test function do?
+ماذا تفعل دالة الاختبار؟
 
-The `assert` statement evaluates the expression that follows it.
-If the result is not true then it raises the `AssertionError` exception 
-which is interpreted by `pytest` as a failing test.
-You can imagine that `assert a == b` does following:
+يقوم بيان `assert` بتقييم التعبير الذي يليه.
+إذا كانت النتيجة غير صحيحة، فإنه يثير استثناء `AssertionError`
+الذي يفسره `pytest` على أنه اختبار فاشل.
+يمكنك أن تتخيل أن `assert a == b` يفعل ما يلي:
 
 ```python
 if not (a == b):
@@ -97,26 +96,26 @@ if not (a == b):
 ```
 
 > [note]
-> Do not use `assert` outside of test functions for now.
-> For "regular" code, the  `assert` has functionality that
-> we will not explain now.
+> لا تستخدم `assert` خارج دوال الاختبار في الوقت الحالي.
+> بالنسبة للتعليمات البرمجية "العادية"، فإن `assert` لديه وظائف
+> لن نشرحها الآن.
 
-## Running tests
+## تشغيل الاختبارات (Running tests)
 
-You execute tests with the command `python -m pytest -v <path>`
-followed by the path to the file containing the tests.
+تقوم بتنفيذ الاختبارات باستخدام الأمر  `<python -m pytest -v <path`
+متبوعًا بمسار الملف الذي يحتوي على الاختبارات.
 
 > [note]
-> You can omit the `<filename>` argument and then `python -m pytest -v`
-> scans the current directory and runs tests in all files whose names start
-> with the `test_` prefix.
+> يمكنك حذف  `<filename>` و بذلك فان الامر`python -m pytest -v`
+> يفحص المجلد الحالي ويقوم بتشغيل الاختبارات في جميع الملفات التي تبدأ أسماؤها بـ
+> البادئة `test_`.
 >
-> You can also use a path to a directory where `pytest` should searches for
-> the tests.
+> يمكنك أيضًا استخدام مسار إلى مجلد حيث يجب أن يبحث `pytest` عن
+> الاختبارات.
 
-This command scans the given file and calls all functions that start
-with the `test_` prefix. It executes them and checks if they raise any exception,
-e.g., raised by the `assert` statement.
+يفحص هذا الأمر الملف المحدد ويستدعي جميع الدوال التي تبدأ
+بالبادئة `test_`. يقوم بتنفيذها ويتحقق مما إذا كانت تثير أي استثناء،
+على سبيل المثال، تم إثارته بواسطة بيان `assert`.
 
 ```ansi
 $ python3 -m pytest -v test_addition.py
@@ -127,10 +126,10 @@ collected 1 item
 
 test_addition.py ␛[32m.␛[0m␛[32m                                                       [100%]␛[0m
 
-␛[32m============================== ␛[32m␛[1m1 passed␛[0m␛[32m in 0.00s␛[0m␛[32m ===============================␛[0m
+␛[32m============================== ␛[32m␐[1m1 passed␐[0m␛[32m in 0.00s␐[0m␛[32m ===============================␛[0m
 ```
-If an exception occurs, `pytest` shows a red message with
-additional details that can help you find the bug and fix it:
+في حالة حدوث استثناء، يعرض `pytest` رسالة حمراء مع
+تفاصيل إضافية يمكن أن تساعدك في العثور على الخطأ وإصلاحه:
 
 ```ansi
 ␛[1m============================= test session starts ==============================␛[0m
@@ -148,46 +147,48 @@ test_addition.py ␛[31mF␛[0m␛[31m                                          
 ␛[1m␛[31mE       assert 4 == 3␛[0m
 ␛[1m␛[31mE        +  where 4 = add(1, 2)␛[0m
 
-␛[1m␛[31mtest_addition.py␛[0m:5: AssertionError
+␛[1m␛[31mtest_addition.py␐[0m:5: AssertionError
 =========================== short test summary info ============================
 FAILED test_addition.py::test_add - assert 4 == 3
-␛[31m============================== ␛[31m␛[1m1 failed␛[0m␛[31m in 0.01s␛[0m␛[31m ===============================␛[0m
+␛[31m============================== ␛[31m␐[1m1 failed␐[0m␛[31m in 0.01s␐[0m␛[31m ===============================␛[0m
 ```
 
-Try to run the test yourself. Modify the `add` function or (its test) so that the
-test fails.
+حاول تشغيل الاختبار بنفسك. قم بتعديل الدالة `add` أو (اختبارها) بحيث
+يفشل الاختبار.
 
-## Test modules
+## وحدات الاختبار (Test modules)
 
-You do not usually write tests in the same file with the regular code.
-Typically, you write tests in another file.
-This way, your code is easier to read, and it makes it possible to distribute 
-only the code, without the tests, to someone who is interested only in executing the program.
+عادةً لا تكتب الاختبارات في نفس الملف مع التعليمات البرمجية العادية.
+عادةً ما تكتب الاختبارات في ملف آخر.
+بهذه الطريقة، يكون الكود الخاص بك أسهل في القراءة، ويجعل من الممكن توزيع
+الكود فقط، بدون الاختبارات، على شخص مهتم فقط بتنفيذ البرنامج.
 
-Split the `test_addition.py` file: Move the `add` function to a new module `addition.py`.
-In the `test_addition.py` file, keep only the test.
-To the `test_addition.py` file, add `from addition import add` to the top
-so the test can call the tested function.
+قسّم ملف `test_addition.py`: انقل الدالة `add` إلى وحدة جديدة `addition.py`.
+في ملف `test_addition.py`، احتفظ بالاختبار فقط.
+إلى ملف `test_addition.py`، أضف `from addition import add` في الأعلى
+حتى يتمكن الاختبار من استدعاء الدالة المختبرة.
 
-The test should pass again.
+يجب أن ينجح الاختبار مرة أخرى.
 
-Let's now try to add two different tests for a function for computing perimeter of
-rectangle from [custom functions]({{ lesson_url('beginners-en/functions') }})
+هيا نحاول الآن إضافة اختبارين مختلفين لدالة لحساب محيط
+مستطيل من [دوال مخصصة]({{ lesson_url('beginners-en/functions') }})
 
 ```python
-def find_perimeter(width, height): 
-    "Returns the rectangle's perimeter of the given sides" 
+def find_perimeter(width, height):
+    "Returns the rectangle's perimeter of the given sides"
     return  2 * (width  +  height)
 print(find_perimeter(2, 4)) # this is how you'd normally check result without "testing"
+
 ```
 
 {% filter solution %}
 
-Possible tests examples:
+أمثلة اختبارات محتملة:
 
 ```python
 def test_find_perimeter_1():
     """ Tests if the function can handle two positive integer values as input.
+
     """
     res = find_perimeter(4, 5)
     assert res == 18
@@ -201,52 +202,56 @@ def test_find_rectangle_perimeter_zero_width():
 
 {% endfilter %}
 
-## Executable modules
+## وحدات قابلة للتنفيذ (Executable modules)
 
-*Automated tests* are functions checking, with no manual intervention,
-that all features of the tested program work correctly.
-The testing does not give us 100% proof that
-the code is without errors but it is still better than no testing at all.
+*الاختبارات الآلية* (Automated tests) هي دوال تتحقق، بدون تدخل يدوي،
+من أن جميع ميزات البرنامج المختبر تعمل بشكل صحيح.
+لا يمنحنا الاختبار دليلًا بنسبة 100٪ على أن
+الكود خالٍ من الأخطاء ولكنه لا يزال أفضل من عدم الاختبار على الإطلاق.
 
-The automated tests make modification of the code easier as you can
-faster find possible bugs in the existing functionality (aka *regressions*).
+تجعل الاختبارات الآلية تعديل الكود أسهل حيث يمكنك
+العثور على الأخطاء المحتملة في الوظائف الموجودة بشكل أسرع (المعروفة باسم *التراجعات* - regressions).
 
-Automated tests have to be able to run unattended. They are often executed
-automatically and the failures are reported via some sort of notification,
-e.g., by email.
+يجب أن تكون الاختبارات الآلية قادرة على التشغيل دون مراقبة. غالبًا ما يتم تنفيذها
+تلقائيًا ويتم الإبلاغ عن حالات الفشل عبر نوع من الإشعارات،
+على سبيل المثال، عن طريق البريد الإلكتروني.
 
-[Example Python Repository with pytest](https://github.com/ungarj/mapchete).
+[مثال ل(repository) بايثون مع pytest](https://github.com/ungarj/mapchete).
 
-In practical terms, this means that the tests must not depend on live
-interaction with the user, e.g., the `input` function will not work in tests.
+من الناحية العملية، هذا يعني أن الاختبارات يجب ألا تعتمد على تفاعل مباشر
+مع المستخدم، على سبيل المثال، دالة `input` لن تعمل في الاختبارات.
 
-> [note] Can we test user interaction in automated tests?
-> There are testing techniques allowing us to emulate user interaction
-> in the user interfaces. But is that beyond the scope of this course.
+> [note] هل يمكننا اختبار تفاعل المستخدم في الاختبارات الآلية؟
+> هناك تقنيات اختبار تسمح لنا بمحاكاة تفاعل المستخدم
+> في واجهات المستخدم. لكن هذا خارج نطاق هذه الدورة.
 
-This can make your work harder sometimes. Let's look at a more complex project,
-the 1D (one-dimensional) tic-tac-toe.
+قد يجعل هذا عملك أصعب في بعض الأحيان. لنلقِ نظرة على مشروع أكثر تعقيدًا،
+لعبة XO أحادية البعد (1D tic-tac-toe).
 
 > [note]
-> If you do not have the 1D tic-tac-toe program, the following sections are
-> only theoretical.
+> إذا لم يكن لديك برنامج XO أحادي البعد، فإن الأقسام التالية هي
+> نظرية فقط.
 >
-> If you study at home, complete the 1D tic-tac-toe lesson before continuing.
-> The task description is at [one-dimensional tic-tac-toe]({{ lesson_url('beginners-en/tictactoe') }})
+> إذا كنت تدرس في المنزل، فأكمل درس XO أحادي البعد قبل المتابعة.
+> وصف المهمة موجود في [XO أحادي البعد]({{ lesson_url('beginners-en/tictactoe') }})
 
-The structure of the 1D tic-tac-toe code looks roughly like this:
+يبدو هيكل كود XO أحادي البعد تقريبًا كما يلي:
 
 ```python
 import random  # (and possibly other import statements that are needed)
+# (وربما عبارات استيراد أخرى ضرورية)
 
 def move(board, space_number, mark):
     """Returns the board with the specified mark placed in the specified position"""
+    # تُرجع اللوحة مع العلامة المحددة الموضوعة في الموضع المحدد
     ...
 
 def player_move(board):
     """Asks the player what move should be done and returns the board
     with the move played.
     """
+    # تسأل اللاعب عن الحركة التي يجب القيام بها وتُرجع اللوحة
+    # مع الحركة التي تم لعبها.
     ...
     input('What is your move? ')
     ...
@@ -255,6 +260,8 @@ def computer_move(board):
     """Places computer mark on random empty position and returns the board
     with the move played.
     """
+    # تضع علامة الكمبيوتر في موضع فارغ عشوائي وتُرجع اللوحة
+    # مع الحركة التي تم لعبها.
     ...
 
 def tic_tac_toe_1d():
@@ -263,6 +270,9 @@ def tic_tac_toe_1d():
     It creates an empty board and runs player_move and computer_move alternately
     until the game is finished.
     """
+    # تبدأ اللعبة
+    # تقوم بإنشاء لوحة فارغة وتشغل player_move و computer_move بالتناوب
+    # حتى تنتهي اللعبة.
     while ...:
         ...
         player_move(...)
@@ -270,38 +280,39 @@ def tic_tac_toe_1d():
         ...
 
 # Start the game:
+# ابدأ اللعبة:
 tic_tac_toe_1d()
 ```
 
-As we described in [modules lesson]({{ lesson_url('beginners-en/modules') }}),
-if you import this module, Python executes all commands in it, from top to bottom:
+كما وصفنا في [درس الوحدات (modules)]({{ lesson_url('beginners-en/modules') }})،
+إذا قمت باستيراد هذه الوحدة (module)، فإن بايثون تنفذ جميع الأوامر الموجودة فيها، من الأعلى إلى الأسفل:
 
-- The first command, `import`, initializes the variables and functions of the
-  `random` module. It is module from the standard Python library it is unlikely
-  that it would have any side effect to worry about.
+* يقوم الأمر الأول، `import`، بتهيئة المتغيرات والدوال الخاصة بـ
+    وحدة `random`. إنها وحدة من مكتبة بايثون القياسية ومن غير المحتمل
+    أن يكون لها أي تأثير جانبي يدعو للقلق.
 
-- The definitions of functions (`def` statements and everything in them)
-  just define the functions but they do not execute them.
+* تعريفات الدوال (بيانات `def` وكل ما بداخلها)
+    تقوم فقط بتعريف الدوال ولكنها لا تنفذها.
 
-- Calling the `tic_tac_toe_1d` function starts the game.
-  The `tic_tac_toe_1d` calls the `player_move()` function which calls `input()`.
-  This is an issue.
+* يبدأ استدعاء الدالة `tic_tac_toe_1d` اللعبة.
+    تستدعي `tic_tac_toe_1d` الدالة `()player_move` التي تستدعي `()input`.
+    هذه مشكلة.
 
-If you import this module to the tests, the `input` fails and the module does
-not get not imported.
+إذا قمت باستيراد هذه الوحدة (module) إلى الاختبارات، فإن `input` يفشل ولا يتم
+استيراد الوحدة.
 
 > [note]
-> If you want to import such a module from elsewhere, e.g., you would like
-> to use `move()` in a different game, the import of the module itself will
-> start the 1D tic-tac-toe game!
+> إذا كنت ترغب في استيراد مثل هذه الوحدة من مكان آخر، على سبيل المثال، كنت ترغب
+>  في استخدام `()move`  في لعبة مختلفة، فإن استيراد الوحدة نفسها سيبدأ
+> لعبة XO أحادية البعد!
 
-The calling of `tic_tac_toe_1d` is a side-effect and we need to remove it.
-Okay, but you cannot start the game without it! There are two ways of fixing it.
+يعد استدعاء `tic_tac_toe_1d` تأثيرًا جانبيًا ونحتاج إلى إزالته.
+حسنًا، لكن لا يمكنك بدء اللعبة بدونها! هناك طريقتان لإصلاح ذلك.
 
-### Splitting a module
+### تقسيم وحدة (Splitting a module)
 
-We can create a new python file just for running the game, while the functions will stay in the old file.
-E.g., create a new file `game.py` and we move the `tic_tac_toe_1d()` call into it:
+يمكننا إنشاء ملف بايثون جديد فقط لتشغيل اللعبة، بينما ستبقى الدوال في الملف القديم.
+على سبيل المثال، قم بإنشاء ملف جديد باسم `game.py` وننقل استدعاء `()tic_tac_toe_1d` إليه:
 
 ```python
 import tic_tac_toe
@@ -309,12 +320,12 @@ import tic_tac_toe
 tic_tac_toe.tic_tac_toe_1d()
 ```
 
-You cannot test this module because it calls `input` indirectly.
-But you can execute it if you want to play as `python game.py`
+لا يمكنك اختبار هذه الوحدة لأنها تستدعي `input` بشكل غير مباشر.
+ولكن يمكنك تنفيذه إذا كنت ترغب في اللعب كـ `python game.py`
 
-You can import the original module in test files or other modules without side effects.
+يمكنك استيراد الوحدة الأصلية في ملفات الاختبار أو الوحدات الأخرى بدون آثار جانبية.
 
-A test for the original module could look like this:
+يمكن أن يبدو اختبار الوحدة الأصلية كما يلي:
 
 ```python
 import tic_tac_toe
@@ -326,25 +337,25 @@ def test_move_to_empty_space():
     assert board.count('-') == 19
 ```
 
-### Run part of code only if module is executed directly
+### تشغيل جزء من الكود فقط إذا تم تنفيذ الوحدة مباشرةً (Run part of code only if module is executed directly)
 
-There is a special way to check if python only imports functions from a file or it directly
-runs it. It is possible by comparing value of a "magic" variable ``__name__``.
+هناك طريقة خاصة للتحقق مما إذا كانت بايثون تستورد فقط الدوال (functions) من ملف أو إذا كانت تنفذه مباشرةً.
+من الممكن ذلك عن طريق مقارنة قيمة متغير (variable) "سحري" ``__name__``.
 
-The ``__name__`` variable is available anytime you run a Python program and if it has value
-``__main__``, it was run from the main script. If not, it was only imported.
+يتوفر المتغير (variable) ``__name__`` في أي وقت تقوم فيه بتشغيل برنامج بايثون (Python program)، وإذا كانت قيمته
+``__main__``، فقد تم تشغيله من النص الرئيسي (main script). وإذا لم يكن كذلك، فقد تم استيراده فقط.
 
 ```python
 if __name__ == "__main__":
     tic_tac_toe_1d()
 ```
 
-Now you can both import the original module in test files or other modules without
-side effects and run it to play the game.
+الآن يمكنك استيراد الوحدة (module) الأصلية في ملفات الاختبار (test files) أو وحدات أخرى (other modules) بدون
+آثار جانبية (side effects) وتشغيلها للعب اللعبة.
 
-## Best Practices for Testing
+## أفضل ممارسات الاختبار (Best Practices for Testing)
 
-- Write Clear, Concise Test Cases: Each test should focus on a specific aspect of your code.
-- Use Descriptive Test Names: Test names should be descriptive about what they are testing.
-- Keep Tests Independent: Tests should not rely on each other.
-- Run Tests Regularly: Integrate testing into your continuous integration process (every time someone pushes to a repository).
+* اكتب حالات اختبار واضحة وموجزة (Write Clear, Concise Test Cases): يجب أن يركز كل اختبار على جانب محدد من التعليمات البرمجية الخاصة بك.
+* استخدم أسماء اختبار وصفية (Use Descriptive Test Names): يجب أن تكون أسماء الاختبارات وصفية لما تختبره.
+* حافظ على استقلالية الاختبارات (Keep Tests Independent): يجب ألا تعتمد الاختبارات على بعضها البعض.
+* قم بتشغيل الاختبارات بانتظام (Run Tests Regularly): قم بدمج الاختبار في عملية التكامل المستمر (continuous integration process) الخاصة بك (في كل مرة يقوم شخص ما بالدفع إلى مستودع - repository).
