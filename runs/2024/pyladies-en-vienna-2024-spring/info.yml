@@ -217,17 +217,17 @@ plan:
         url: https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_testing.pdf
         type: cheatsheet
       - title: Homework
-        url: https://docs.google.com/document/d/1xVaSWOmQD3PqCY6czmOaxBlAlT0AHv2z2rsveK5vfxg/edit
+        url: https://docs.google.com/document/d/1Lz1MtdxwFfU95jxe1gpUzHC8SGBK_fzao-hqio8SmDw/edit
         type: homework
       # - title: Coding session at Sentry - Hackerrank 27.5.
       #   url: https://docs.google.com/presentation/d/1urPWPVNHW-j2BvY-TK2jsHXEUnzbRyVo37L2g4rpRH0
 
-# - title: Working with Files and Debugging
-#   slug: files_cli
-#   date: 2024-06-04
-#   materials:
-#     - lesson: beginners-en/json
-#     - lesson: beginners-en/files
+  - title: Working with Files and Debugging
+    slug: files_cli
+    date: 2025-05-18
+    materials:
+      - lesson: beginners-en/json
+      - lesson: beginners-en/files
 #     - lesson: beginners-en/debugging
 #     - title: PDB cheatsheet
 #       url: https://github.com/nblock/pdb-cheatsheet/releases/download/v1.2/pdb-cheatsheet.png

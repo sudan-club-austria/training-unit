@@ -1,24 +1,24 @@
-# Files
+# الملفات (Files)
 
-This section covers how to read from files in Python 
-and how to write to them.
+يغطي هذا القسم كيفية القراءة من الملفات في بايثون
+وكيفية الكتابة إليها.
 
-You need three steps to read text from a file:
-* *open* the file,
-* *read* something from it,
-* and finally *close* it.
+تحتاج إلى ثلاث خطوات لقراءة نص من ملف:
+* *افتح* (open) الملف،
+* *اقرأ* (read) شيئًا منه،
+* وأخيراً  *أغلقه* (close).
 
-Create a `poem.txt` file in the editor and write any poem into it.
-Save the file.
+أنشئ ملف `poem.txt` في المحرر واكتب أي قصيدة فيه.
+احفظ الملف.
 
 > [note]
-> In the following example, we are using encoding `utf-8`, which 
-> covers majority of european characters.
+> في المثال التالي، نستخدم الترميز `utf-8`، والذي
+> يغطي غالبية الأحرف الأوروبية و العربية.
 > [`utf-8`]: https://en.wikipedia.org/wiki/UTF-8
-> There are other encodings covering different character sets.
-> If you want to learn more about encodings, you can read this nicely readable [Encoding article](https://tonsky.me/blog/unicode)
+> هناك ترميزات (encodeing) أخرى تغطي مجموعات حروف مختلفة.
+> إذا كنت ترغب في معرفة المزيد عن الترميزات(encoding)، يمكنك قراءة هذه المقالة سهلة القراءة [مقال الترميز(encoding)](https://tonsky.me/blog/unicode)
 
-Let's create a following code:
+هيا ننشئ الكود التالي:
 
 ```python
 poem_file = open('poem.txt', encoding='utf-8')
@@ -27,28 +27,28 @@ print(content)
 poem_file.close()
 ```
 
-Run it in the directory with `poem.txt`. In other words, the current working 
-directory must contain the file with the poem. 
+قم بتشغيله في المجلد الذي يحتوي على `poem.txt`. بمعنى آخر، يجب أن يكون مجلد العمل الحالي
+يحتوي على الملف الذي به القصيدة.
 
-The program prints the poem!
+يطبع البرنامج القصيدة!
 
-What's going on here?
-The `open()` function returns the value that represents the *open file*.
-This value has its own methods.
-We are using the `read()` method that reads the entire contents 
-of the file at once and returns it as a string.
-We will cover `close()`, the function that closes the open file, later.
+ما الذي يحدث هنا؟
+تُرجع الدالة `()open` القيمة التي تمثل *الملف المفتوح* (open file).
+هذه القيمة لها طرقها الخاصة (methods).
+نحن نستخدم الطريقة `()read` التي تقرأ المحتويات الكاملة
+للملف مرة واحدة وتُرجعها كنص (string).
+سنتناول `()close`، الدالة التي تغلق الملف المفتوح، لاحقًا.
 
 
-## Iteration over contents of files
+## التكرار على محتويات الملفات (Iteration over contents of files)
 
-You can use open files with the `for` statement. 
-It's similar as with strings or ranges.
-`for i in range` provides consecutive numbers. 
-`for c in 'abcd'` provides single string characters. 
-`for line in poem_file:` provides individual lines read from the file into the `line` variable.
+يمكنك استخدام الملفات المفتوحة مع عبارة `for`.
+إنه مشابه لما هو الحال مع النصوص أو النطاقات.
+يوفر `for i in range` أرقامًا متسلسلة.
+يوفر `for c in 'abcd'` أحرفًا نصية مفردة.
+يوفر `:for line in poem_file` أسطرًا فردية تُقرأ من الملف إلى المتغير `line`.
 
-For example, we can indent the poem to make it stand out of the text.
+على سبيل المثال، يمكننا وضع مسافة بادئة للقصيدة لجعلها تبرز من النص.
 
 ```python
 print('I heard this poem:')
@@ -62,55 +62,56 @@ print('How do you like it?')
 ```
 
 
-When you try it, you will find that the spacing is not how it should be. 
-Would you like to try to explain why this is so?
+عند تجربته، ستجد أن المسافات ليست كما ينبغي أن تكون.
+هل ترغب في محاولة شرح سبب ذلك؟
 
 {% filter solution %}
-Each row ends with a newline character (`'\n'`).
-When iterating over a Python file, 
-this character remains at the end of the string `line` ¹.
-The `print()` function then adds another newline character. 
-This function always ends the line. 
-You can suppress it using the argument `end=''`).
-That is one way how to "fix" this extra spacing. 
-The other is to use the method `rstrip()` for each line. 
-This method removes all spaces and newline characters 
-that are the end of the string.
+ينتهي كل سطر بحرف سطر جديد (`'\n'`).
+عند التكرار على ملف بايثون،
+يبقى هذا الحرف في نهاية النص `line` ¹.
+ثم تضيف الدالة `()print` حرف سطر جديد آخر.
+تنهي هذه الدالة السطر دائمًا.
+يمكنك منعه باستخدام الوسيط (`''=end`).
+هذه إحدى الطرق "لإصلاح" هذا التباعد الإضافي.
+الطريقة الأخرى هي استخدام الطريقة `()rstrip` لكل سطر.
+تزيل هذه الطريقة جميع المسافات وأحرف السطر الجديد
+التي في نهاية النص.
 
 ---
 
-¹  Why does Python keep the newline character? If the `'\n'` at the end of line was removed, 
-it would not be possible to know if the last line ended with `'\n'` or not.
+¹ لماذا تحتفظ بايثون بحرف السطر الجديد؟ إذا تمت إزالة `'\n'` في نهاية السطر،
+لن يكون من الممكن معرفة ما إذا كان السطر الأخير ينتهي بـ `'\n'` أم لا.
 
 {% endfilter %}
 
 
-## Closing files
+## إغلاق الملفات (Closing files)
 
-It is quite important to close the file after the program stops using it. 
-The `close()` method does this for us.
-Operating systems have limits on open files.
-If you do not close them you can exceed this limit.
-Besides, on Windows, you cannot re-open a file that is already open.
+من المهم جدًا إغلاق الملف بعد توقف البرنامج عن استخدامه.
+تقوم الطريقة `()close` بذلك نيابة عنا.
+لدى أنظمة التشغيل حدود على الملفات المفتوحة.
+إذا لم تغلقها، يمكنك تجاوز هذا الحد.
+إلى جانب ذلك، في نظام التشغيل Windows، لا يمكنك إعادة فتح ملف مفتوح بالفعل.
 
-You can compare files to a fridge: If you want to put something into the fridge, 
-you need to open it and then close it.
-The fridge works without closing, too, but then something goes rotten. 
+يمكنك مقارنة الملفات بالثلاجة: إذا كنت ترغب في وضع شيء ما في الثلاجة،
+تحتاج إلى فتحه ثم إغلاقه.
+تعمل الثلاجة بدون إغلاق أيضًا، ولكن بعد ذلك يفسد شيء ما.
 
-It is easy to forget to close a file.
-For example, an exception or `return` statement inside 
-the file processing may skip the `close()`.
-Then the file remains open.
+من السهل نسيان إغلاق ملف.
+على سبيل المثال، يمكن لاستثناء أو عبارة `return` داخل
+قد تتخطى معالجة الملف `()close`.
+ثم يبقى الملف مفتوحًا.
 
-We can use the `try/finally` statement to make sure that the file is closed.
+يمكننا استخدام عبارة `try/finally` للتأكد من إغلاق الملف.
 
-The `finally` block (the statements(s) after `finally`) is always executed.
-It executes no matter if the `try` blocks ends with success, 
-or with an exception, or if you jump out of it using `return` or `break`.
+يتم تنفيذ كتلة `finally` (العبارات الموجودة بعد `finally`) دائمًا.
+يتم تنفيذه بغض النظر عما إذا كانت كتلة `try` تنتهي بنجاح،
+أو باستثناء، أو إذا قفزت منها باستخدام `return` أو `break`.
 
 ```python
 def initial_character():
     """Return the first character in the poem."""
+    # تُرجع الحرف الأول في القصيدة.
 
     poem_file = open('poem.txt', encoding='utf-8')
     try:
@@ -122,20 +123,21 @@ def initial_character():
 print(initial_character())
 ```
 
-You can use the `finally` block every time you need 
-to close or terminate something -- not just a file,
-it can also be a database connection.
+يمكنك استخدام كتلة `finally` في كل مرة تحتاج فيها
+لإغلاق أو إنهاء شيء ما - ليس مجرد ملف،
+يمكن أن يكون أيضًا اتصال قاعدة بيانات.
 
 
-## The `with` statement
+## عبارة `with` (The `with` statement)
 
-Because the `try/finally` block is quite verbose, 
-there is a better way in Python. It's the `with` statement, that we have seen during the 
-negative testing using pytest (with `pytest.raises()`):
+نظرًا لأن كتلة `try/finally` مطولة جدًا،
+هناك طريقة أفضل في بايثون. إنها عبارة `with`، التي رأيناها أثناء
+الاختبار السلبي باستخدام pytest (مع `()pytest.raises`):
 
 ```python
 def initial_character():
     """Return the first character in the poem."""
+    # تُرجع الحرف الأول في القصيدة.
 
     with open('poem.txt', encoding='utf-8') as poem_file:
         content = poem_file.read()
@@ -144,34 +146,34 @@ def initial_character():
 print(initial_character())
 ```
 
-We used this statement for testing before. 
-It wraps a block with an expected exception.
-It checks if the correct exception has occurred 
-after the block ends.
-In our case, the file is closed when the block ends
-no matter what has happened.
-The file is closed in all cases
-if the `with` block ends with success, 
-or with an exception, or if we're jumping out of it.
+استخدمنا هذه العبارة للاختبار من قبل.
+إنها تغلف كتلة باستثناء متوقع.
+تتحقق مما إذا كان الاستثناء الصحيح قد حدث
+بعد انتهاء الكتلة.
+في حالتنا، يتم إغلاق الملف عند انتهاء الكتلة
+بغض النظر عما حدث.
+يتم إغلاق الملف في جميع الحالات
+إذا انتهت كتلة `with` بنجاح،
+أو باستثناء، أو إذا كنا نقفز منها.
 
-The `with` statement is the best option for working with files
-in the majority of cases.
+عبارة `with` هي الخيار الأفضل للعمل مع الملفات
+في غالبية الحالات.
 
 
-## Writing to files
+## الكتابة إلى الملفات (Writing to files)
 
-> [warning] Caution!
-> It is easy to delete or overwrite any file in Python.
-> Try the following examples in a directory where you have nothing important!
+> [warning] تنبيه!
+> من السهل حذف أو الكتابة فوق أي ملف في بايثون.
+> جرب الأمثلة التالية في مجلد ليس لديك فيه أي شيء مهم!
 
-You can write to a file in Python.
-You need to open the file for writing using a named argument
-`mode='w'` (`w` stands for *write*).
-You can write individual strings using the `write()` method.
+يمكنك الكتابة إلى ملف في بايثون.
+تحتاج إلى فتح الملف للكتابة باستخدام وسيط مُسمى
+`mode='w'` (`w` تعني *كتابة* - write).
+يمكنك كتابة نصوص فردية باستخدام الطريقة `()write`.
 
-If the file already exists, opening it with `mode='w'` overwrites 
-its original content. There will be only the text that your program 
-writes into it.
+إذا كان الملف موجودًا بالفعل، فإن فتحه باستخدام `mode='w'` يكتب فوق
+محتواه الأصلي. لن يكون هناك سوى النص الذي يكتبه برنامجك
+فيه.
 
 ```python
 with open('second-poem.txt', mode='w', encoding='utf-8') as poem_file:
@@ -179,18 +181,18 @@ with open('second-poem.txt', mode='w', encoding='utf-8') as poem_file:
     poem_file.write("Is beating four o'clock\n")
 ```
 
-> [note] Why is there a `\n`?
-> The `write()` method does not put a line ending after the string.
-> If you need to write multiple lines to files, you need to  
-> end each of them by a newline character `'\n'`. We have described it
-> in the [Strings section](../str/).
+> [note] لماذا يوجد `\n`؟
+> لا تضع الطريقة `()write` نهاية سطر بعد النص.
+> إذا كنت بحاجة إلى كتابة عدة أسطر في ملفات، فأنت بحاجة إلى
+> إنهاء كل منها بحرف سطر جديد `'\n'`. لقد وصفناه
+> في [درس النصوص (Strings)](../str/).
 
-Or, you can use the `print()` function.
-By default, it writes to the terminal. 
-It can also write into an open file if you use the named argument `file`.
+أو، يمكنك استخدام الدالة `()print`.
+افتراضيًا،كما  تكتب الدالة الى ال(terminal).
+يمكنها أيضًا الكتابة إلى ملف مفتوح إذا استخدمت الوسيط المُسمى `file`.
 
-Other `print()` options remain unchanged. These options include
-line ending, conversion to strings, and printing multiple arguments at a time.
+تبقى خيارات `()print` الأخرى دون تغيير. تتضمن هذه الخيارات
+نهاية السطر، والتحويل إلى نصوص، وطباعة عدة وسائط في وقت واحد.
 
 ```python
 with open('second-poem.txt', mode='w', encoding='utf-8') as poem_file:
@@ -198,41 +200,41 @@ with open('second-poem.txt', mode='w', encoding='utf-8') as poem_file:
     print('Is beating', 2+2, "o'clock", file=poem_file)
 ```
 
-## Writing and reading JSON data
+## كتابة وقراءة بيانات JSON (Writing and reading JSON data)
 
-`JSON` can be stored into `.txt` files as well. It it done in a similar way, we just need to import the `json` library.
+يمكن تخزين `JSON` في ملفات `txt.` او `json.` أيضًا. يتم ذلك بطريقة مماثلة، نحتاج فقط إلى استيراد مكتبة `json`.
 
-If we want to store our data from a dictionary into the file, we can use following code:
+إذا أردنا تخزين بياناتنا من قاموس في الملف، فيمكننا استخدام الكود التالي:
 
 ```python
 data = {
-    "name": "Anna",
-    "city": "Brno",
-    "languages": ["Czech", "English", "Python"],
+    "name": "Ali",
+    "city": "Omdurman",
+    "languages": ["Arabic", "English", "Python"],
     "age": 26
 }
 
 import json
 
-with open('json_data.txt', mode='w', encoding='utf-8') as json_file:
+with open('json_data.json', mode='w', encoding='utf-8') as json_file:
     json.dump(data, json_file)
 ```
 
 ```python
 import json
 
-with open('json_data.txt') as json_file:
+with open('json_data.json') as json_file:
     data = json.load(json_file)
 
 print(data)
 ```
 
-In previous lesson [json]({{ lesson_url('beginners-en/json') }}) we have shown also loading JSON from a string and writing to a string, which used methods `loads` and `dumps`. The ending `s` represents `string`. You can remember the difference between `load` and `loads` like that.
+في الدرس السابق [json]({{ lesson_url('beginners-en/json') }}) عرضنا أيضًا تحميل JSON من نص (string) والكتابة إلى نص، و استخدمنا الطريقتين `loads` و `dumps`. يمثل الحرف `s` في النهاية `string`. يمكنك تذكر الفرق بين `load` و `loads` بهذه الطريقة.
 
-## Other common data formats
+## انواع بيانات شائعة أخرى (Other common data formats)
 
-In order to read or write `csv` you can use the built-in `csv` library.
+لقراءة أو كتابة `csv` يمكنك استخدام مكتبة `csv` المضمنة.
 
-For other data formats like `Excel` files, you need to install external libraries.
+بالنسبة لانواع البيانات الأخرى مثل ملفات `Excel`، تحتاج إلى تثبيت مكتبات خارجية.
 
-For working with tabular data it is the easiest to use `pandas` library - which also needs to be installed extra.
+للعمل مع البيانات الجدولية(tabular data)، الأسهل هو استخدام مكتبة `pandas` - والتي تحتاج أيضًا إلى تثبيت إضافي.

@@ -1,97 +1,97 @@
 # JSON
 
-There are also other programming languages ​​than Python.
+هناك أيضًا لغات برمجة (programming languages) أخرى غير بايثون.
 
-Other languages ​​can not work with Python code.
-If you would like to "talk" with such programs -
-pass them some processing information
-or to get results from them -
-you have to pass the information in a simplified form.
-
-
-## Types
-
-Most programming languages ​​have some numbers, some sort of lists,
-a variety of strings and some variation of dictionaries
-(or several ways to create dictionaries).
-And they have a way how to write `True`, `False` and `None`.
-
-These basic types are usually sufficient for information handover
-in a legible form, although there are not the exact equivalents in all languages
-(Python has two basic types of numbers - `int` and` float`).
-So we will focus on them.
+لا يمكن للغات الأخرى العمل مع كود بايثون.
+إذا كنت ترغب في "التحدث" مع هذه البرامج -
+تزويدها ببعض معلومات المعالجة
+أو للحصول على نتائج منها -
+عليك تمرير المعلومات في شكل مبسط.
 
 
-## Data encoding
+## الأنواع (Types)
 
-Another problem is data transfer:
-so for you to be able to write data on disk or transfer
-via the Internet, it has to be converted to a sequence of *bytes* (numbers from 0 to 255).
-Simplified: you have to convert it to a string.
+معظم لغات البرمجة لديها بعض الأرقام، وبعض أنواع القوائم،
+مجموعة متنوعة من النصوص وبعض الاختلافات في القواميس
+(أو عدة طرق لإنشاء القواميس).
+ولديهم طريقة لكتابة `True` و `False` و `None`.
 
-There are plenty of ways to encode data into text.
-Each way is trying to find the right balance between
-legibility for people/computers, length of record,
-security, options and extensibility.
-We already know the syntax for Python:
+عادة ما تكون هذه الأنواع الأساسية كافية لنقل المعلومات
+في شكل مقروء، على الرغم من عدم وجود مكافئات دقيقة في جميع اللغات
+(لدى بايثون نوعان أساسيان من الأرقام - `int` و `float`).
+لذلك سنركز عليها.
+
+
+## ترميز البيانات (Data encoding)
+
+مشكلة أخرى هي نقل البيانات:
+حتى تتمكن من كتابة البيانات على القرص أو نقلها
+عبر الإنترنت، يجب تحويلها إلى تسلسل من *بايتات* (bytes) (أرقام من 0 إلى 255).
+بتبسيط: عليك تحويلها إلى نص (string).
+
+هناك الكثير من الطرق لترميز البيانات إلى نص.
+تحاول كل طريقة إيجاد التوازن الصحيح بين
+سهولة القراءة للأشخاص/الحواسيب، وطول السجل،
+الأمان والخيارات وقابلية التوسع.
+نحن نعرف بالفعل بناء الجملة الخاص ببايثون:
 
 ```python
 {
-    'name': 'Anna',
-    'city': 'Prague',
-    'languages': ['Czech', 'English', 'Python'],
-    'age': 26,
+    'name': 'Ali',
+    'city': 'Omdurman',
+    'languages': ['Arabic', 'English', 'Python'],
+    'age': 29,
 }
 ```
 
-Another way to write data is [YAML](http://www.yaml.org/):
+طريقة أخرى لكتابة البيانات هي [YAML](http://www.yaml.org/):
 
 ```yaml
-name: Anna
-city: Prague
+name: Ali
+city: Omdurman
 languages:
-   - Czech
+   - Arabic
    - English
    - Python
-age: 26
+age: 29
 ```
 
-Finally, there is also [JSON](http://json.org/)
-(*Javascript Object Notation*),
-which, for its simplicity, has expanded the most:
+أخيرًا، هناك أيضًا [JSON](http://json.org/)
+(Javascript Object Notation)،
+والذي، لبساطته، انتشر بشكل كبير:
 
 ```json
 {
-  "Name": "Anna",
-  "City": "Prague",
-  "Languages": ["Czech", "English", "Python"],
-  "Age": 26
+  "Name": "Ali",
+  "City": "Omdurman",
+  "Languages": ["Arabic", "English", "Python"],
+  "Age": 29
 }
 ```
 
 > [note]
-> Keep in mind that although JSON looks similar to code
-> in Python, it's another format with its own rules.
-> Do not confuse them!
+> ضع في اعتبارك أنه على الرغم من أن JSON يبدو مشابهًا للكود
+> في بايثون، إلا أنه تنسيق آخر له قواعده الخاصة.
+> لا تخلط بينهما!
 >
-> At first I do not recommend writing JSON manually;
-> let computer decide where to write
-> commas and quotation marks.
+> في البداية لا أوصي بكتابة JSON يدويًا؛
+> دع الحاسوب يقرر مكان كتابة
+> الفواصل وعلامات الاقتباس.
 
-## JSON in Python
+## JSON في بايثون (JSON in Python)
 
-Object encoding in JSON is simple: there is a `json` module,
-whose `loads` method retrieves data from the string:
+ترميز الكائنات في JSON بسيط: هناك وحدة (module) `json`،
+التي تسترد طريقتها `loads` البيانات من النص:
 
 ```python
 import json
 
 json_string = """
     {
-      "name": "Anna",
-      "city": "Brno",
-      "languages": ["Czech", "English", "Python"],
-      "age": 26
+      "name": "Ali",
+      "city": "Omdurman",
+      "languages": ["Arabic", "English", "Python"],
+      "age": 29
     }
 """
 
@@ -100,33 +100,33 @@ print(data)
 print(data['city'])
 ```
 
-And then there is the `dumps` method, which decodes the given data
-and returns a string.
+ثم هناك طريقة `dumps`، التي تفك ترميز البيانات المعطاة
+وتُرجع نصًا (string).
 
-The string that `dumps(data)` returns is suitable for computer
-treatment.
-If you want to read it, it is better to set `ensure_ascii = False` 
-(so that accented letters are not encoded with`\`)
-and `indent = 2` (indent with two spaces).
+النص الذي تُرجعه `dumps(data)` مناسب للحاسوب
+المعالجة.
+إذا كنت ترغب في قراءته، فمن الأفضل تعيين `ensure_ascii = False`
+(بحيث لا يتم ترميز الأحرف المشددة بـ `\`)
+و `indent = 2` (مسافة بادئة بمسافتين).
 
 ```pycon
 >>> print(json.dumps(data, ensure_ascii = False, indent = 2))
 {
-  "name": "Anna",
-  "city": "Brno",
+  "name": "Ali",
+  "city": "Omdurman",
   "languages": [
-    "Czech",
+    "Arabic",
     "English",
     "Python"
   ],
-  "age": 26
+  "age": 29
 }
 ```
-## Exercise
+## تمرين (Exercise)
 
-Write code to print the value of salary of Emma from following JSON string.
+اكتب كودًا لطباعة قيمة راتب حسن الكلي  (المرتب بالاضافة للنثرية bonus) من نص JSON التالي.
 
-Try not to depend on the fact that her entry is first in the list)
+حاول ألا تعتمد على حقيقة أن ترتيب حسن هو الأول في القائمة)
 
 
 ```python
@@ -134,14 +134,14 @@ sampleJson = """{
   "company":{
     "employees":[
       {
-        "name":"emma",
+        "name":"Hassan",
         "payable":{
           "salary":7000,
           "bonus":800
         }
       },
       {
-        "name":"anna",
+        "name":"Fatima",
         "payable":{
           "salary":5500,
           "bonus":1000
@@ -160,14 +160,14 @@ sampleJson = """{
   "company":{
     "employees":[
       {
-        "name":"emma",
+        "name":"Hassan",
         "payable":{
           "salary":7000,
           "bonus":800
         }
       },
       {
-        "name":"anna",
+        "name":"Fatima",
         "payable":{
           "salary":5500,
           "bonus":1000
@@ -180,7 +180,7 @@ content = json.loads(sampleJson)
 employees = content.get("company", {}).get("employees", [])
 for employee in employees:
     name = employee.get('name')
-    if name == "emma":
+    if name == "Hassan":
       payable = employee.get("payable", {})
       total = payable.get("salary", 0) + payable.get("bonus", 0)
       print(f"{name} has a total salary with bonus: {total}")
@@ -188,6 +188,6 @@ for employee in employees:
 {% endfilter %}
 
 
-A complete description of `json` module -
-including write/read functions directly to/from files -
-is in the [documentation](https://docs.python.org/3/library/json.html).
+وصف كامل لوحدة `json` -
+بما في ذلك دوال الكتابة/القراءة مباشرة إلى/من الملفات -
+موجود في [الرابط](https://docs.python.org/3/library/json.html).
