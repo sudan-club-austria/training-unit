@@ -1,26 +1,29 @@
-# What are Bugs?
+# ما هي الأخطاء البرمجية (Bugs)؟
 
-A software bug is any error that causes unwanted behavior and
-produces incorrect or unexpected results.
+الخطأ البرمجي (software bug) هو أي خطأ يتسبب في سلوك غير مرغوب فيه و
+ينتج عنه نتائج غير صحيحة أو غير متوقعة.
 
-The term most likely originates from mechanical engineering, where actual bugs
-(insects) might crawl into machines and cause mechanical failures. Edison
-mentioned those in 1870. The term stuck and was migrated to software
-engineering.
+يُرجح أن المصطلح نشأ من الهندسة الميكانيكية، حيث قد تتسلل **الحشرات (insects)**
+إلى الآلات وتتسبب في أعطال ميكانيكية. ذكر إديسون
+هذه الحالات في عام 1870. استمر المصطلح وانتقل إلى **هندسة البرمجيات (software engineering)**.
 
-# What is Debugging?
+---
 
-The term debugging means to _find_ and _eliminate_ bugs in software systems.
-For this purpose, a wide range of tools are at our disposal, which helps us in
-finding bugs and the context in which they are occurring.
+# ما هو تصحيح الأخطاء (Debugging)؟
 
-# Types of bugs
+مصطلح **تصحيح الأخطاء (debugging)** يعني *إيجاد* و *إزالة* الأخطاء في أنظمة البرمجيات.
+ولهذا الغرض، تتوفر لدينا مجموعة واسعة من الأدوات التي تساعدنا في
+العثور على الأخطاء والسياق الذي تحدث فيه.
 
-## Syntax Errors
+---
 
-This kind of bugs originates from syntactically incorrect source code. Usually
-such bugs are quite obvious, when the source code is executed and can thus be
-quite easily fixed.
+# أنواع الأخطاء (Types of bugs)
+
+## أخطاء بناء الجملة (Syntax Errors)
+
+ينشأ هذا النوع من الأخطاء من **كود المصدر غير الصحيح نحويًا (syntactically incorrect source code)**. عادة ما تكون
+هذه الأخطاء واضحة جدًا عند تنفيذ كود المصدر، وبالتالي يمكن
+إصلاحها بسهولة تامة.
 
 ```python
 >>> for x in in z:
@@ -30,27 +33,27 @@ quite easily fixed.
 SyntaxError: invalid syntax
 ```
 
-## Arithmetic
+## الأخطاء الحسابية (Arithmetic)
 
-Floating point numbers are inherently inexact, and can sometimes give
-unexpected results. This needs to be taken into account, when dealing with
-fractions like in the next example:
+**الأرقام ذات الفاصلة العائمة (Floating point numbers)** غير دقيقة بطبيعتها، وقد تعطي أحيانًا
+نتائج غير متوقعة. يجب أخذ ذلك في الاعتبار عند التعامل مع
+الكسور كما في المثال التالي:
 
 ```python
 >>> 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 == 1.0
 False
 ```
 
-## Wrong design
+## تصميم خاطئ (Wrong design)
 
-In some cases, the implementation (the code) is correct, but the underlying
-design is flawed.
+في بعض الحالات، يكون التنفيذ (الكود) صحيحًا، ولكن **التصميم الأساسي (underlying design)**
+معيب.
 
-## Memory leaks
+## تسرب الذاكرة (Memory leaks)
 
-Memory leaks are cases of bugs where more and more memory is consumed by
-creating objects which are never destroyed, thus requiring memory that is never
-freed up. At one point there will be no memory left and the program will crash.
+**تسرب الذاكرة (Memory leaks)** هي حالات أخطاء يتم فيها استهلاك المزيد والمزيد من الذاكرة عن طريق
+إنشاء كائنات لا يتم تدميرها أبدًا، وبالتالي تتطلب ذاكرة لا يتم
+تحريرها أبدًا. في مرحلة ما لن يتبقى ذاكرة وسيتعطل البرنامج.
 
 ```python
 >>> mylist = list(range(1_000_000))
@@ -70,27 +73,27 @@ freed up. At one point there will be no memory left and the program will crash.
 1024000000
 Killed
 ```
-Memory leaks can be quite subtle and sometimes hard to notice and may only show
-up under specific circumstances like very long running times.
+يمكن أن تكون تسربات الذاكرة دقيقة جدًا ويصعب ملاحظتها أحيانًا وقد تظهر
+فقط في ظروف محددة مثل أوقات التشغيل الطويلة جدًا.
 
-# Finding bugs
+---
 
-As previously stated, bugs typically show themselves with unexpected behavior
-and wrong results. The process of debugging is to locate the bugs in their
-specific context, so it is very helpful to see this context. The context is
-comprised of:
+# العثور على الأخطاء (Finding bugs)
 
-* variables (local variables and global ones)
-* the "call stack": the stack of function calls at a specific location
+كما ذكرنا سابقًا، تظهر الأخطاء عادةً بسلوك غير متوقع
+ونتائج خاطئة. عملية تصحيح الأخطاء هي تحديد مكان الأخطاء في سياقها
+المحدد، لذلك من المفيد جدًا رؤية هذا السياق. يتكون السياق من:
 
-In order to show the context and interact with it, we can use certain tools:
+* **المتغيرات (variables)** (المتغيرات المحلية والعالمية)
+* **"مجمِّع الاستدعاءات" (call stack)**: مجمِّع استدعاءات الدوال في موقع محدد
 
+لإظهار السياق والتفاعل معه، يمكننا استخدام أدوات معينة:
 
-## "Print-style" debugging
+## تصحيح الأخطاء بأسلوب "الطباعة" ("Print-style" debugging)
 
-This style of debugging is common, as it is easily implemented by peppering the
-code with `print` and similar statements in order to show the current state of
-the program. Thus, it is easy to do and has a very low barrier.
+هذا النمط من تصحيح الأخطاء شائع، حيث يمكن تنفيذه بسهولة عن طريق إضافة
+عبارات `print` وعبارات مماثلة في الكود لإظهار الحالة الحالية
+للبرنامج. وبالتالي، من السهل القيام به وله حاجز منخفض جدًا للدخول.
 
 ```python
 import traceback
@@ -102,32 +105,31 @@ def a(a_arg):
 
 def b(b_arg):
     my_variable = b_arg + 2
-    # we print out all our function arguments, local and global variables
+# we print out all our function arguments, local and global variables
     print(b_arg)
     print(my_variable)
     print(GLOBAL_VAR)
-    # our call stack is ->
+
     traceback.print_stack()
 
 a(10)
 ```
 
-However, this style of programming comes with significant drawbacks:
+ومع ذلك، يأتي هذا النمط من البرمجة مع عيوب كبيرة:
 
-  * you have to modify the source code in order to debug it. Often these print
-    statements are forgotten and linger in the source code for quite some time.
-  * it is not possible to interact with the context during the debugging, the
-    program needs to be stopped, changed, and started again.
-  * Tracing your variables can become quite messy, as both the variables name
-    and value need to be printed, often before and after a certain location
+* يجب عليك **تعديل كود المصدر (source code)** لتصحيح الأخطاء. غالبًا ما تُنسى عبارات الطباعة هذه
+    وتبقى في كود المصدر لفترة طويلة جدًا.
+* ليس من الممكن **التفاعل مع السياق (context)** أثناء تصحيح الأخطاء، يجب إيقاف البرنامج
+    وتغييره وبدء تشغيله مرة أخرى.
+* يمكن أن يصبح تتبع متغيراتك **فوضويًا** جدًا، حيث يجب طباعة اسم المتغير
+    وقيمته، غالبًا قبل وبعد موقع معين.
 
-## Testing
+## الاختبار (Testing)
 
-Writing and regularly running tests can be quite helpful in locating bugs.
-Especially "unit" tests (i.e: tests that involve single classes or functions)
-can reduce the context of a class or function in order to see if it works as
-intended and is bug free.
-
+كتابة الاختبارات وتشغيلها بانتظام يمكن أن يكون مفيدًا جدًا في تحديد مكان الأخطاء.
+خاصة **اختبارات "الوحدة" (unit tests)** (أي: الاختبارات التي تختبر فئات (classes) أو دوال (functions))
+يمكن أن تقلل من سياق فئة أو دالة لمعرفة ما إذا كانت تعمل كما
+هو مقصود وخالية من الأخطاء.
 
 ```python
 def area_rectangle(a, b):
@@ -154,30 +156,29 @@ def test_area_rectangle_negative():
         area_rectangle(2, -3)
 ```
 
-## Using a debugger
+## استخدام المصحح (Using a debugger)
 
-Debuggers are tools that enable us to interact with a _running_ program without
-the need to modify it. We can pause the program at specific __break points__
-where we can investigate and even modify the context, as well as moving _up_ or
-_down_ the current call stack.
+**المصححات (Debuggers)** هي أدوات تمكننا من التفاعل مع برنامج *قيد التشغيل* بدون
+الحاجة إلى تعديله. يمكننا إيقاف البرنامج مؤقتًا عند **نقاط توقف (break points)** محددة
+حيث يمكننا فحص وتعديل السياق، وكذلك الانتقال *لأعلى* أو
+*لأسفل* مجمع الاستدعاءات الحالي.
 
-There exist many different types of debuggers, some are built into the Python
-itself, some are built into the code editor, some are even available as a
-webpage.
+توجد أنواع مختلفة من المصححات، بعضها مدمج في بايثون
+نفسها، وبعضها مدمج في محرر الأكواد، وبعضها متاح حتى كصفحة ويب.
 
-We will now discuss the most common ones:
+سوف نناقش الآن الأكثر شيوعًا:
 
-### PDB - the Python De-Bugger
+### PDB - مصحح بايثون (the Python De-Bugger)
 
-The PDB is part of the python standard library, thus it is always available. It
-is text-based and is meant to be used from the command line.
+PDB هو جزء من **مكتبة بايثون القياسية (python standard library)**، وبالتالي فهو متاح دائمًا.
+يعتمد على النص ومخصص للاستخدام من سطر الأوامر.
 
-It can be invoked in several ways:
-  * either by using `breakpoint()` calls in your code
-  * or by starting your python script in a slightly different manner:
+يمكن استدعاؤه بعدة طرق:
+* إما عن طريق استخدام استدعاءات `()breakpoint` في الكود الخاص بك
+* أو عن طريق بدء نص بايثون الخاص بك بطريقة مختلفة قليلاً:
     `python -m pdb yourscript.py`
 
-Let us use the following script to debug, and save it as `test.py`:
+دعنا نستخدم النص التالي للتصحيح، ونحفظه باسم `test.py`:
 
 ```python
 def myfunc(myarg):
@@ -192,7 +193,7 @@ def myinnerfunc(innerarg):
 myfunc(1)
 ```
 
-When we run it normally we get this result:
+عندما نقوم بتشغيله بشكل طبيعي نحصل على هذه النتيجة:
 
 ```bash
 $ python test.py
@@ -206,7 +207,7 @@ Traceback (most recent call last):
 ZeroDivisionError: division by zero
 ```
 
-We now want to debug the file by using PDB:
+نريد الآن تصحيح الملف باستخدام PDB:
 
 ```bash
 $ python -m pdb test.py
@@ -215,9 +216,9 @@ $ python -m pdb test.py
 (Pdb)
 ```
 
-You can now see that the program has not yet started, but you get the `(pdb)`
-prompt that allows you to set up pre-conditions and breakpoints in your code by
-using the commands. You can get a list of commands by typing `help`:
+يمكنك الآن رؤية أن البرنامج لم يبدأ بعد، ولكنك تحصل على موجه `(Pdb)`
+الذي يسمح لك بإعداد الشروط المسبقة ونقاط التوقف في الكود الخاص بك
+باستخدام الأوامر. يمكنك الحصول على قائمة بالأوامر عن طريق كتابة `help`:
 
 ```
 (Pdb) help
@@ -237,7 +238,7 @@ Miscellaneous help topics:
 exec  pdb
 ```
 
-You can get the description of a specific command by using `help <cmd>`:
+يمكنك الحصول على وصف لأمر معين باستخدام `<help <cmd`:
 
 ```
 (Pdb) help b
@@ -256,38 +257,37 @@ b(reak) [ ([filename:]lineno | function) [, condition] ]
         sys.path; the .py suffix may be omitted.
 ```
 
-The following commands are important for us in the beginning:
+الأوامر التالية مهمة لنا في البداية:
 
-  * `b(reak)`: allows us to set a breakpoint, a point in your program where we
-    want to stop to investigate. We can use a function name or a linenumber
-    here. Optionally, we can add a condition, which will tell whether to a
-    breakpoint shall trigger or not.
-  * `c(ontinue)`: we want to continue the normal program execution until we
-    reach the next breakpoint.
-  * `s(tep)`: while paused, execute the next line in your program. If it is a
-    function, step into that function and continue execution there
-  * `n(ext)`: also execute the next line in your program, but don't step into a
-    function. Instead, the function is run in its entirety and the results
-    returned. The debugging is continued afterwards.
-  * `w(here)`: show the current call stack and where we are currently debugging
-  * `u(p)`: move up the call stack (i.e: the calling function)
-  * `d(own)`: move down the call stack. Only works when we used `up` before
+* `b(reak)`: يسمح لنا بتعيين نقطة توقف (breakpoint)، وهي نقطة في برنامجك حيث
+    نريد التوقف للفحص. يمكننا استخدام اسم دالة أو رقم سطر
+    هنا. اختياريًا، يمكننا إضافة شرط، والذي سيحدد ما إذا كان يجب
+    تشغيل نقطة التوقف أم لا.
+* `c(ontinue)`: نريد متابعة التنفيذ العادي للبرنامج حتى نصل إلى
+    نقطة التوقف التالية.
+* `s(tep)`: أثناء الإيقاف المؤقت، قم بتنفيذ السطر التالي في برنامجك. إذا كانت
+    دالة، ادخل إلى تلك الدالة واستمر في التنفيذ هناك.
+* `n(ext)`: قم أيضًا بتنفيذ السطر التالي في برنامجك، ولكن لا تدخل إلى
+    دالة. بدلاً من ذلك، يتم تشغيل الدالة بالكامل وتُرجع النتائج.
+    يستمر تصحيح الأخطاء بعد ذلك.
+* `w(here)`: أظهر مجمع الاستدعاءات الحالي وأين نقوم بتصحيح الأخطاء حاليًا.
+* `u(p)`: انتقل لأعلى في مجمع الاستدعاءات (أي: الدالة التي استدعت).
+* `d(own)`: انتقل لأسفل في مجمع الاستدعاءات. يعمل فقط عندما استخدمنا `up` من قبل.
 
-
-We now want to debug our function, so we set a breakpoint in our inner function:
+نريد الآن تصحيح دالتنا، لذلك نضع نقطة توقف في دالتنا الداخلية:
 ```
 (Pdb) b myinnerfunc
 Breakpoint 1 at test.py:6
 ```
 
-We can now start the program, it will stop at our `myinnerfunc`:
+يمكننا الآن بدء البرنامج، وسيتوقف عند `myinnerfunc` الخاصة بنا:
 ```
 (Pdb) c
 > test.py(7)myinnerfunc()
 -> return 1 / innerarg
 ```
 
-We can now check where we currently are in our programs call stack:
+يمكننا الآن التحقق من مكاننا الحالي في مجمع استدعاءات برامجنا:
 
 ```
 (Pdb) w
@@ -302,15 +302,14 @@ We can now check where we currently are in our programs call stack:
 -> return 1 / innerarg
 ```
 
-And we can print our variables:
+ويمكننا طباعة متغيراتنا:
 
 ```
 (Pdb) innerarg
 1
 ```
 
-We can now move up the call stack, to inspect the variables in the calling
-function:
+يمكننا الآن الانتقال لأعلى في مجمع الاستدعاءات، لفحص المتغيرات في الدالة المستدعية:
 
 ```
 (Pdb) up
@@ -318,8 +317,8 @@ function:
 -> myinnerfunc(myarg)
 ```
 
-In order to see our context, we can list (print) the source code at that
-location and print the local variable `myarg`:
+من أجل رؤية سياقنا، يمكننا سرد (طباعة) كود المصدر في ذلك
+الموقع وطباعة المتغير المحلي `myarg`:
 
 ```
 (Pdb) l
@@ -338,7 +337,7 @@ location and print the local variable `myarg`:
 1
 ```
 
-We can then move _down_ the call stack again:
+يمكننا بعد ذلك الانتقال *لأسفل* في مجمع الاستدعاءات مرة أخرى:
 
 ```
 (Pdb) d
@@ -346,9 +345,9 @@ We can then move _down_ the call stack again:
 -> return 1 / innerarg
 ```
 
-We can now make the _next_ execution step in the program, which calculates the
-result and returns it. We can see that with the `--Return--` and the result
-returned (`->1.0`), and we can also see that we returned to the upper function
+يمكننا الآن اتخاذ خطوة التنفيذ *التالية* في البرنامج، والتي تحسب
+النتيجة وتعيدها. يمكننا رؤية ذلك من خلال `--Return--` والنتيجة
+المُعادة (`1.0<-`)، ويمكننا أيضًا رؤية أننا عدنا إلى الدالة العليا
 `myfunc`:
 
 ```
@@ -356,24 +355,9 @@ returned (`->1.0`), and we can also see that we returned to the upper function
 --Return--
 > test.py(7)myinnerfunc()->1.0
 -> return 1 / innerarg
-(Pdb) l
-  1     def myfunc(myarg):
-  2         myinnerfunc(myarg)
-  3  ->     myinnerfunc(myarg - 1)
-  4
-  5
-  6 B   def myinnerfunc(innerarg):
-  7         return 1 / innerarg
-  8
-  9
- 10     myfunc(1)
-[EOF]
 ```
 
-Since we know, that the error only happens when we are in the second call of
-the function `myinnerfunc`, we can use the `continue` command to continue the
-same breakpoint but in the second time we call it. We can then also print out
-the variables again:
+نظرًا لأننا نعلم أن الخطأ يحدث فقط عندما نكون في الاستدعاء الثاني للدالة `myinnerfunc`، يمكننا استخدام الأمر `continue` لمتابعة نفس نقطة التوقف (breakpoint) ولكن في المرة الثانية التي نستدعيها. يمكننا بعد ذلك أيضًا طباعة المتغيرات مرة أخرى:
 
 ```
 (Pdb) c
@@ -383,16 +367,12 @@ the variables again:
 0
 ```
 
-If we would now execute the next line, we would raise the initial error, the
-`ZeroDivisionError`. We can however simple override the variable `innerarg`
-with some other value
-
+إذا قمنا الآن بتنفيذ السطر التالي، فسنثير الخطأ الأولي، وهو `ZeroDivisionError`. ومع ذلك، يمكننا ببساطة تجاوز المتغير  `innerarg` بقيمة أخرى
 ```
 (Pdb) innerarg = 10
 ```
 
-When we now execute the next line, the value can be computed and the result is
-returned:
+عندما ننفذ السطر التالي الآن، يمكن حساب القيمة وتُرجع النتيجة::
 
 ```
 (Pdb) n
@@ -401,63 +381,44 @@ returned:
 -> return 1 / innerarg
 ```
 
-### Using a graphical debugger
 
-Various IDEs (such as Visual Studio Code) allow for a more convenient debugging
-approach, directly incorporated into the IDE. The concepts remain very much the
-same, but can be used in a way more convenient manner, directly where we are
-writing the code.
 
-The following examples will deal with the setup and debugging in Visual Studio
-Code.
+### استخدام مصحح رسومي (Using a graphical debugger)
 
-In order to debug a Python file, it needs to be opened in the editor. Then the
-debugging view needs to be opened (the triangle symbol with the small bug).
+تسمح العديد من **بيئات التطوير المتكاملة (IDEs)** (مثل Visual Studio Code) بنهج **تصحيح أخطاء (debugging)** أكثر ملاءمة، مدمجة مباشرة في بيئة التطوير المتكاملة. تظل المفاهيم هي نفسها إلى حد كبير، ولكن يمكن استخدامها بطريقة أكثر ملاءمة، مباشرة حيث نكون نكتب الكود.
+
+ستتعامل الأمثلة التالية مع الإعداد والتصحيح في Visual Studio Code.
+
+لتصحيح ملف بايثون (Python)، يجب فتحه في المحرر. ثم يجب فتح **عرض التصحيح (debugging view)** (رمز المثلث مع الخطأ الصغير).
 
 {{ figure( img=static('debugging-view.png'), alt='The Debugging view', ) }}
 
-Next select "Python Debugger" and then "Python File".
+بعد ذلك، حدد "Python Debugger" ثم "Python File".
 
 {{ figure( img=static('setup-1.png'), alt='Setup 1', ) }}
 {{ figure( img=static('setup-2.png'), alt='Setup 2', ) }}
 
-Now the debugging can actually start. Conveniently, breakpoints can directly be
-set in the text editor by clicking next to the line number where you want the
-breakpoint to be. An active breakpoint can be seen as a red dot. Clicking on it
-will remove it again, with a right click we can add a condition for the
-breakpoint to trigger.
+الآن يمكن أن يبدأ التصحيح فعليًا. بسهولة، يمكن تعيين **نقاط التوقف (breakpoints)** مباشرة في محرر النصوص بالنقر بجوار رقم السطر حيث تريد أن تكون نقطة التوقف. يمكن رؤية نقطة توقف نشطة كنقطة حمراء. سيؤدي النقر عليها إلى إزالتها مرة أخرى، وبنقر بالزر الأيمن يمكننا إضافة شرط لتشغيل نقطة التوقف.
 
 {{ figure( img=static('breakpoint.png'), alt='Setting a breakpoint', ) }}
 {{ figure( img=static('breakpoint-stop.png'), alt='Stopping at a breakpoint', ) }}
 
-
-When we are running our code we can conveniently inspect the context of our
-running program, showing us the variables and their values (where we can also
-modify them):
+عندما نقوم بتشغيل الكود الخاص بنا، يمكننا بسهولة فحص **سياق برنامجنا (context of our running program)** قيد التشغيل، مما يوضح لنا المتغيرات (variables) وقيمها (حيث يمكننا أيضًا تعديلها):
 
 {{ figure( img=static('context.png'), alt='The debugging context', ) }}
 
-Conveniently, we can see the call stack (we can simply move up/down by clicking
-on the item in the stack) and we can also see a list of all breakpoints, which
-can then also en-/disable. There are also breakpoints for all raised or
-uncaught exceptions, which can help as well.
+بشكل ملائم، يمكننا رؤية **مجمع الاستدعاءات (call stack)** (يمكننا ببساطة الانتقال لأعلى/لأسفل بالنقر على العنصر في المجمع) ويمكننا أيضًا رؤية قائمة بجميع نقاط التوقف، والتي يمكن بعد ذلك تمكينها/تعطيلها. توجد أيضًا نقاط توقف لجميع الاستثناءات (exceptions) التي تم إثارتها أو الاستثناءات غير الملتقطة (uncaught exceptions)، والتي يمكن أن تساعد أيضًا.
 
-When debugging, this small window for controls is available to allow navigating
-the code:
+عند تصحيح الأخطاء، تكون هذه النافذة الصغيرة لعناصر التحكم متاحة للسماح بالتنقل في الكود:
 
 {{ figure( img=static('controls.png'), alt='The debugging controls', ) }}
 
-The blue triangle allows to continue to the next breakpoint (same as
-`c(continue)` in PDB). The arrow above the point executes the next line, but
-does not step into a function (same as `n(ext)`). The arrow down to the point
-makes the next step, but also steps into a function (same as `s(tep)`), whereas
-the arrow up runs the function to its end until it returns. The green rewind
-error restarts the programming and the red square stops the program.
+المثلث الأزرق يسمح بالمتابعة إلى نقطة التوقف التالية (نفس `c(continue)` في PDB). السهم الموجود فوق النقطة ينفذ السطر التالي، ولكنه لا يدخل إلى دالة (نفس `n(ext)`). السهم المتجه لأسفل إلى النقطة يقوم بالخطوة التالية، ولكنه يدخل أيضًا إلى دالة (نفس `s(tep)`). بينما يقوم السهم المتجه لأعلى بتشغيل الدالة حتى نهايتها حتى تعود. الخطأ الأخضر لإعادة التشغيل يعيد تشغيل البرمجة والمربع الأحمر يوقف البرنامج.
 
-# Conclusion
+---
 
-Debugging is a necessary activity to get rid of bugs in our software, whether
-we use `print()`-style debugging or use a dedicated tool.
+### الخلاصة (Conclusion)
 
-Dedicated tools are more complex, but far more powerful in helping us
-understand problems and their specific contexts they appear in.
+**تصحيح الأخطاء (Debugging)** هو نشاط ضروري للتخلص من **الأخطاء (bugs)** في برامجنا، سواء استخدمنا **تصحيح الأخطاء بأسلوب `print()` (print()-style debugging)** أو استخدمنا **أداة مخصصة (dedicated tool)**.
+
+الأدوات المخصصة أكثر تعقيدًا، ولكنها أقوى بكثير في مساعدتنا على فهم المشكلات والسياقات المحددة التي تظهر فيها.

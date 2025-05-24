@@ -1,90 +1,90 @@
-Command line interface in Python
+# واجهة سطر الأوامر في بايثون (Command line interface in Python)
 =======================================
 
-In this lesson, we will show you how to create your own command line interface tool `(CLI)` using Python using the `argparse` library. Primarily this means program argument processing.
+في هذا الدرس، سنوضح لك كيفية إنشاء أداة **واجهة سطر الأوامر (Command Line Interface - CLI)** الخاصة بك باستخدام بايثون (Python) ومكتبة **`argparse`**. يعني هذا بشكل أساسي معالجة **قيم البرنامج (program argument processing)**.
 
-## Command line interface
+## واجهة سطر الأوامر (Command line interface)
 
-... is one of ways how to interact with or control a program (not only Python scripts!) as a user - **interface** with it from inside the computer itself where it is installed (not over the internet).
-That user can be you as a creator of code and someone else you give access to it.
+... هي إحدى طرق التفاعل مع أو التحكم في برنامج (ليس فقط نصوص بايثون!) كمستخدم - **تفاعل (interface)** معه من داخل الكمبيوتر نفسه حيث تم تثبيته (وليس عبر الإنترنت).
+يمكن أن يكون هذا المستخدم هو أنت كمنشئ للكود أو شخص آخر تمنحه حق الوصول إليه.
 
-### Motivation
+### الدافع (Motivation)
 
-In the [testing lesson]({{ lesson_url('beginners-en/testing') }}) we have shown that sometimes you need to call a Python program independently with different arguments in order to run computations with different values.
+في [درس الاختبار (testing lesson)]({{ lesson_url('beginners-en/testing') }})، أوضحنا أنه في بعض الأحيان تحتاج إلى استدعاء برنامج بايثون بشكل مستقل باستخدام **قيم (arguments)** مختلفة لتشغيل عمليات حسابية بقيم مختلفة.
 
-Letting the tester or user pass these **arguments** from command line (which means not manually editing them inside the Python script) is a great option.
+إن السماح للمختبر أو المستخدم بتمرير هذه **القيم (arguments)** من سطر الأوامر (والذي يعني عدم تحريرها يدويًا داخل نص بايثون) هو خيار رائع.
 
-The behavior of a program usually is varying - it depends on the instructions 
-you give to it as **arguments**.
+يتنوع سلوك البرنامج عادةً - فهو يعتمد على التعليمات
+التي تقدمها له ك**قيم (arguments)**.
 
-### Example
+### مثال (Example)
 
-If you want to know what arguments does existing program allow, the argument to use is **help**. This works for most of programs on your computer (if their author created a help page). Also usually there is a `-help` or `--help` command line argument which also shows the expected usage of a tool to any user.
+إذا كنت ترغب في معرفة القيم التي يسمح بها برنامج موجود، فإن القيمة (argument) التي يجب استخدامها هي **`help`**. يعمل هذا لمعظم البرامج على جهاز الكمبيوتر الخاص بك (إذا قام مؤلفها بإنشاء صفحة مساعدة). عادةً ما يكون هناك أيضًا قيمة سطر أوامر **`help-`** أو **`help--`** والتي تعرض أيضًا الاستخدام المتوقع للأداة لأي مستخدم.
 
-#### git
+#### `git`
 
-As an example of a tool which works on both Linux and Windows mostly the same way, you can take our beloved [git]({{ lesson_url('git-en/basics') }}).
+كمثال لأداة تعمل على كل من لينكس (Linux) وويندوز (Windows) بنفس الطريقة تقريبًا، يمكنك أخذ [`git`](L{lesson_url('git-en/basics')}) المحبوبة.
 
-Try running this in your terminal:
+جرب تشغيل هذا في ال (terminal) الخاصة بك:
 
 ```console
 git --help
 ```
 
-and for any subcommand as well:
+ولأي أمر فرعي (subcommand) أيضًا:
 
 ```console
 git log --help
 ```
 
-Now that you know that programs usually accept arguments and they are documented in ``help``, you can start using ``git`` in many ways.
-For example you can heavily customize output of `git log` in some existing git repository:
+الآن بعد أن عرفت أن البرامج تقبل عادةً القيم وأنها موثقة في ``help``، يمكنك البدء في استخدام ``git`` بعدة طرق.
+على سبيل المثال، يمكنك تخصيص إخراج `git log` بشكل كبير في بعض مستودعات Git الموجودة:
 
 ```console
 git log --oneline --graph --decorate --cherry-mark --boundary
 ```
 
 > [note]
-> **Note about "raw" command line argument handling**
-> 
-> In order to read the command line arguments, we can use the `sys.argv` variable, which gives us a list of strings, one for each passed argument:
+> **ملاحظة حول معالجة قيم سطر الأوامر "الخام" (raw command line argument handling)**
+>
+> لقراءة قيم سطر الأوامر (command line arguments)، يمكننا استخدام المتغير `sys.argv`، والذي يعطينا قائمة من النصوص (list of strings)، واحد لكل **قيمة (argument)** تم تمريرها:
 > ```python
 > # arguments.py
 > import sys
-> 
+>
 > for arg in sys.argv:
 >     print(arg)
 > ```
-> When we execute this program with the passed in arguments, we can see them printed out.
-> However, this is not very convenient when we want to build actual CLI programs with options and arguments. But there are good tools we can use instead!
+> عندما ننفذ هذا البرنامج مع القيم التي تم تمريرها، يمكننا رؤيتها مطبوعة.
+> ومع ذلك، هذا ليس مريحًا جدًا عندما نريد بناء برامج CLI فعلية بخيارات (options) و**قيم (arguments)**. ولكن هناك أدوات جيدة يمكننا استخدامها بدلاً من ذلك!
 
-### Argparse
+### `Argparse`
 
-How can we create a CLI in Python? Today, we will show usage of a `argparse` tool. It is a part of the standard library, so you do not need to install anything extra.
+كيف يمكننا إنشاء CLI في بايثون؟ اليوم، سنعرض استخدام أداة **`argparse`**. إنها جزء من **المكتبة القياسية (standard library)**، لذلك لا تحتاج إلى تثبيت أي شيء إضافي.
 
-You can find the official documentation here: [argparse](https://docs.python.org/3/library/argparse.html)
+يمكنك العثور على الوثائق الرسمية هنا: [argparse](https://docs.python.com/3/library/argparse.html)
 
-And a quite handy tutorial going through most of functionalities, you could ever encounter:
-[argparse-tutorial](https://docs.python.org/3/howto/argparse.html)
+ودليل تعليمي مفيد جدًا يمر بمعظم الوظائف التي قد تواجهها:
+[argparse-tutorial](https://docs.python.org/3/howto/argparse.html#argparse-tutorial)
 
-Additionally there is quite commonly used `click` library, which you would need to install via pip
-and uses a decorator syntax, that we have not seen yet, so it can remain as self study.
+بالإضافة إلى ذلك، توجد مكتبة **`click`** شائعة الاستخدام جدًا، والتي ستحتاج إلى تثبيتها عبر `pip`
+وتستخدم بناء جملة **مُزخرف (decorator syntax)**، الذي لم نراه بعد، لذلك يمكن أن يظل كدراسة ذاتية.
 
-#### argparse basic usage
+#### الاستخدام الأساسي لـ `argparse` (argparse basic usage)
 
-Usually when we send our Python code to someone else, we do not expect them to read the whole code but reading the help should be enough for them to use it and change parameters.
+عادةً عندما نرسل كود بايثون الخاص بنا إلى شخص آخر، لا نتوقع منهم قراءة الكود بأكمله، بل يجب أن تكون قراءة المساعدة كافية لهم لاستخدامه وتغيير المعلمات.
 
-For Python CLI tools, you would get the help this way, which you see is the same as for `git`:
+بالنسبة لأدوات Python CLI، ستحصل على المساعدة بهذه الطريقة، والتي ترى أنها هي نفسها كما في `git`:
 
 ```console
 python3 hello.py --help
 ```
 
-Here's how to create Python command line application with switches:
+إليك كيفية إنشاء تطبيق سطر أوامر بايثون بمفاتيح:
 
-But first lets start with a function that greets the user for a given number of times and optionally can indent the greeting.
+لكن أولاً، لنبدأ بدالة تحيي المستخدم لعدد معين من المرات ويمكنها اختياريًا إضافة مسافة بادئة للتحية.
 
-Lets save the following code into `hello.py` file.
+لنحفظ الكود التالي في ملف `hello.py`.
 
 ```python
 def hello(count, name, indent=False):
@@ -95,14 +95,14 @@ def hello(count, name, indent=False):
         print(f"Hello {name}!")
 
 count = 5
-name = "Tyna"
+name = "Baloola"
 indent = True
 hello(count, name, indent)
 ```
 
-And run it as usual as `python hello.py`.
+وشغّله كالمعتاد كـ `python hello.py`.
 
-Now we want the arguments `count`, `name` and `indent` to be enabled as CLI options and come from command line arguments when you start the script.
+الآن نريد أن تكون **القيم (arguments)** `count` و `name` و `indent` متاحة كخيارات CLI وتأتي من قيم سطر الأوامر (command line arguments) عندما تبدأ النص البرمجي.
 
 ```python
 import argparse
@@ -123,14 +123,13 @@ args = parser.parse_args()
 hello(args.count, args.name, args.indent)
 ```
 
-The first step in using the argparse is creating an `ArgumentParser` object with some description.
-Then you fill an `ArgumentParser` with information about program
-arguments, which is done by making calls to the `add_argument()` method.
-This information is stored and used when `parse_args()` is called.
+الخطوة الأولى في استخدام `argparse` هي إنشاء (object) يدعى **`ArgumentParser`** مع بعض الوصف.
+ثم تقوم بملء `ArgumentParser` بمعلومات حول **قيم البرنامج (program arguments)**، ويتم ذلك عن طريق إجراء استدعاءات لطريقة **`()add_argument`**.
+يتم تخزين هذه المعلومات واستخدامها عند استدعاء **`()parse_args`**.
 
-You can set parameters as required by adding `required=True` option.
-It is also possible to their `type`, which will try to convert the variable to the data type announced.
-In order to allow simple storing of boolean flags `True/False`, you can use the `action="store_true"` parameter.
+يمكنك تعيين المعلمات على أنها مطلوبة (required) عن طريق إضافة خيار **`required=True`**.
+من الممكن أيضًا تحديد **`type` (النوع)** الخاص بها، والذي سيحاول تحويل المتغير إلى نوع البيانات المعلن عنه.
+للسماح بالتخزين البسيط للأعلام المنطقية **`True/False`  **، يمكنك استخدام المعامل **`action="store_true"`**.
 
 ```console
 python3 hello.py
@@ -141,44 +140,48 @@ python3 hello.py --count 5 --name PyLady
 python3 hello.py --count 5 --name PyLady --indent
 ```
 
-That is already a very solid first program is it not?
+هذا بالفعل برنامج أول قوي جدًا أليس كذلك؟
 
-## Positional arguments
+---
 
-You can of course define arguments, which are `positional` in the same way as when you are defining and using function arguments. The parsing will expect all arguments to be in the order, in which you defined them.
+## القيم الموضعية (Positional arguments)
 
-To try it, replace the first two lines with `name` and `count` arguments with following lines:
+يمكنك بالطبع تعريف **قيم (arguments)** تكون **موضعية (positional)** بنفس الطريقة التي تحدد وتستخدم بها قيم الدالة. سيتوقع التحليل أن تكون جميع القيم بالترتيب الذي حددتها به.
+
+لتجربتها، استبدل السطرين الأولين بـ **قيم (arguments)** `name` و `count` بالأسطر التالية:
 
 ```python
 parser.add_argument("name", help='a name to repeat')
 parser.add_argument("count", help='how many times', type=int)
 ```
 
-From now on, the order in which you provide `name` and `count` arguments will be important. The named arguments can still be provided before or after the positional arguments.
+من الآن فصاعدًا، سيكون الترتيب الذي تقدم به **قيمتي (arguments)** `name` و `count` مهمًا. لا يزال من الممكن تقديم القيم المسماة قبل أو بعد القيم الموضعية.
 
 ```console
-python3 hello.py PyLady 5 --indent
+python3 hello.py Hashim 5 --indent
 ```
 
-An example of a wrong call would be:
+مثال على استدعاء خاطئ سيكون:
 
 ```console
-python3 hello.py 5 PyLady
+python3 hello.py 5 Hashim
 ```
 
-Which should run into following error:
+والذي يجب أن يؤدي إلى الخطأ التالي:
 
 ```
-hello.py: error: argument count: invalid int value: 'PyLady'
+hello.py: error: argument count: invalid int value: 'Hashim'
 ```
 
-## Other options
+---
 
-Switch names begin, according to Unix convention, with hyphens: one hyphen `-`
-for one-letter abbreviations, two hyphens `--` for multi-letter names.
-One switch can have more than one name - short option and long option.
+## خيارات أخرى (Other options)
 
-This example shows how it is usually done for example of `logging` setup - although it does not apply for our simple example.
+تبدأ أسماء المفاتيح (switch names)، وفقًا لاتفاقية يونكس (Unix convention)، بالعلامات الواصلة (hyphens): واصلة واحدة `-`
+للاختصارات ذات الحرف الواحد، وواصلتين `--` للأسماء متعددة الأحرف.
+يمكن أن يحتوي المفتاح الواحد على أكثر من اسم - **خيار قصير (short option)** و **خيار طويل (long option)**.
+
+يوضح هذا المثال كيفية القيام بذلك عادةً على سبيل المثال لإعداد **التسجيل (logging)** - على الرغم من أنه لا ينطبق على مثالنا البسيط.
 
 ```python
 parser.add_argument(
@@ -190,8 +193,8 @@ parser.add_argument(
     )
 ```
 
-Parameter names with `hyphens` inside them will automatically turn them into variable names 
-with `underscores`, as it is not possible to have a `hyphen -` in variable name in Python.
+ستقوم أسماء المعلمات التي تحتوي على **واصلات (hyphens)** بداخلها بتحويلها تلقائيًا إلى أسماء متغيرات
+مع **تسطير سفلي (underscores)**، حيث لا يمكن أن يكون هناك **واصلة `-` (hyphen)** في اسم المتغير في بايثون.
 
 ```python
 parser.add_argument(
@@ -203,8 +206,8 @@ print(args.extreme_universe)
 
 ```
 
-If you use more options with two hyphens, you need to access the values from the `args`
-object via the first option, as in this example:
+إذا استخدمت المزيد من الخيارات ذات الواصلتين، فأنت بحاجة إلى الوصول إلى القيم من ال(object) **`args`**
+عبر الخيار الأول، كما في هذا المثال:
 
 ```python
 parser.add_argument('-n', '--name', '--firstname', help='a name to repeat', required=True)
@@ -213,8 +216,8 @@ hello(args.count, args.name, args.indent)
 
 ```console
 # both work
-python3 hello.py --name PyLady --count 5
-python3 hello.py --firstname PyLady --count 5
+python3 hello.py --name Hashim --count 5
+python3 hello.py --firstname Hashim --count 5
 ```
 
-This has been a short introduction into working with CLI.
+كانت هذه مقدمة قصيرة للعمل مع **واجهة سطر الأوامر (CLI)**.

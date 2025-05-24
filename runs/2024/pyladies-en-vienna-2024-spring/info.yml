@@ -37,6 +37,12 @@ mentors:
     links:
       - mail: mailto:baloola-mu@hotmail.com
 
+  - name: محمد مجاهد بحيري
+    img: img/team/mujahid.jpg
+    role: "منظم, مدرب"
+    links:
+      - mail: mailto:mmomba23@gmail.com
+
   - name: احمد بحيري
     img: img/team/ahmed.jpg
     role: "مدرب"
@@ -228,17 +234,17 @@ plan:
     materials:
       - lesson: beginners-en/json
       - lesson: beginners-en/files
-#     - lesson: beginners-en/debugging
-#     - title: PDB cheatsheet
-#       url: https://github.com/nblock/pdb-cheatsheet/releases/download/v1.2/pdb-cheatsheet.png
-#       type: cheatsheet
-#     - title: Files/Exceptions cheatsheet
-#       url: https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_files_exceptions.pdf
-#       type: cheatsheet
-#     - lesson: beginners-en/argparse
-#     - title: Homework
-#       url: https://docs.google.com/document/d/1ylF7Yc49LcQ4E1c6lMUM8L1YVAJva-bJhWx1Ynv1-t0
-#       type: homework
+      - lesson: beginners-en/debugging
+      - title: PDB cheatsheet
+        url: https://github.com/nblock/pdb-cheatsheet/releases/download/v1.2/pdb-cheatsheet.png
+        type: cheatsheet
+      - title: Files/Exceptions cheatsheet
+        url: https://github.com/ehmatthes/pcc/releases/download/v1.0.0/beginners_python_cheat_sheet_pcc_files_exceptions.pdf
+        type: cheatsheet
+      - lesson: beginners-en/argparse
+      - title: Homework
+        url: https://docs.google.com/document/d/1XGzYNokCPVzyhVxTxHpC6rGOfNrU0Z5oiZCGmQh3CcY
+        type: homework
 # - title: Final Project and bonus topic
 #   slug: final_project
 #   date: 2024-06-11
