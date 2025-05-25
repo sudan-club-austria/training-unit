@@ -134,10 +134,10 @@ hello(args.count, args.name, args.indent)
 ```console
 python3 hello.py
 python3 hello.py --help
-python3 hello.py --name PyLady
+python3 hello.py --name Ali
 python3 hello.py --count 5
-python3 hello.py --count 5 --name PyLady
-python3 hello.py --count 5 --name PyLady --indent
+python3 hello.py --count 5 --name Ali
+python3 hello.py --count 5 --name Ali --indent
 ```
 
 هذا بالفعل برنامج أول قوي جدًا أليس كذلك؟
