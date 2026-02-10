@@ -1,0 +1,38 @@
+title: دورة أساسيات الكمبيوتر - فيينا
+subtitle: 2026 - بيت السودان
+place: |
+  بيت السودان
+timezone: Europe/Vienna
+default_time:
+  start: "17:00"
+  end: "19:00"
+description: |
+      أساسيات الكمبيوتر.
+long_description: |
+  <br>
+  تعرف على المبادئ الجوهرية لاستخدام الحاسوب، بدءاً من التعرف على المكونات المادية وأنظمة التشغيل، وصولاً إلى مهارات إدارة الملفات والتعامل مع البرامج الأساسية
+  <br>
+  للاستفسار الرجاء التواصل مع الفريق المنظم
+derives: pyladies-en
+vars:
+  user-gender: m
+  pyladies: false
+  coach-present: true
+mentors:
+  - name: م.محمد ازهري
+    img: img/team/unknown.png
+    role: "مدرب"
+    links:
+      - mail: Mohammed@gmail.com
+  - name: محمد يسار
+    img: img/team/unknown.png
+    role: "مدرب"
+    links:
+      - mail: Mohammed@gmail.com
+
+plan:
+  - title: أساسيات الكمبيوتر
+    slug: AII
+    date: 2026-02-01
+    materials:
+      - lesson: beginners-en/computer-basics
