@@ -20,7 +20,7 @@ vars:
   coach-present: true
 mentors:
   - name: م.محمد ازهري
-    img: img/team/unknown.png
+    img: img/team/m.azhary.jpeg
     role: "مدرب"
     links:
       - mail: Mohammed@gmail.com
