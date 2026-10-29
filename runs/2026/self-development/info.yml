@@ -1,0 +1,33 @@
+title: بناء الانسان و تنمية الذات - فيينا
+subtitle: 2026 - بيت السودان
+place: |
+  بيت السودان
+timezone: Europe/Vienna
+default_time:
+  start: "18:30"
+  end: "20:30"
+description: |
+      من النجاح الى الفلاح
+long_description: |
+  <br>
+  تعرّف على مقتطفات من كتاب بناء الانسان و تنمية الذات.
+  <br>
+  للاستفسار الرجاء التواصل مع الفريق المنظم
+derives: pyladies-en
+vars:
+  user-gender: m
+  pyladies: false
+  coach-present: true
+mentors:
+  - name: د.خـالد لورد
+    img: img/team/m.jpeg
+    role: "مدرب"
+    links:
+      - mail: khalid@gmail.com
+
+plan:
+  - title: ورشة بناء الانسان و تنمية الذات
+    slug: self-development
+    date: 2026-10-30
+    materials:
+      - lesson: beginners-en/self-development
